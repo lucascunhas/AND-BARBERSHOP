@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="/css/buttons/btns-form.css">
+<link rel="stylesheet" href="/css/pages/desktop/home/section-planos.css">
+<link rel="stylesheet" href="/css/pages/responsivo/home/resp-section-planos.css">
+
+
+          <div class="txt-topo-site"><!--ARRUMAR RESPONSIVO-->
+              <h1>Planos <span>AND BARBERSHOP</span></h1>
+            </div><!--txt-topo-site-->
+
+            <div class="container">
+              <ul>
+              <% planos.forEach((plano)=> { %>
+                <li class="card">
+                <div class="content">
+                  
+                    <h2>0<%= plano.id_plano %></h2>
+                    <h3><%= plano.nome_plano %></h3>
+
+                    <p class="text">Descrição:&nbsp;<span><%= plano.descricao %>.</span></p>
+                    <p class="preco"><i class="bi bi-cash-coin"></i>&nbsp;<span>R$</span><%= plano.preco %></p> 
+
+                    <div class="btn-container">
+                      <form href="/comprar/<%= plano.id_plano %>" method="post">
+                        <button class="btn-compra"><i class="bi bi-whatsapp"></i>Assinar Agora</button>
+                      </form>
+                    </div>
+                </div><!--content-->
+                </li><!--card-->
+              <% }); %>
+            </div><!--container-->
+            </ul>
+
+    <script src="/css/partials/cards/vanilla-tilt.js"></script>
+    <script>
+      VanillaTilt.init(document.querySelectorAll(".card"), {
+        max: 25,
+        speed: 400,
+        glare: true,
+        "max-glare": 0.3,
+      });
+    </script>

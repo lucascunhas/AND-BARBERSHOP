@@ -1,0 +1,350 @@
+.fundo-section {
+    min-height: 100vh;
+    background-image: url(../../imgs/background/background-manager.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+section.fundo-section .flex {
+    min-height: 110vh;
+    align-items: center;
+    justify-content: center;
+    background-position-x: 0%;
+}
+
+.fundo-section .container {
+    padding: 10px 5%;
+    height: 500px;
+    width: 950px;
+
+    border-radius: 25px;
+    background-color: rgba(9, 28, 29, 50%);
+    backdrop-filter: blur(2px);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-esquerda {
+    width: 400px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-direita {
+    width: 400px;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.text-img {
+    height: 200px;
+    width: 400px;
+
+    position: relative;
+    top: 0;
+    left: 0;
+
+    line-height: 1.8em;
+
+    /*animation: aparecer-img-txt1 .7s ease-out alternate;*/
+}
+
+.title {
+    color: #f7d2a9;
+    font-family: Espiritu Cond;
+    font-size: 55px;
+    font-weight: bold;
+    position: relative;
+    top: 7%;
+    left: 30%;
+    filter: drop-shadow(0px 1px 5px #000);
+}
+
+.subtitle {
+    color: #fff;
+    font-family: Espiritu Cond;
+    font-size: 110px;
+    font-weight: bold;
+    position: relative;
+    top: 5%;
+    left: 30%;
+    filter: drop-shadow(0px 1px 5px #000);
+}
+
+.text-img i{
+    z-index: -1;
+    font-size: 140px;
+
+    color: #b4936d;
+    position: absolute;
+    top: 14%;
+    left: 5%;
+
+    animation: oscilando2 1s ease-in-out infinite alternate;
+}
+
+.form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.heading {
+    color: #b4936d;
+    font-size: 29px;
+    font-weight: bolder;
+    font-family: Espiritu Cond;
+    text-align: center;
+    position: relative;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+
+    width: 200%;
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.input-field {
+    z-index: 888;
+    position: relative;
+    padding: 10px 0;
+    /*animation: aparecer-form .5s ease-out alternate;*/
+}
+
+.input-field label {
+    font-family: Espiritu;
+
+    position: absolute;
+    color: #b4936d;
+    pointer-events: none;
+    background-color: transparent;
+    left: 15px;
+    transform: translateY(0.6rem);
+    transition: all 0.3s ease;
+}
+
+.input-field input {
+    /*animation: aparecer-form 1s ease-out alternate;*/
+
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-family: Poppins-Regular;
+
+    background-color: #f7d2a9;
+    border: solid 3px #d4ad80;
+    border-radius: 13px;
+
+    padding: 10px 15px;
+    width: 380px;
+}
+
+.input-field input::placeholder {
+    color: #2b2b2b;
+}
+
+.input-field input:focus,
+.input-field input:valid {
+    outline: none;
+    border: solid 3px #ffca8d;
+}
+
+.input-field input:focus~label,
+.input-field input:valid~label {
+    transform: translateY(-51%) translateX(-10px) scale(0.8);
+    background-color: #ffca8d;
+    padding: 0px 5px;
+    color: #0d2829;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border-radius: 100px;
+}
+
+.input-field textarea::placeholder {
+    color: #b4936d;
+    font-family: Espiritu;
+}
+
+.input-field textarea {
+    width: 100%;
+    background-color: #f7d2a9;
+    border: solid 3px #d4ad80;
+
+    outline: 0;
+    padding: 20px 15px;
+    border-radius: 10px;
+    color: #000;
+    font-size: 14px;
+    font-family: Poppins-Regular;
+
+    resize: none;
+    max-height: 200px;
+}
+
+.input-field textarea:focus::placeholder {
+    transition: .3s;
+    color: #cfa97d;
+}
+
+.input-field textarea:focus,
+.input-field textarea:valid {
+    outline: none;
+    transition: .3s;
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px #0c0c0c;
+
+    border: solid 3px #ffca8d;
+}
+
+
+.input-date {
+    z-index: 888;
+    position: relative;
+    padding: 10px 0;
+    /*animation: aparecer-form .5s ease-out alternate;*/
+}
+
+.input-date label {
+    font-family: Espiritu;
+
+    position: absolute;
+    color: #b4936d;
+    pointer-events: none;
+    background-color: transparent;
+    left: 15px;
+    transform: translateY(0.6rem);
+    transition: all 0.3s ease;
+}
+
+.input-date input {
+    /*animation: aparecer-form 1s ease-out alternate;*/
+
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-family: Poppins-Regular;
+
+    background-color: #f7d2a9;
+    border: solid 3px #d4ad80;
+    border-radius: 13px;
+
+    padding: 10px 15px;
+    width: 380px;
+}
+
+.input-date input:focus,
+.input-date input:valid {
+    outline: none;
+    border: solid 3px #ffca8d;
+}
+
+.input-date input~label {
+    transform: translateY(-51%) translateX(-10px) scale(0.8);
+    background-color: #d4ad80;
+    padding: 0px 5px;
+    color: #0d2829;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border-radius: 100px;
+}
+
+.input-date input:focus~label {
+    background-color: #ffca8d;
+}
+
+.input-check {
+    width: 90%;
+    padding: 10px 5%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 12px;
+    font-family: Poppins-Bold;
+    font-weight: 10;
+    color: #fff;
+}
+
+.escolha-barbeiros{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-select {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 888;
+    position: relative;
+    padding-bottom: 3%;
+
+    height: 100px;
+    width: 100%;
+    /*animation: aparecer-form .5s ease-out alternate;*/
+}
+
+.input-select label {
+    font-family: Espiritu;
+
+    font-size: 15px;
+    color: #b4936d;
+    margin-bottom: 2%;
+}
+
+.input-select select {
+    padding: 5px 8%;
+    min-width: 170px;
+
+    background-color: #f7d2a9;
+
+    border: 0;
+    border: solid 2px #d4ad80;
+    border-radius: 10px;
+
+    font-family: Poppins-Medium;
+}
+
+.input-select select::-webkit-scrollbar {
+    width: 12px;
+    
+    background-color: #1d1b1a;
+    border-radius: 10px;
+    border: 5%;
+}
+
+.input-select select::-webkit-scrollbar-thumb {
+    background-color: #d0804e;
+    height: 5px;
+    border-radius: 10px;
+}
+
+.input-select select:focus{
+    outline: none;
+}
+
+.form .passicon {
+    cursor: pointer;
+    font-size: 1.3rem;
+    position: absolute;
+    top: 6px;
+    right: 8px;
+}
+
+.form .close {
+    display: none;
+}

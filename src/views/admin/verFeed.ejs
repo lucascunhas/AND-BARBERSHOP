@@ -1,0 +1,65 @@
+    <!DOCTYPE html>
+    <html lang="pt-br">
+
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="icon" href="/css/imgs/logo/aba-logo-and.png" sizes="16x16">
+
+    <link rel="stylesheet" href="/css/pages/desktop/index.css">
+    <link rel="stylesheet" href="/css/animations/animations-txt.css">
+    <link rel="stylesheet" href="/css/buttons/btns-home.css">
+    <link rel="stylesheet" href="/css/buttons/btn-list.css">
+    <link rel="stylesheet" href="/css/pages/desktop/ver-feedbacks.css">
+    <link rel="stylesheet" href="/css/pages/responsivo/resp-ver-feedbacks.css">
+
+    <script src="/css/partials/header/menu-mobile.js" defer></script>
+    <title>Visualizar Feedbacks - And Barbershop</title>
+    </head>
+
+    <body>
+    <%- include ("../partials/header-admin.ejs") %>
+        <main>
+
+        <section class="ver-feedbacks">
+            <div class="flex">
+                <div class="interface">
+            
+                <div class="txt-topo-site"><!--ARRUMAR RESPONSIVO-->
+                    <h1>Feedbacks <span>And Barbershop</span></h1>
+                </div><!--txt-topo-site-->
+
+                <div class="container">
+                    <ul>
+                        <% if(feedbacks.length==0){ %>
+                            <li class="li-aviso">
+                                <div class="aviso">
+                                  <h1>Nenhuma Feedback foi enviado.</h1>
+                                </div>
+                              </li>
+                        <% } else { feedbacks.forEach(feedback=> {%>
+                            <li>
+                              <a class="title" value="<%= feedback.id %>"><%= feedback.comentario %></a>
+                              <span>Data: <%= feedback.data_feedback.toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' }) %> </span>
+                              <span>Cliente: <%= feedback.cliente.nome %></span>
+                              <span>Avaliação: <%= feedback.avaliacao %></span>
+                            </li>
+                            <% })} %>
+                            
+                          
+                    </div><!--container-->
+                    </ul>
+    
+            </div><!--flex-->
+            </div><!--interface-->
+        </section>
+
+        <%- include ("../partials/footer-manager.ejs") %>
+        </main>
+        <script src="/css/partials/header/header.js"></script>
+
+    </body>
+
+    </html>

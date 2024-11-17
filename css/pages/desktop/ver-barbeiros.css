@@ -1,0 +1,149 @@
+.ver-barbeiros{
+    min-height: 100vh;
+    background-image: url("../../imgs/background/background-manager.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: 0%;
+}
+
+section.ver-barbeiros .flex .txt-topo-site{
+    height: 20vh;
+    width: 1000px;
+    align-items: center; /*eixo vertical*/
+    gap: 20px;
+}
+
+section.ver-barbeiros .txt-topo-site{
+    margin-top: 15%;
+    line-height: 5em;
+    width: 100%;
+    padding: 0px 2%;
+    /*animation: opacidade-moviment 1s ease-out alternate;*/
+}
+
+.txt-topo-site h1{
+    color: #f7d2a9;
+    font-size: 5em;
+    font-weight: 500;
+    font-family: Espiritu Cond;
+}
+
+.txt-topo-site h1 span{
+    color: #fff;
+}
+
+.container{
+    margin-top: 5%;
+    margin-bottom: 15%;
+    /*animation: opacidade-moviment 0.5s ease-out alternate;*/
+}
+
+.container ul{
+    gap: 50px;
+    margin: 0;
+    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.container ul li{ /* barbeiro */
+    list-style: none;
+
+    background-color: rgba(29, 27, 26, 75%);
+    backdrop-filter: blur(2px);
+    border-radius: 20px;
+
+    padding: 20px 1%;
+    height: 350px;
+    width: 250px;
+    gap: 10px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.container ul li a{
+    color: #fff;
+}
+
+.container ul li .title{
+    width: 100%;
+    display: flex;
+}
+
+.container ul li .title a.nome{
+    width: 100%;
+    padding: 5px 3%;
+    border-radius: 8px;
+
+    text-align: center;
+    font-size: 15px;
+    font-family: Espiritu;
+    
+    color: #1d1b1a;
+    background-color: #ec8e54;   
+}
+
+.container ul li .informacoes{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.container ul li a.email,
+.container ul li a.dias{
+    display: flex;
+    align-items: center;
+}
+
+.container ul li .informacoes a.email{
+    font-size: 12px;
+    font-family: Poppins-Medium;
+    filter: drop-shadow(0px 2px 1px black);
+}
+
+.container ul li .informacoes a.dias{
+    font-size: 12px;
+    font-family: Poppins-Medium;
+    filter: drop-shadow(0px 2px 1px black);
+}
+
+.container ul li a.email i,
+.container ul li a.dias i{
+    font-size: 18px;
+    color: #ec8e54;
+    margin-right: 6px;
+    filter: none;
+}
+
+.container ul li:hover{
+    transition: .2s;
+    transform: scale(1.005);
+    box-shadow: 0px 10px 20px #091c1d;
+}
+
+.container ul li .img-conta{
+    height: 100px;
+    width: 100px;
+}
+.container ul li .img-conta img{
+    height: 100px;
+    width: 100px;
+
+    border: solid 3px #9b603c;
+}
+
+.element .btns-container{
+    display: flex;
+    justify-content: center;
+}
+
+.btns-container a{
+    text-decoration: none;
+}

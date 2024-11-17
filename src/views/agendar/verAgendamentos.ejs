@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link rel="icon" href="/css/imgs/logo/aba-logo-and.png" sizes="16x16">
+
+  <link rel="stylesheet" href="/css/pages/desktop/index.css">
+  <link rel="stylesheet" href="/css/animations/animations-txt.css">
+  <link rel="stylesheet" href="/css/buttons/btns-home.css">
+  <link rel="stylesheet" href="/css/buttons/btn-list.css">
+  <link rel="stylesheet" href="/css/pages/desktop/historico-agendamentos.css">
+  <link rel="stylesheet" href="/css/pages/responsivo/resp-historico-agendamentos.css">
+  <link rel="stylesheet" href="/css/partials/modal/modal-excluir.css">
+
+  <script src="/css/partials/header/menu-mobile.js" defer></script>
+  <script src="/css/partials/modal/modal.js" defer></script>
+  <title>Meus Agendamentos - And Barbershop</title>
+</head>
+
+<body>
+  <%- include ("../partials/header-user.ejs") %> <!--IMPORTAR HEADER DPS---->
+    <main>
+
+      <section class="ver-agendamentos">
+        <div class="flex">
+          <div class="interface">
+
+            <div class="txt-topo-site"><!--ARRUMAR RESPONSIVO-->
+              <h1>Meus Agendamentos</h1>
+            </div><!--txt-topo-site-->
+
+            <div class="container">
+
+              <ul>
+                <% if(agendamentos.length==0){ %>
+                  <li class="li-aviso">
+                    <div class="aviso">
+                      <h1>Você ainda não possui agendamento(s).</h1>
+                      <div class="btn-agendar" style="display: flex; flex-direction: column; align-items: center;">
+                        <a href="/agendamentos">
+                          <button class="btn-agendar-agora">AGENDAR AGORA</button>
+                        </a>
+                      </div><!--btn-agendar-->
+                    </div>
+                  </li>
+
+                  <% } else { agendamentos.forEach(agendamento=> {
+                    %>
+
+                    <% const dataAtual=new Date(); const dataAgendamento=new
+                      Date(agendamento.agenda_data + ' ' + agendamento.agenda_hora); const dataFim=new
+                      Date(agendamento.agenda_data + ' ' + agendamento.agenda_hora_fim); %>
+
+                      <li>
+                        <div class="coluna info">
+                          <a class="title-agendamento">Serviço: &nbsp;<span>
+                              <%= agendamento.servico_nome %>
+                            </span></a>
+                          <a class="preco-agendamento"><i class="bi bi-cash-coin"></i>R$<span>
+                              <%= agendamento.servico_preco %>
+                            </span></a>
+                          <a class="barbeiro-agendamento">Realizado por: &nbsp;<span>
+                              <%= agendamento.barbeiro_nome %>
+                            </span></a>
+
+                          <div class="dia-hora">
+                            <a><i class="bi bi-calendar-week"></i>Data: &nbsp;<span>
+                                <%= agendamento.agenda_data %>
+                              </span></a>
+                            <a><i class="bi bi-clock"></i>Horário: &nbsp;<span>
+                                <%= agendamento.agenda_hora %>
+                              </span></a>
+                          </div>
+                        </div>
+
+                        <% let statusTexto='' ; if (agendamento.agendamento_status===3) { statusTexto='Cancelado' ; }
+                          else if (agendamento.agendamento_status===2) { statusTexto='Finalizado' ; } else {
+                          statusTexto='Agendado' ; } %>
+
+                          <div class="coluna">
+                            <a class="status">Status</a>
+                            <a class="txt <%= statusTexto.toLowerCase() %>">
+                              <% if (statusTexto==='Cancelado' ) { %>
+                                <i class="bi bi-x-circle-fill" style="color: red;"></i>
+                                <% } else if (statusTexto==='Finalizado' ) { %>
+                                  <i class="bi bi-check-circle" style="color: #4ed05f;"></i>
+                                  <% } else { %>
+                                    <i class="bi bi-journal-check" style="color: #d0804e"></i>
+                                    <% } %>
+                                      <%= statusTexto %>
+                            </a>
+                          </div>
+
+                          <div class="coluna">
+                            <a class="action">Ações</a>
+                            <div class="btns-container">
+
+                              <% if (statusTexto !=='Cancelado' && statusTexto !=='Finalizado' ) { %>
+                                <button id="abre-modal-<%= agendamento.agendamento_id %>" class="btn-deletar"
+                                  style="font-size: 10px;">
+                                  Cancelar</button>
+
+                                <% } else { %>
+                                  <a><i class="bi bi-ban"></i>Sem ações disponíveis</a>
+                                  <% } %>
+                            </div><!--btns-container-->
+                          </div><!--coluna-->
+
+                          <dialog id="modal-<%= agendamento.agendamento_id %>">
+                            <div class="content">
+                              <form action="/agendamentos/<%= agendamento.agendamento_id %>/cancelar" method="POST">
+                                <h1>Essa ação tem um resultado irreversível. Tem certeza que deseja Excluir seu
+                                  Agendamento?</h1>
+                                <button type="submit" class="btn-deletar" style="width: 200px;">Sim, Excluir
+                                  Agendamento!</button>
+                              </form>
+                              <button type="button" class="btn" id="btn-fecha-modal"
+                                onclick="document.getElementById('modal-<%= agendamento.agendamento_id %>').close();"
+                                style="width: 120px;">Cancelar</button>
+                            </div>
+                          </dialog>
+                      </li>
+                      <script>
+                        document.getElementById("abre-modal-<%= agendamento.agendamento_id %>").addEventListener("click", function () {
+                          document.getElementById("modal-<%= agendamento.agendamento_id %>").showModal();
+                        });
+                      </script>
+                      <% }) %>
+                        <% } %>
+
+
+            </div><!--container-->
+            </ul>
+
+          </div><!--interface-->
+        </div><!--flex-->
+
+        <dialog id="confirmationModal">
+          <div class="content">
+            <h1>Agendamento confirmado com sucesso!</h1>
+          </div>
+        </dialog>
+
+        <style>
+          dialog {
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            text-align: center;
+            font-family: 'Poppins-Bold', sans-serif;
+          }
+
+          dialog::backdrop {
+            background: rgba(0, 0, 0, 0.5);
+          }
+
+          .content h1 {
+            font-size: 18px;
+            color: white
+          }
+        </style>
+
+        <script>
+          window.onload = () => {
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('confirmado') === 'true') {
+              const modal = document.getElementById('confirmationModal');
+              modal.showModal();
+
+              setTimeout(() => {
+                modal.close();
+              }, 3000);
+
+              const cleanUrl = location.href.split('?')[0];
+              window.history.replaceState(null, null, cleanUrl);
+            }
+          };
+        </script>
+      </section>
+
+      <%- include ("../partials/footer.ejs") %>
+    </main>
+
+    <script src="/css/partials/header/header.js"></script>
+
+</body>
+
+</html>

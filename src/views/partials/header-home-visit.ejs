@@ -1,0 +1,101 @@
+<link rel="stylesheet" href="/css/partials/header/main-header.css">
+<link rel="stylesheet" href="/css/partials/header/menu-mobile.css">
+<link rel="stylesheet" href="/css/partials/header/info-conta.css">
+<link rel="stylesheet" href="/css/buttons/btn-header.css">
+<link rel="stylesheet" href="/css/fonts/font-imports.css">
+
+<header id="header">
+    <div class="interface">
+
+        <div class="logo">
+            <a href="/">
+                <img src="/css/imgs/logo/logo-png.png" alt="logo-nav">
+            </a>
+        </div><!--logo-->
+
+        <nav class="menu-desktop">
+            <ul>
+                <li><a href="#topo-do-site">HOME</a></li>
+                <li><a href="#sec-sobre">SOBRE</a></li>
+                <li><a href="#sec-planos">PLANOS E ASSINATURAS</a></li>
+                <li><a href="/agendamentos">AGENDE AQUI</a></li>
+            </ul>
+        </nav>
+
+        <div class="info-conta">
+            <div class="flex">
+
+                <div class="img-conta">
+                    <img src="/css/imgs/elementos/nav-icon-user.png" alt="Foto Usuário">
+                </div>
+
+                <div class="txt-conta">
+                    <a class="href" href="/novocliente">Cadastrar-se Agora</a>
+                    <hr>
+                    <a class="href" href="/logincliente">Realizar Login</a>
+                </div>
+
+            </div><!--flex-->
+        </div><!--info-conta-->
+
+        <div class="btn-abrir-menu" id="btn-menu">
+            <i class="bi bi-list"></i>
+        </div>
+
+        <div class="menu-mobile" id="menu-mobile">
+            <div class="btn-fechar">
+                <i class="bi bi-x-lg"></i>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="#topo-do-site">HOME</a></li>
+                    <li><a href="#sec-sobre">SOBRE</a></li>
+                    <li><a href="#sec-planos">PLANOS E ASSINATURAS</a></li>
+                    <li><a href="/logincliente">REALIZAR LOGIN</a></li>
+                    <li><a href="/novocliente">CADASTRAR-SE</a></li>
+                    <li><a href="/agendamentos">AGENDE AQUI</a></li>
+                </ul>
+            </nav>
+
+        </div><!--menu-mobile-->
+
+        <div class="overlay-menu" id="overlay-menu"></div>
+
+    </div><!--interface-->
+
+    <script>
+        const imageInput = document.getElementById('imageInput');
+const preview = document.getElementById('preview');
+const imagemCadastradaSrc = document.getElementById('imagem-cadastrada-src');
+const form = document.getElementById('form');
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  // Enviar o formulário para o servidor
+  const formData = new FormData(form);
+  fetch('/upload', {
+    method: 'POST',
+    body: formData,
+  })
+  .then((response) => response.json())
+  .then((data) => {
+    // Atualizar a imagem na div após o envio do formulário
+    imagemCadastradaSrc.src = data.imagem;
+  })
+  .catch((error) => console.error(error));
+});
+
+imageInput.addEventListener('change', (e) => {
+  const file = imageInput.files[0];
+  const reader = new FileReader();
+
+  reader.onload = (e) => {
+    preview.src = e.target.result;
+  };
+
+  reader.readAsDataURL(file);
+});
+    </script>
+</header>
