@@ -113,14 +113,16 @@
                           <dialog id="modal-<%= agendamento.agendamento_id %>">
                             <div class="content">
                               <form action="/agendamentos/<%= agendamento.agendamento_id %>/cancelar" method="POST">
-                                <h1>Essa ação tem um resultado irreversível. Tem certeza que deseja Excluir seu
-                                  Agendamento?</h1>
-                                <button type="submit" class="btn-deletar" style="width: 200px;">Sim, Excluir
-                                  Agendamento!</button>
+                                <h1>Essa ação tem um resultado irreversível. Tem certeza que deseja <span style="text-decoration: underline;">CANCELAR</span> seu
+                                <span style="text-decoration: underline;">AGENDAMENTO?</span></h1>
+                                
+                                <div class="btn-container">
+                                <button type="submit" class="btn-deletar" style="width: 200px;">Sim, Cancelar!</button>
                               </form>
                               <button type="button" class="btn" id="btn-fecha-modal"
                                 onclick="document.getElementById('modal-<%= agendamento.agendamento_id %>').close();"
                                 style="width: 120px;">Cancelar</button>
+                              </div>
                             </div>
                           </dialog>
                       </li>

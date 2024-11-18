@@ -8,6 +8,18 @@
     }
 }
 
+@keyframes esmaecer-width {
+    0% {
+        opacity: 0;
+        width: 0vh;
+    }
+
+    100% {
+        opacity: 1;
+        width: 80vh;
+    }
+}
+
 @keyframes spinner {
     to {
         transform: rotate(0deg);

@@ -24,3 +24,7 @@ html {
 .flex{
     display: flex;
 }
+
+button{
+    outline: none;
+}

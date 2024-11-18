@@ -151,7 +151,7 @@ header img {
 .content-menu nav ul li:hover {
     transition: .3s;
     transform: scale(1.02);
-    cursor: pointer;
+    cursor: no-drop;
     background-color: #071516;
 } 
 

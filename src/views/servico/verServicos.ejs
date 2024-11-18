@@ -56,8 +56,8 @@
                           <button class="btn-editar"><i class="bi bi-pencil-fill"></i>Editar</button>
                         </a>
 
-                        <button id="abre-modal-<%= servico.id %>" class="btn-deletar" style="display: inline">
-                          Deletar</button>
+                        <button class="btn-deletar" id="abre-modal-<%= servico.id %>">
+                        <i class="bi bi-trash-fill"></i>Deletar</button>
   
                           </div>
   
@@ -65,12 +65,11 @@
                                   <div class="content">
                                     </form>
                                       <form method="POST" action="/deletaservico">
-                                          <h1>Essa ação tem um resultado irreversível. Tem certeza que deseja Excluir sua
-                                              Conta?</h1>
+                                          <h1>Essa ação tem um resultado irreversível. Tem certeza que deseja EXCLUIR o Serviço <%= servico.nome %>?</h1>
   
                                               <input type="hidden" name="id" value="<%= servico.id %>" />                                        <div class="btn-container">
                                               <button type="submit" class="btn-deletar" style="width: 200px;">
-                                                  Sim, Excluir Conta!</button>
+                                                  Sim, Excluir!</button>
   
                                       </form>
   

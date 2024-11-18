@@ -1,6 +1,6 @@
 .sec-sobre{
     min-height: 100vh;
-    background-image: url("/css/imgs/background/background-sobre.png");
+    background-image: url("/css/imgs/background/background-sobre2.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -58,7 +58,7 @@ section.sec-sobre .flex{
     align-items: center;
     justify-content: center;
 
-    background-color: #131111b2;
+    background-color: #07121391;
     backdrop-filter: blur(2px);
 
     box-shadow: 2px 8px 20px #131111;
