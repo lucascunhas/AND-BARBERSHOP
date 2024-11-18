@@ -93,7 +93,12 @@ router.post('/tarefas/status/:id/cancelar', async (req, res) => {
   try {
     const tarefa = await Tarefa.findByPk(req.params.id);
     if (tarefa) {
+      await TarefaBarbeiro.destroy({
+        where: { id_tarefa: tarefa.id },
+      });
+
       await tarefa.destroy();
+
       res.redirect('/tarefas/listar');
     } else {
       res.status(404).send("Tarefa não encontrada");
@@ -102,7 +107,7 @@ router.post('/tarefas/status/:id/cancelar', async (req, res) => {
     console.error("Erro ao cancelar tarefa:", error);
     res.status(500).send("Erro ao cancelar tarefa");
   }
-})
+});
 
 
 module.exports = router;
