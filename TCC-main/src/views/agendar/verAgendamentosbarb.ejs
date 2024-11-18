@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link rel="icon" href="/css/imgs/logo/aba-logo-and.png" sizes="16x16">
+
+  <link rel="stylesheet" href="/css/pages/desktop/index.css">
+  <link rel="stylesheet" href="/css/animations/animations-txt.css">
+  <link rel="stylesheet" href="/css/buttons/btns-home.css">
+  <link rel="stylesheet" href="/css/buttons/btn-list.css">
+  <link rel="stylesheet" href="/css/pages/desktop/ver-agendamentos.css">
+  <link rel="stylesheet" href="/css/pages/responsivo/resp-ver-agendamentos.css">
+
+  <script src="/css/partials/header/menu-mobile.js" defer></script>
+  <title>Agenda de Barbeiro - And Barbershop</title>
+</head>
+
+<body>
+  <%- include ("../partials/header-admin.ejs") %> <!--IMPORTAR HEADER DPS---->
+    <main>
+
+      <section class="ver-agendamentos" style="background-image: url(/css/imgs/background/background-manager.png);">
+        <div class="flex">
+          <div class="interface">
+
+            <div class="txt-topo-site"><!--ARRUMAR RESPONSIVO-->
+              <h1>Olá, <span><%= barbeiro.nome %></span>!</h1>
+            </div><!--txt-topo-site-->
+
+            <div class="container">
+
+              <ul>
+                <% if(agendamentos.length == 0){ %>
+                  <li class="li-aviso">
+                    <div class="aviso">
+                      <h1>Você ainda não possui agendamento(s).</h1>
+                    </div>
+                  </li>
+
+                  <% } else { %>
+                    <% agendamentos.forEach(function(agendamento) { const dataAtual=new Date(); const dataAgendamento=new
+                      Date(agendamento.agenda_data + ' ' + agendamento.agenda_hora); const dataFim=new
+                      Date(agendamento.agenda_data + ' ' + agendamento.agenda_hora_fim); let statusTexto='' ; if
+                      (agendamento.agendamento_status===3) { statusTexto='Cancelado' ; } else if
+                      (agendamento.agendamento_status===2) { statusTexto='Finalizado' ; } else { statusTexto='Agendado' ; }    
+                      %>
+                      <li>
+                        <div class="coluna">
+                          <a class="title">Cliente</a>
+                          <a class="txt"><%= agendamento.cliente_nome %></a>
+                        </div>
+
+                        <div class="coluna">
+                          <a class="title">Serviço</a>
+                          <a class="txt"><%= agendamento.servico_nome %></a>
+                        </div>
+
+                        <div class="coluna">
+                          <a class="title">Preço</a>
+                          <a class="txt">R$&nbsp;<%= agendamento.servico_preco %></a>
+                        </div>
+
+                        <div class="coluna">
+                          <a class="title">Data</a>
+                          <a class="txt"><%= agendamento.agenda_data %></a>
+                        </div>
+
+                        <div class="coluna">
+                          <a class="title">Hora de Início</a>
+                          <a class="txt"><%= agendamento.agenda_hora %></a>
+                        </div>
+                        
+                        <div class="coluna">
+                          <a class="title">Hora de Término</a>
+                          <a class="txt"><%= agendamento.agenda_hora_fim %></a>
+                        </div>
+
+                        <div class="coluna">
+                          <a class="title">Status</a>
+                          <a class="txt <%= statusTexto.toLowerCase() %>">
+                            <% if (statusTexto === 'Cancelado') { %>
+                              <i class="bi bi-x-circle-fill" style="color: red;"></i>
+                            <% } else if (statusTexto === 'Finalizado') { %>
+                              <i class="bi bi-check-circle" style="color: #4ed05f;"></i>
+                            <% } else { %>
+                              <i class="bi bi-journal-check" style="color: #d0804e"></i>
+                            <% } %>
+                            <%= statusTexto %>
+                          </a>
+                        </div>
+
+                        <div class="coluna">
+
+                          <a class="action">Ações</a>
+
+                          <div class="btns-container">
+                              <% if (statusTexto !=='Cancelado' && statusTexto !=='Finalizado' ) { %>
+                                <form action="/agendamentos/<%= agendamento.agendamento_id %>/finalizar" method="POST">
+                                  <button type="submit" class="btn-finalizar"><i class="bi bi-check-circle"></i>Finalizar</button>
+                                </form>
+                                <% } else { %>
+                                  <a><i class="bi bi-ban"></i>Sem ações disponíveis</a>
+                                  <% } %>
+                          </div><!--btns-container-->
+
+                        </div><!--coluna-->
+
+                      </li>
+                      <% }) %>
+                     <% } %>
+            </div><!--container-->
+            </ul>
+
+          </div><!--interface-->
+        </div><!--flex-->
+      </section>
+
+      <%- include ("../partials/footer-manager.ejs") %>
+    </main>
+
+    <script>
+      function confirmaDeleta(event, form) {
+        event.preventDefault();
+        let decisao = confirm("Deseja finalizar esse agendamento?")
+        if (decisao) {
+          form.submit();
+        }
+      }
+    </script>
+
+    <script src="/css/partials/header/header.js"></script>
+
+</body>
+
+</html>

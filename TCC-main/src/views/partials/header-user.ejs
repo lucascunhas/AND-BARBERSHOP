@@ -1,0 +1,71 @@
+<link rel="stylesheet" href="/css/partials/header/main-header.css">
+<link rel="stylesheet" href="/css/partials/header/menu-mobile.css">
+<link rel="stylesheet" href="/css/partials/header/info-conta.css">
+<link rel="stylesheet" href="/css/buttons/btn-header.css">
+<link rel="stylesheet" href="/css/fonts/font-imports.css">
+
+<header id="header" >
+    <div class="interface">
+
+        <div class="logo">
+            <a href="/">
+                <img src="/css/imgs/logo/logo-png.png" alt="logo-nav">
+            </a>
+        </div><!--logo-->
+
+        <nav class="menu-desktop">
+            <ul>
+                <li><a href="/">HOME</a></li>
+                <li><a href="#">SOBRE</a></li>
+                <li><a href="/planos">PLANOS E ASSINATURAS</a></li>
+                <li><a href="/agendamentos">AGENDE AQUI</a></li>
+            </ul>
+        </nav>
+
+        <div class="info-conta">
+            <div class="flex">
+
+                <div class="img-conta">
+                    <% if (cliente.imagem) { %>
+                        <img class="img-cliente" src="/uploads/<%= cliente.imagem %>" alt="Foto do Cliente">
+                    <% } else { %>
+                        <img src="/css/imgs/elementos/nav-icon-user.png" alt="Foto Usuário">
+                    <% } %>
+                </div>
+
+                <div class="txt-conta">
+                    <a>Olá, <%= cliente.nome %>!</a>
+                    <hr>
+                    <div class="down-option">
+                        <a class="href" href="/editarcliente/<%= cliente.id_cliente %>">Minha Conta</a>
+                        <a class="sair" href="/logout">Sair</a>
+                    </div>
+                </div>
+
+            </div><!--flex-->
+            </div><!--info-conta-->
+
+        <div class="btn-abrir-menu" id="btn-menu">
+            <i class="bi bi-list"></i>
+        </div>
+
+        <div class="menu-mobile" id="menu-mobile">
+            <div class="btn-fechar">
+                <i class="bi bi-x-lg"></i>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="/">HOME</a></li>
+                    <li><a href="#">SOBRE</a></li>
+                    <li><a href="#">PLANOS E ASSINATURAS</a></li>
+                    <li><a href="/agendamentos">AGENDE AQUI</a></li>
+                </ul>
+            </nav>
+
+        </div><!--menu-mobile-->
+
+        <div class="overlay-menu" id="overlay-menu"></div>
+
+    </div><!--interface-->
+</header>

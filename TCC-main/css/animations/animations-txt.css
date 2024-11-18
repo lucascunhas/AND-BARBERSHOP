@@ -1,0 +1,64 @@
+@keyframes esmaecer {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes esmaecer-width {
+    0% {
+        opacity: 0;
+        width: 0vh;
+    }
+
+    100% {
+        opacity: 1;
+        width: 80vh;
+    }
+}
+
+@keyframes spinner {
+    to {
+        transform: rotate(0deg);
+    }
+
+    from {
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes opacidade-moviment{
+    0% {
+        transform: translateY(15px);
+        opacity: 0%;
+    }
+
+    100% {
+        opacity: 100%;
+    }
+}
+
+@keyframes aparecer-btn{
+    0% {
+        top: -240px;
+        opacity: 0%;
+    }
+
+    100% {
+        top: -290px;
+        opacity: 100%;
+    }
+}
+
+@keyframes aparecer-form{
+    0% {
+        top: 15px;
+    }
+
+    100% {
+        top: 0px;
+    }
+}

@@ -1,0 +1,61 @@
+<link rel="stylesheet" href="/css/pages/desktop/home/section-feedback.css">
+<link rel="stylesheet" href="/css/buttons/btn-header.css">
+
+<div class="container">
+
+    <form class="form" action="/feedbacks" method="POST" id="feedbackForm">
+        <div class="heading">
+            <h1>Avalie nosso serviço:</h1>
+
+            <div class="avaliacao-estrelas">
+                <input type="radio" name="avaliacao" value="1" id="star1" required>
+                <label class="star" for="star1"><i class="bi bi-star-fill"></i></label>
+
+                <input type="radio" name="avaliacao" value="2" id="star2">
+                <label class="star" for="star2"><i class="bi bi-star-fill"></i></label>
+
+                <input type="radio" name="avaliacao" value="3" id="star3">
+                <label class="star" for="star3"><i class="bi bi-star-fill"></i></label>
+
+                <input type="radio" name="avaliacao" value="4" id="star4">
+                <label class="star" for="star4"><i class="bi bi-star-fill"></i></label>
+
+                <input type="radio" name="avaliacao" value="5" id="star5">
+                <label class="star" for="star5"><i class="bi bi-star-fill"></i></label>
+            </div><!--avaliacao-estrelas-->
+        </div><!--heading-->
+
+        <div class="form-text">
+            <textarea id="comentario" name="comentario" placeholder="Conte mais sobre sua experiência" required></textarea>
+        </div>
+
+        <div class="btn-container">
+            <button class="btn-agendar-header" style="width: 150px;">Enviar Feedback</button>
+        </div>
+    </form>
+</div><!--container-->
+
+<script>
+    // JavaScript para gerenciar a seleção das estrelas
+    const stars = document.querySelectorAll('.avaliacao-estrelas label');
+
+    stars.forEach((star, index) => {
+        star.addEventListener('click', () => {
+            // Remover a classe 'checked' de todas as estrelas
+            stars.forEach(s => s.classList.remove('checked'));
+            // Marcar a estrela atual e as anteriores
+            for (let i = 0; i <= index; i++) {
+                stars[i].classList.add('checked');
+            }
+            // Definir o valor do input correspondente
+            const radio = document.querySelector(`input[name="avaliacao"][value="${index + 1}"]`);
+            if (radio) {
+                radio.checked = true;
+            }
+        });
+    });
+</script>
+
+</body>
+
+</html>

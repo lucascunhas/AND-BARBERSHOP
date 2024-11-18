@@ -1,0 +1,14 @@
+# Diretórios do sistema que não devem ser rastreados
+/Ambiente de Impressão/
+/Ambiente de Rede/
+/Configurações Locais/
+/Cookies/
+/Documents/
+/AppData/
+
+# Arquivos específicos
+*.exe
+*.lnk
+*.zip
+*.png
+*.pdf

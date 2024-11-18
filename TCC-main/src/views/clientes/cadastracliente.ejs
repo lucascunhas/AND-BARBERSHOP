@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="icon" href="/css/imgs/logo/aba-logo-and.png" sizes="16x16">
+
+    <link rel="stylesheet" href="/css/pages/desktop/index.css">
+    <link rel="stylesheet" href="/css/animations/animations-txt.css">
+    <link rel="stylesheet" href="/css/animations/animations-img.css">
+    <link rel="stylesheet" href="/css/buttons/btns-form.css">
+    <link rel="stylesheet" href="/css/buttons/btn-google.css">
+    <link rel="stylesheet" href="/css/pages/desktop/cadastro-usuario.css">
+    <link rel="stylesheet" href="/css/pages/responsivo/resp-cadastro-usuario.css">
+
+    <script src="/css/partials/header/menu-mobile.js" defer></script>
+    <script src="/css/buttons/btn-loading.js" defer></script>
+    <title>Cadastro de Cliente - And Barbershop</title>
+</head>
+
+<body>
+    <%- include ("../partials/header-visit.ejs") %>
+        <main>
+
+            <section class="fundo-section">
+                <div class="interface">
+                    <div class="flex">
+
+                        <div class="container">
+
+
+                            <div class="text-img">
+                                <a class="title">CADASTRO DE</a><br>
+                                <a class="subtitle">USUÁRIO</a>
+                                <img class="img-icon" src="/css/imgs/elementos/tubo_barber2.png" alt="icon1">
+                            </div>
+
+                            <div class="form-container">
+                                <div class="heading">Realizar Cadastro</div><br>
+
+                                <form class="form" action="/cliente/cadastro" method="POST">
+
+                                    <div class="input-field">
+                                        <input required="" autocomplete="off" type="text" name="nome" id="nome" />
+                                        <label for="nome">Nome</label>
+                                    </div>
+
+                                    <div class="input-field">
+                                        <input required="" autocomplete="off" type="text" name="sobrenome" id="sobrenome" />
+                                        <label for="sobrenome">Sobrenome</label>
+                                    </div>
+
+                                    <div class="input-field">
+                                        <input required="" autocomplete="off" type="email" name="email" id="email" />
+                                        <label for="email">Email</label>
+                                    </div>
+
+                                    <div class="input-field">
+                                        <input required="" autocomplete="off" type="password" name="senha" id="senha" />
+                                        <label for="senha">Senha</label>
+                                    </div>
+
+                                    <div class="btn-container">
+                                        <button id="btn-com-loading" class="btn" type="submit" onclick="handClick()">Cadastrar</button>
+                                    </div>
+                                </form>
+                            </div><!--form-container-->
+
+                        </div><!--container-->
+                    
+                    </div><!--flex-->
+                </div><!--interface-->
+            </section>
+
+            <%- include ("../partials/footer.ejs") %>
+        </main>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+            integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"
+            integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <script>
+
+            const mascaraTel = (event) => {
+                let input = event.target
+                input.value = phoneMask(input.value)
+            }
+
+            const phoneMask = (value) => {
+                if (!value) return ""
+                value = value.replace(/\D/g, '')
+                value = value.replace(/(\d{2})(\d)/, "($1) $2")
+                value = value.replace(/(\d)(\d{4})$/, "$1-$2")
+                return value
+
+                var tam = value.length;
+            }
+
+            $(document).ready(function () {
+                $('#cpf').mask('999.999.999-99');
+                $('#dataNasc').mask('99/99/9999');
+            });
+        </script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const imageInput = document.getElementById('imageInput');
+                const preview = document.getElementById('preview');
+
+                imageInput.addEventListener('change', (e) => {
+                    const file = e.target.files[0];
+
+                    if (file && file.type.startsWith('image/')) {
+                        const reader = new FileReader();
+
+                        reader.onload = (e) => {
+                            preview.src = e.target.result;
+                            preview.style.display = 'block'; // Exibe o preview da imagem
+                        };
+
+                        reader.readAsDataURL(file);
+                    } else {
+                        preview.src = '';
+                        preview.style.display = 'none'; // Oculta o preview se nenhum arquivo válido for selecionado
+                    }
+                });
+            });
+        </script>
+
+        <script src="/css/partials/header/header.js"></script>
+
+</body>
+</html>

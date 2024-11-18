@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link rel="icon" href="/css/imgs/logo/aba-logo-and.png" sizes="16x16">
+
+  <link rel="stylesheet" href="/css/pages/desktop/index.css">
+  <link rel="stylesheet" href="/css/animations/animations-txt.css">
+  <link rel="stylesheet" href="/css/animations/animations-img.css">
+  <link rel="stylesheet" href="/css/buttons/btns-form.css">
+  <link rel="stylesheet" href="/css/pages/desktop/cadastro-tarefa.css">
+  <link rel="stylesheet" href="/css/pages/responsivo/resp-cadastro-tarefa.css">
+
+  <script src="/css/partials/header/menu-mobile.js" defer></script>
+  <title>Cadastro de Tarefa - And Barbershop</title>
+</head>
+
+<body>
+  <%- include ("../partials/header-admin.ejs") %>
+    <main>
+
+      <section class="fundo-section">
+        <div class="interface">
+          <div class="flex">
+
+            <div class="container">
+
+              <div class="form-esquerda">
+                <div class="text-img">
+                  <a class="title">CADASTRO DE</a>
+                  <a class="subtitle">TAREFA</a> <!--ARRUMAR RESPONSIVO-->
+                  <i class="bi bi-journal-text"></i>
+                </div>
+
+                <form class="form" action="/tarefas/criar" method="POST">
+                  <div class="campos-cadastro">
+
+                    <div class="input-field">
+                      <input autofocus autocomplete="off" type="text" name="nome" required="" />
+                      <label>Titulo da Tarefa</label>
+                    </div>
+
+                    <div class="input-field">
+                      <textarea name="descricao" required="" placeholder="Descrição da Tarefa"></textarea>
+                    </div>
+
+                  </div><!--campos-cadastro-->
+
+              </div><!--form-esquerda-->
+
+              <div class="form-direita">
+
+                <div class="input-date">
+                  <input type="datetime-local" name="dataInicio" required="" />
+                  <label for="dataInicio">Data de Início</label>
+                </div>
+
+                <div class="input-date">
+                  <input type="datetime-local" name="dataTermino" required="" />
+                  <label for="dataTermino">Data de Término</label>
+                </div>
+
+                <div class="escolha-barbeiros" style="width: 100%;">
+
+                  <div class="input-select" id="barbeirosEspecificos">
+                    <label>Barbeiros Responsáveis:</label>
+                    <select name="barbeirosEspecificos" multiple>
+                      <% barbeiros.forEach(barbeiro=> { %>
+                        <option value="<%= barbeiro.id_barber %>">
+                          <%= barbeiro.nome %>
+                            <%= barbeiro.sobrenome %>
+                        </option>
+                        <% }) %>
+                    </select>
+                  </div>
+
+                  <div class="input-check">
+                    <label for="paraTodos">Enviar para TODOS os Barbeiros</label>
+                    <input type="checkbox" name="paraTodos">
+                  </div>
+
+                </div><!--escolha-barbeiros-->
+
+                <div class="btn-container">
+                  <button class="btn" type="submit">Cadastrar Tarefa</button>
+                </div>
+
+              </div><!--form-direita-->
+              </form>
+
+            </div><!--container-->
+
+          </div><!--flex-->
+        </div><!--interface-->
+      </section>
+
+      <%- include ("../partials/footer-manager.ejs") %>
+    </main>
+    <script src="/css/partials/header/header.js"></script>
+</body>
+
+</html>

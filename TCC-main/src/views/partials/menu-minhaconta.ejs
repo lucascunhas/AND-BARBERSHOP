@@ -1,0 +1,68 @@
+<link rel="stylesheet" href="/css/partials/header/main-header-lateral.css">
+<link rel="stylesheet" href="/css/partials/header/menu-info-conta.css">
+<link rel="stylesheet" href="/css/buttons/btn-header.css">
+<link rel="stylesheet" href="/css/fonts/font-imports.css">
+
+<header id="header">
+    <div class="interface">
+
+        <div class="logo">
+            <a href="/">
+                <img src="/css/imgs/logo/logo-png.png" alt="logo-nav">
+            </a>
+        </div><!--logo-->
+
+        <div class="btn-abrir-menu" id="btn-menu">
+            <i class="bi bi-list"></i>
+        </div>
+
+        <div class="menu-conta" id="menu-mobile">
+            <div class="btn-fechar">
+                <i class="bi bi-x-lg"></i>
+            </div>
+
+            <div class="menu-container">
+
+            <div class="info-conta">
+                <div class="flex">
+                    
+                    <div class="img-conta">
+                        <% if (cliente.imagem) { %>
+                            <img class="img-cliente" src="/uploads/<%= cliente.imagem %>" alt="Foto do Cliente">
+                        <% } else { %>
+                            <img src="/css/imgs/elementos/nav-icon-user.png" alt="Foto Usuário">
+                        <% } %>
+                    </div>
+
+                    <div class="txt-conta" style="width: 100%; font-size: 20px; margin-bottom: 5px;">
+                        <a>Seja Bem-Vindo,</a>
+                        <h1><%= cliente.nome %>!</h1>
+                    </div>
+                </div><!--flex-->
+            </div><!--info-conta-->
+            
+            <div class="content-menu">
+            <nav>
+                <ul>
+                    <li><i class="bi bi-calendar2-week-fill"></i><a href="/veragendamentos">Meus Agendamentos</a></li>
+                    <li><i class="bi bi-credit-card-2-back"></i><a href="#">Minhas Assinaturas & Planos</a></li>
+                    <li><a href="#">Teste 2</a></li>
+                    <li><a href="#">Teste 3</a></li>
+                    <li><a href="#">Teste 4</a></li>
+                
+                    <div class="btn-logout">
+                        <a href="/logout">
+                            <button class="btn-deletar" type="button">Sair</button>
+                        </a>
+                    </div>
+                </ul>
+            </nav>
+            </div><!--content-menu-->
+
+        </div><!--menu-container-->
+        
+    </div><!--menu-conta-->
+        <div class="overlay-menu" id="overlay-menu"></div>
+
+    </div><!--interface-->
+</header>

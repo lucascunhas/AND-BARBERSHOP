@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link rel="icon" href="/css/imgs/logo/aba-logo-and.png" sizes="16x16">
+
+  <link rel="stylesheet" href="/css/pages/desktop/index.css">
+  <link rel="stylesheet" href="/css/animations/animations-txt.css">
+  <link rel="stylesheet" href="/css/buttons/btns-home.css">
+  <link rel="stylesheet" href="/css/buttons/btn-list.css">
+  <link rel="stylesheet" href="/css/pages/desktop/ver-servico.css">
+  <link rel="stylesheet" href="/css/pages/responsivo/resp-ver-servico.css">
+  <link rel="stylesheet" href="/css/partials/modal/modal-excluir.css">
+
+  <script src="/css/partials/header/menu-mobile.js" defer></script>
+  <script src="/css/partials/modal/modal.js" defer></script>
+  <title>Visualizar Serviços - And Barbershop</title>
+</head>
+
+<body>
+  <%- include ("../partials/header-admin.ejs") %>
+    <main>
+
+      <section class="ver-servicos">
+          <div class="flex">
+        <div class="interface">
+          
+
+              <div class="txt-topo-site"><!--ARRUMAR RESPONSIVO-->
+                <h1>Serviços <span>And Barbershop</span></h1>
+
+                <div class="btn-agendar">
+                  <a href="/cadservicos">
+                    <button class="btn-agendar-agora" style="font-size: 10px; width: 130px;">Cadastar Novo
+                      Serviço</button>
+                  </a>
+                </div><!--btn-agendar-->
+              </div><!--txt-topo-site-->
+
+              <div class="container-page">
+                <ul>
+                  <% servicos.forEach((servico)=> { %>
+                    <li>
+                      <a class="title" value="<%= servico.id %>"><%= servico.nome %></a><br>
+                      <a class="desc"><%= servico.descricao %></a><br>
+                      <a class="info">Preço:&nbsp;R$<%= servico.preco %></a>
+                      <a class="info">Duração:&nbsp;<%= servico.tempo %>min</a><br>
+
+                      <div class="btns-container">
+
+                        <a href="editarservico/<%= servico.id %>" style="text-decoration: none;">
+                          <button class="btn-editar"><i class="bi bi-pencil-fill"></i>Editar</button>
+                        </a>
+
+                        <button class="btn-deletar" id="abre-modal-<%= servico.id %>">
+                        <i class="bi bi-trash-fill"></i>Deletar</button>
+  
+                          </div>
+  
+                              <dialog id="modal-<%= servico.id %>">
+                                  <div class="content">
+                                    </form>
+                                      <form method="POST" action="/deletaservico">
+                                          <h1>Essa ação tem um resultado irreversível. Tem certeza que deseja EXCLUIR o Serviço <%= servico.nome %>?</h1>
+  
+                                              <input type="hidden" name="id" value="<%= servico.id %>" />                                        <div class="btn-container">
+                                              <button type="submit" class="btn-deletar" style="width: 200px;">
+                                                  Sim, Excluir!</button>
+  
+                                      </form>
+  
+                                      <button type="button" class="btn" id="btn-fecha-modal"
+                                      onclick="document.getElementById('modal-<%= servico.id %>').close();"
+                                      style="width: 120px;">Cancelar</button>
+                                      </div>
+                                  </div>
+                          </dialog>
+  
+                          <script>
+                            document.getElementById("abre-modal-<%= servico.id %>").addEventListener("click", function () {
+                              document.getElementById("modal-<%= servico.id %>").showModal();
+                            });
+                          </script>
+
+                    </li>
+                    <% }); %>
+                  </div><!--container-->
+                </ul>
+  
+          </div><!--flex-->
+        </div><!--interface-->
+      </section>
+
+      <%- include ("../partials/footer-manager.ejs") %>
+    </main>
+    <script src="/css/partials/header/header.js"></script>
+
+</body>
+
+</html>

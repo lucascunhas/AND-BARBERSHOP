@@ -1,0 +1,84 @@
+@media screen and (max-width: 960px) {
+
+    /* CLASSES GERAIS */
+    .fundo-section{
+        height: 140vh;
+    }
+
+    section.fundo-section .flex{
+        height: 140vh;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-position-x: 53%;
+        gap: 20px;
+    }
+
+    .fundo-section .container{
+        margin-top: 30%;
+        padding: 20px 10%;
+        height: 120vh;
+        width: 50vh;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* IMG + TXT */
+    .text-img {
+        margin-top: 10%;
+        height: 160px;
+        width: 250px;
+        
+        position: relative;
+        left: 0;
+        top: 0;
+    }
+
+    .img-icon {
+        position: absolute;
+        width: 180px;
+        left: 38px;
+        top: -17px;
+    }
+
+    .title {
+        font-size: 35px;
+        left: 23%;
+        top: -5px;
+    }
+
+    .subtitle {
+        font-size: 65px;
+        top: -18px;
+        left: 14%;
+    }
+
+    /* FORM + BTN */
+    .heading {
+        font-size: 25px;
+        letter-spacing: 2px;
+        padding: 10px 0;
+    }
+
+    table{
+        width: 90%;
+    }
+
+    .btn-container{
+        width: 150%;
+        padding: 10px 0;
+    }
+
+    .input-field label{
+        font-size: 12px;
+    }
+
+    .input-field input {
+        font-size: 12px;
+        padding: 4px 15px;
+        width: 250px;
+    }
+}

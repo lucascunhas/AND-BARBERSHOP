@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="icon" href="/css/imgs/logo/aba-logo-and.png" sizes="16x16">
+
+  <link rel="stylesheet" href="/css/pages/desktop/index.css">
+  <link rel="stylesheet" href="/css/animations/animations-txt.css">
+  <link rel="stylesheet" href="/css/buttons/btns-home.css">
+  <link rel="stylesheet" href="/css/buttons/btns-form.css">
+  <link rel="stylesheet" href="/css/pages/desktop/agendamento.css">
+  <link rel="stylesheet" href="/css/pages/responsivo/resp-agendamento.css">
+
+  <script src="/css/partials/header/menu-mobile.js" defer></script>
+  <title>Agendamento - And Barbershop</title>
+
+  <style>
+
+    
+  </style>
+</head>
+
+<body>
+  <%- include ("../partials/header-user.ejs") %>
+
+    <main>
+      <section class="fundo-section">
+        <div class="flex">
+          <div class="interface">
+            
+            <div class="container">
+              <div class="form-container">
+                <div class="heading"><a class="heading">Agendamento <span>AND BARBERSHOP</span></a></div>
+
+                <div class="opcao-servico">
+                  <a class="title">
+                    <%= servico.nome %>
+                  </a>
+                  <a class="desc">
+                    <%= servico.descricao %>
+                  </a>
+                </div>
+
+                
+                <form class="form" action="/salvaagendamento/<%= servico.id %>" method="post">
+
+                <div class="content">
+
+                 <div class="esquerda">
+                  <div class="opcao">
+                    <a for="barbeiroId">Selecione um Barbeiro:</a>
+                    <div class="custom-select" id="barbeiroSelect">
+                      <% barbeiros.forEach(barbeiro=> { %>
+                        <div class="barbeiro-option" data-value="<%= barbeiro.id_barber %>">
+                          <% if (barbeiro.imagem) { %>
+                            <img class="img-barbeiro ok" src="/uploads/<%= barbeiro.imagem %>" alt="Foto do barbeiro">
+                            <% } else { %>
+                              <img class="img-barbeiro" src="/css/imgs/elementos/nav-icon-user.png"
+                                alt="Foto do Usuário">
+                              <% } %>
+                                <a>
+                                  <%= barbeiro.nome %>&nbsp;<%= barbeiro.sobrenome %> 
+                                </a>
+                        </div>
+                        <% }) %>
+                    </div>
+                    <input type="hidden" id="barbeiroId" name="barbeiroId" required>
+                  </div>
+                </div><!--esquerda-->
+
+                <div class="direita">
+                  <div class="opcao" style="gap: 10px;">
+                    <a for="data">Selecione uma data:</a>
+                    <input type="date" id="data" name="data" required>
+                    <div id="erroData">A data selecionada já passou. Por favor, escolha uma data válida!</div>
+                  </div>
+
+                  <div class="opcao" style="gap: 10px;">
+                    <a for="hora">Selecione um horário:</a>
+                    <select id="hora" name="hora" required>
+                      <option value="">Selecione uma data primeiro</option>
+                    </select>
+                  </div>
+                </div><!--direita-->
+
+              </div><!--content-->
+
+                  <div class="finalizar-container">
+                    <button class="btn-confirma" id="btnAgendar" disabled>Agendar agora</button>
+                    <h6>
+                      <a>Preço: <span>R$<%= servico.preco %></span></a>
+                      <a class="duracao">Duração: <span>
+                          <%= servico.tempo %>min
+                        </span></a>
+                    </h6>
+                  </div>
+
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <%- include ("../partials/footer.ejs") %>
+    </main>
+
+    <!-- Scripts -->
+    <script src="/css/partials/header/header.js"></script>
+    <script>
+      const selectContainer = document.getElementById('barbeiroSelect');
+      const hiddenInput = document.getElementById('barbeiroId');
+      const inputData = document.getElementById('data');
+      const erroData = document.getElementById('erroData');
+      const selectHorario = document.getElementById('hora');
+      const btnAgendar = document.getElementById('btnAgendar');
+      const hoje = new Date();
+      const hojeLocal = new Date(hoje.getTime() - hoje.getTimezoneOffset() * 60000);
+      const hojeISO = hojeLocal.toISOString().split('T')[0];
+      inputData.value = hojeISO;
+
+      const validarData = () => {
+        const dataSelecionada = new Date(inputData.value);
+        const hojeSemHora = new Date(Date.UTC(hoje.getFullYear(), hoje.getMonth(), hoje.getDate() - 1));
+        const dataSemHora = new Date(Date.UTC(dataSelecionada.getFullYear(), dataSelecionada.getMonth(), dataSelecionada.getDate()));
+
+        if (dataSemHora < hojeSemHora) {
+          erroData.style.display = 'block';
+          btnAgendar.disabled = true;
+        } else {
+          erroData.style.display = 'none';
+          atualizaHorarios();
+        }
+      };
+
+      const atualizaHorarios = async () => {
+        const barbeiroId = hiddenInput.value;
+        const dataISO = inputData.value;
+
+        if (barbeiroId && dataISO) {
+          try {
+            const response = await fetch(`/horarios/${barbeiroId}/${dataISO}/<%= servico.id %>`);
+            const horarios = await response.json();
+            selectHorario.innerHTML = '';
+
+            const agora = new Date();
+            const minutosAtuais = agora.getHours() * 60 + agora.getMinutes();
+            let horariosDisponiveis = false;
+
+            horarios.forEach(horario => {
+              const [horas, minutos] = horario.split(':').map(Number);
+              const totalMinutos = horas * 60 + minutos;
+
+              if (dataISO === hojeISO && totalMinutos <= minutosAtuais) return;
+
+              const option = document.createElement('option');
+              option.value = horario;
+              option.textContent = horario;
+              selectHorario.appendChild(option);
+              horariosDisponiveis = true;
+            });
+
+            if (!horariosDisponiveis) {
+              const option = document.createElement('option');
+              option.textContent = "Indisponível";
+              selectHorario.appendChild(option);
+              btnAgendar.disabled = true;
+            } else {
+              btnAgendar.disabled = false;
+            }
+          } catch (error) {
+            console.error('Erro ao buscar horários:', error);
+          }
+        }
+      };
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const selectContainer = document.getElementById('barbeiroSelect');
+        const hiddenInput = document.getElementById('barbeiroId');
+
+        const defaultOption = selectContainer.querySelector('.barbeiro-option');
+        if (defaultOption) {
+          defaultOption.classList.add('selected'); 
+          hiddenInput.value = defaultOption.dataset.value; 
+
+          atualizaHorarios();
+        }
+
+        selectContainer.addEventListener('click', (event) => {
+          const clickedOption = event.target.closest('.barbeiro-option');
+          if (clickedOption) {
+            selectContainer.querySelectorAll('.barbeiro-option').forEach(option => {
+              option.classList.remove('selected');
+            });
+
+            clickedOption.classList.add('selected');
+            hiddenInput.value = clickedOption.dataset.value;
+
+            atualizaHorarios();
+          }
+        });
+      });
+
+
+      inputData.addEventListener('change', validarData);
+      validarData();
+    </script>
+</body>
+
+</html>

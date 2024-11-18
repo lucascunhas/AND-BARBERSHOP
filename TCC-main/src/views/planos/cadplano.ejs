@@ -1,0 +1,16 @@
+<!-- novoplano.html -->
+
+<h1>Cadastrar Novo Plano</h1>
+
+<form action="/plano/cadastro" method="post">
+  <label for="nome_plano">Nome do Plano:</label>
+  <input type="text" id="nome_plano" name="nome_plano" required><br><br>
+
+  <label for="descricao">Descrição do Plano:</label>
+  <textarea id="descricao" name="descricao" required></textarea><br><br>
+
+  <label for="preco">Preço do Plano:</label>
+  <input type="number" id="preco" name="preco" required><br><br>
+
+  <input type="submit" value="Cadastrar Plano">
+</form>
