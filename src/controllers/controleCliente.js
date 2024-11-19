@@ -9,6 +9,9 @@ const Barbeiro = require('../models/Barbeiro');
 const Feedback = require('../models/Feedback');
 const bcrypt = require('bcryptjs');
 const session = require('express-session');
+const jwt = require('jsonwebtoken');
+const db = require('../config/db');
+const nodemailer = require('nodemailer');
 const { Op } = require('sequelize');
 
 const popularClienteLogado = require('../middlewares/popularClienteLogado');
@@ -361,6 +364,120 @@ router.get(
 
 router.get("/get-login-status", (req, res) => {
   res.json({ isGoogleLogin: req.session.isGoogleLogin || false });
+});
+
+const transporter = nodemailer.createTransport({
+  host: 'smtp.gmail.com',
+  port: 587,
+  secure: false,
+  auth: {
+    user: 'luccacunhaski@gmail.com',
+    pass: 'aanu gbdl sxla srcu',
+  },
+});
+
+router.get('/forgot-password', (req, res) => {
+  res.render('forgotpassword/forgot-password', { error: null, success: null }); 
+});
+
+router.post('/forgot-password', async (req, res) => {
+  const { email, userType } = req.body;
+
+  try {
+    if (!['cliente', 'barbeiro'].includes(userType)) {
+      return res.render('forgotpassword/forgot-password', { error: 'Tipo de usuário inválido.', success: null });
+    }
+
+    const table = userType === 'cliente' ? Cliente : Barbeiro;
+
+    console.log('Tabela selecionada:', table); 
+
+    const user = await table.findOne({ where: { email } });
+
+    if (!user) {
+      return res.render('forgotpassword/forgot-password', { error: 'Usuário não encontrado.', success: null });
+    }
+
+    const token = jwt.sign(
+      { id: user.id_cliente, email: user.email, userType: userType },
+      process.env.JWT_SECRET,
+      { expiresIn: '1h' }
+    );
+
+    const resetLink = `${process.env.RESET_PASSWORD_URL}/${token}`;
+    await transporter.sendMail({
+      from: 'luccacunhaski@gmail.com',
+      to: email,
+      subject: 'Recuperação de Senha',
+      html: `<p>Olá, clique no link abaixo para redefinir sua senha:</p><a href="${resetLink}">${resetLink}</a>`,
+    });
+
+    return res.render('forgotpassword/forgot-password', { error: null, success: 'E-mail de recuperação enviado!' });
+  } catch (error) {
+    console.error(error);
+    return res.render('forgotpassword/forgot-password', { error: 'Erro ao enviar e-mail de recuperação.', success: null });
+  }
+});
+
+router.get('/reset-password/:token', (req, res) => {
+  const { token } = req.params;
+
+  try {
+    jwt.verify(token, process.env.JWT_SECRET);
+    res.render('forgotpassword/reset-password', { token, error: null, success: null });
+  } catch {
+    res.render('error', { message: 'Token inválido ou expirado.' }); // Página de erro genérica
+  }
+});
+
+router.post('/reset-password', async (req, res) => {
+  const { token, newPassword } = req.body;
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const { id, userType } = decoded;
+
+    console.log('Decoded token:', decoded);
+
+    if (!id || !userType) {
+      return res.render('forgotpassword/reset-password', { 
+        token, 
+        error: 'Token inválido ou corrompido.', 
+        success: null 
+      });
+    }
+
+    const Model = userType === 'cliente' ? Cliente : Barbeiro;
+    
+    // Define a coluna de ID correta
+    const idColumn = userType === 'cliente' ? 'id_cliente' : 'id_barber';
+
+    const user = await Model.findOne({ where: { [idColumn]: id } });
+
+    if (!user) {
+      return res.render('forgotpassword/reset-password', { 
+        token, 
+        error: 'Usuário não encontrado.', 
+        success: null 
+      });
+    }
+
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+    await user.update({ senha: hashedPassword });
+
+    return res.render('forgotpassword/reset-password', { 
+      token: null, 
+      error: null, 
+      success: 'Senha atualizada com sucesso!' 
+    });
+  } catch (error) {
+    console.error(error);
+    return res.render('forgotpassword/reset-password', { 
+      token: null, 
+      error: 'Token inválido ou expirado.', 
+      success: null 
+    });
+  }
 });
 
 module.exports = router;
