@@ -11,6 +11,7 @@ const bcrypt = require('bcryptjs');
 const session = require('express-session');
 const jwt = require('jsonwebtoken');
 const db = require('../config/db');
+const sharp = require('sharp');
 const nodemailer = require('nodemailer');
 const { Op } = require('sequelize');
 
@@ -273,18 +274,21 @@ passport.use(
         const nome = profile.name.givenName;
         const sobrenome = profile.name.familyName;
         const email = profile.emails[0].value;
-        const imagemUrl = profile.photos[0].value;
+        let imagemUrl = profile.photos[0].value;
+
+        imagemUrl = imagemUrl.replace(/=s96-c$/, '=s400-c'); 
 
         let cliente = await Cliente.findOne({ where: { email } });
 
         if (!cliente) {
+
           const imagemNome = `google_${Date.now()}.png`;
           const imagemCaminho = path.join(uploadDir, imagemNome);
 
           const response = await axios({
             method: 'get',
             url: imagemUrl,
-            responseType: 'stream'
+            responseType: 'stream',
           });
 
           const writer = fs.createWriteStream(imagemCaminho);
@@ -295,6 +299,15 @@ passport.use(
             writer.on('error', reject);
           });
 
+          const imagemTempCaminho = path.join(uploadDir, `temp_${Date.now()}.png`);
+          
+          await sharp(imagemCaminho)
+            .resize(500) 
+            .jpeg({ quality: 90 }) 
+            .toFile(imagemTempCaminho);
+
+          fs.renameSync(imagemTempCaminho, imagemCaminho); 
+
           cliente = await Cliente.create({
             nome,
             sobrenome,
@@ -304,7 +317,7 @@ passport.use(
           });
           console.log("Cliente cadastrado com Google:", cliente.nome);
         } else {
-      
+
           if (cliente.imagem) {
             const imagemExistente = path.join(uploadDir, cliente.imagem);
             if (fs.existsSync(imagemExistente)) {
@@ -319,7 +332,7 @@ passport.use(
           const response = await axios({
             method: 'get',
             url: imagemUrl,
-            responseType: 'stream'
+            responseType: 'stream',
           });
 
           const writer = fs.createWriteStream(imagemCaminho);
@@ -329,6 +342,15 @@ passport.use(
             writer.on('finish', resolve);
             writer.on('error', reject);
           });
+
+          const imagemTempCaminho = path.join(uploadDir, `temp_${Date.now()}.png`);
+          
+          await sharp(imagemCaminho)
+            .resize(500) 
+            .jpeg({ quality: 90 }) 
+            .toFile(imagemTempCaminho);
+
+          fs.renameSync(imagemTempCaminho, imagemCaminho); 
 
           cliente.imagem = imagemNome;
           await cliente.save();
@@ -376,30 +398,25 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-router.get('/forgot-password', (req, res) => {
+router.get('/recuperar-senha', (req, res) => {
   res.render('forgotpassword/forgot-password', { error: null, success: null }); 
 });
 
 router.post('/forgot-password', async (req, res) => {
-  const { email, userType } = req.body;
-
+  const { email } = req.body;  
   try {
-    if (!['cliente', 'barbeiro'].includes(userType)) {
-      return res.render('forgotpassword/forgot-password', { error: 'Tipo de usuário inválido.', success: null });
-    }
+    const cliente = await Cliente.findOne({ where: { email } });
+    const barbeiro = await Barbeiro.findOne({ where: { email } });
 
-    const table = userType === 'cliente' ? Cliente : Barbeiro;
-
-    console.log('Tabela selecionada:', table); 
-
-    const user = await table.findOne({ where: { email } });
-
-    if (!user) {
+    if (!cliente && !barbeiro) {
       return res.render('forgotpassword/forgot-password', { error: 'Usuário não encontrado.', success: null });
     }
 
+    const user = cliente || barbeiro;
+    const userType = cliente ? 'cliente' : 'barbeiro';
+
     const token = jwt.sign(
-      { id: user.id_cliente, email: user.email, userType: userType },
+      { id: user.id_cliente || user.id_barber, email: user.email, userType },
       process.env.JWT_SECRET,
       { expiresIn: '1h' }
     );
@@ -409,7 +426,7 @@ router.post('/forgot-password', async (req, res) => {
       from: 'luccacunhaski@gmail.com',
       to: email,
       subject: 'Recuperação de Senha',
-      html: `<p>Olá, clique no link abaixo para redefinir sua senha:</p><a href="${resetLink}">${resetLink}</a>`,
+      html: `<p>Olá, clique no link abaixo para redefinir sua senha:</p><a href="${resetLink}">${resetLink}</a><p>Irá expira-lo em 1 hora depois do envio do link!</p>`,
     });
 
     return res.render('forgotpassword/forgot-password', { error: null, success: 'E-mail de recuperação enviado!' });
@@ -419,7 +436,7 @@ router.post('/forgot-password', async (req, res) => {
   }
 });
 
-router.get('/reset-password/:token', (req, res) => {
+router.get('/redefinir-senha/:token', (req, res) => {
   const { token } = req.params;
 
   try {
