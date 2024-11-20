@@ -52,11 +52,10 @@
                                 <div class="input-field">
                                     <input required="" autocomplete="off" type="password" name="senha" id="senha" />
                                     <label for="senha">Senha</label>
+                                    <i class="bi bi-eye-fill" id="btn-senha" onclick="mostrarSenha()"></i>
                                 </div>
 
-                                <div>
-                                    <a href="/recuperar-senha">Esqueceu sua senha?</a>
-                                </div>
+                                    <h6 class="txt-esquecer">Esqueceu sua senha?&nbsp;<a href="/recuperar-senha">Recuperar agora</a></h6>
 
                                 <div class="btn-container">
                                     <button id="btn-com-loading" class="btn" type="submit" onclick="handClick()" style="padding: 5px 10%; text-transform: capitalize;">Realizar Login</button>
@@ -85,6 +84,7 @@
         </main>
 
         <script src="/css/partials/header/header.js"></script>
+        <script src="/css/partials/campo-senha/campo-senha.js"></script>
 
 </body>
 </html>
