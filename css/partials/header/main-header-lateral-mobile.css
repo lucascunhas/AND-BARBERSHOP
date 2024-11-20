@@ -1,0 +1,30 @@
+@media screen and (max-width: 960px) {
+
+    .menu-conta.abrir-menu{
+        width: 70%;
+    }
+
+    .content-menu nav ul li {
+        height: auto;
+        padding: 10px 6%;
+    
+        border-radius: 12px;
+    
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+    
+    .content-menu nav ul li a {
+        font-size: 12px;
+    }
+
+    .content-menu nav ul li i {
+        font-size: 16px;
+    }
+
+    header img {
+        height: auto;
+        width: 100px;
+    }
+}
