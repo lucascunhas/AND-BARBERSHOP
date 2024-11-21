@@ -20,10 +20,22 @@ revelar.reveal('.efeito-btn2-topo',{
 //FIM TOPO
 
 //SECTION PLANOS
-revelar.reveal('.efeito-card-plano',{
+revelar.reveal('.efeito-card-plano-1',{
     duration: 1500,
     distance: '90px',
     delay: 200
+})
+
+revelar.reveal('.efeito-card-plano-2',{
+    duration: 1500,
+    distance: '90px',
+    delay: 400
+})
+
+revelar.reveal('.efeito-card-plano-3',{
+    duration: 1500,
+    distance: '90px',
+    delay: 600
 })
 //FIM SECTION PLANOS
 
