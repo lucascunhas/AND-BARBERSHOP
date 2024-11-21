@@ -246,6 +246,11 @@ router.post('/salvaagendamento/:servicoId', async (req, res) => {
   const clienteId = req.session.cliente.id_cliente;
   const clienteEmail = req.session.cliente.email;
 
+  const formatarData = (data) => {
+    const [ano, mes, dia] = data.split('-');
+    return `${dia}/${mes}/${ano}`;
+  };
+
   try {
     const conn = await dbPool.getConnection();
     await conn.beginTransaction();
@@ -268,14 +273,79 @@ router.post('/salvaagendamento/:servicoId', async (req, res) => {
         [clienteId, servicoId, barbeiroId, data, hora, horaFimFormatada]
       );
 
+      const dataFormatada = formatarData(data);
+
       const mailOptions = {
         from: 'luccacunhaski@gmail.com',
         to: clienteEmail,
         subject: 'And Barbershop - Confirmação de Agendamento',
         html: `
           <html>
+          <head>
+            <style>
+              body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f9;
+                margin: 0;
+                padding: 0;
+              }
+              .container {
+                width: 100%;
+                max-width: 600px;
+                margin: 0 auto;
+                background-color: #ffffff;
+                border-radius: 8px;
+                padding: 20px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+              }
+              .header {
+                text-align: center;
+                background-color: #007bff;
+                color: white;
+                padding: 10px 0;
+                border-radius: 8px 8px 0 0;
+              }
+              .content {
+                padding: 20px;
+                font-size: 16px;
+                color: #333333;
+              }
+              .footer {
+                text-align: center;
+                font-size: 14px;
+                color: #888888;
+                margin-top: 20px;
+              }
+              .button {
+                display: inline-block;
+                background-color: #28a745;
+                color: white;
+                padding: 10px 20px;
+                text-decoration: none;
+                border-radius: 4px;
+                font-weight: bold;
+                margin-top: 20px;
+              }
+            </style>
+          </head>
           <body>
-            Seu agendamento para o serviço ${nomeServico} foi confirmado para o dia ${data} às ${hora}.
+            <div class="container">
+              <div class="header">
+                <h2>Confirmação de Agendamento</h2>
+              </div>
+              <div class="content">
+                <p>Olá,</p>
+                <p>Seu agendamento para o serviço <strong>${nomeServico}</strong> foi confirmado com sucesso.</p>
+                <p><strong>Data:</strong> ${dataFormatada}</p>
+                <p><strong>Hora:</strong> ${hora}</p>
+                <p><strong>Barbeiro:</strong> ${barbeiroId}</p>
+                <p>Se tiver algum problema, entre em contato conosco.</p>
+                <a href="http://localhost:3000/verAgendamentos" class="button">Ver meus agendamentos</a>
+              </div>
+              <div class="footer">
+                <p>Obrigado por escolher a And Barbershop!</p>
+              </div>
+            </div>
           </body>
           </html>
         `
@@ -297,7 +367,5 @@ router.post('/salvaagendamento/:servicoId', async (req, res) => {
     res.status(500).send({ mensagem: 'Erro ao conectar ao banco de dados.' });
   }
 });
-
-
 
 module.exports = router;
