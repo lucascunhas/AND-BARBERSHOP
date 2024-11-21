@@ -12,6 +12,14 @@ section.topo-do-site .flex{
     gap: 20px;
 }
 
+.efeito-txt-topo,
+.efeito-card-plano,
+.efeito-faixa-sobre,
+.efeito-content-sobre,
+.efeito-container-feed{
+    visibility: hidden;
+}
+
 .topo-do-site .txt-topo-site{
     display: flex;
     flex-direction: column;

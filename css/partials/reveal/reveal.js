@@ -1,0 +1,74 @@
+window.revelar = ScrollReveal({reset:true})
+
+//TOPO-SITE
+revelar.reveal('.efeito-frase-topo',{
+    duration: 1500,
+    distance: '90px'
+})
+
+revelar.reveal('.efeito-btn-topo',{
+        duration: 1500,
+        distance: '90px',
+        delay: 200
+})
+
+revelar.reveal('.efeito-btn2-topo',{
+    duration: 1500,
+    distance: '90px',
+    delay: 250
+})
+//FIM TOPO
+
+//SECTION PLANOS
+revelar.reveal('.efeito-card-plano',{
+    duration: 1500,
+    distance: '90px',
+    delay: 200
+})
+//FIM SECTION PLANOS
+
+//SECTION SOBRE
+revelar.reveal('.efeito-faixa-sobre',{
+    duration: 1500,
+    distance: '90px',
+    delay: 100,
+    origin: 'left'
+})
+
+revelar.reveal('.efeito-content-sobre',{
+    duration: 1500,
+    distance: '90px',
+    delay: 300,
+    origin: 'right'
+})
+//FIM SECTION SOBRE
+
+//SECTION FEEDBACK
+revelar.reveal('.efeito-container-feed',{
+    duration: 1500,
+    distance: '90px'
+})
+
+revelar.reveal('.efeito-heading',{
+    duration: 1500,
+    distance: '70px',
+    delay: 100
+})
+
+revelar.reveal('.efeito-estrelas',{
+    duration: 1500,
+    distance: '20px',
+    delay: 200
+})
+
+revelar.reveal('.efeito-textarea',{
+    duration: 1500,
+    distance: '30px',
+    delay: 300
+})
+
+revelar.reveal('.efeito-btn-feed',{
+    duration: 1000,
+    distance: '30px',
+    delay: 350
+})
