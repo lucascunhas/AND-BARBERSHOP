@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="./css/pages/responsivo/resp-home.css">
 
     <script src="./css/partials/header/menu-mobile.js" defer></script>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="/css/partials/reveal/reveal.js" defer></script>
     <title>Home - And Barbershop</title>
 </head>
 
@@ -27,17 +30,17 @@
       <div class="interface">
           <div class="flex">
               
-              <div class="txt-topo-site">
+              <div class="txt-topo-site efeito-txt-topo">
 
-                    <h1 class="edit">Seja Bem-Vindo&nbsp;<span><%= cliente.nome %></span>!</h1>
+                    <h1 class="edit efeito-frase-topo">Seja Bem-Vindo&nbsp;<span><%= cliente.nome %></span>!</h1>
 
                     <div class="btn-agendar">
                       <a href="/agendamentos">
-                          <button class="btn-agendar-agora">AGENDAR AGORA</button>
+                          <button class="btn-agendar-agora efeito-btn-topo">AGENDAR AGORA</button>
                       </a>
                       
                         <a href="#sec-feedback">
-                            <button class="btn-agendar-agora">ENVIAR FEEDBACK</button>
+                            <button class="btn-agendar-agora efeito-btn2-topo">ENVIAR FEEDBACK</button>
                         </a>
                     </div><!--btn-agendar-->
 

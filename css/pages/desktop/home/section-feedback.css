@@ -82,15 +82,16 @@ section.sec-feedback .flex{
 .star {
     transition: 0.3s;
     cursor: pointer;
-    color: lightgray; /* Cor padrão das estrelas */
+    color: lightgray;
 }
 
 .star:hover{
-    color: gold; /* Cor das estrelas ao passar o mouse */
+    color: gold;
+    filter: drop-shadow(0px 0px 4px gold);
 }
 
 .star.checked {
-    color: gold; /* Cor das estrelas selecionadas */
+    color: gold;
 }
 
 .container .form{

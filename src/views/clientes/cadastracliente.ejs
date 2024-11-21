@@ -19,6 +19,23 @@
     <script src="/css/partials/header/menu-mobile.js" defer></script>
     <script src="/css/buttons/btn-loading.js" defer></script>
     <title>Cadastro de Cliente - And Barbershop</title>
+
+    <style>
+        #criterios-senha {
+            list-style: none;
+            padding: 0;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        #criterios-senha li {
+            color: red;
+        }
+
+        #criterios-senha li.valid {
+            color: green;
+        }
+    </style>
 </head>
 
 <body>
@@ -49,7 +66,8 @@
                                     </div>
 
                                     <div class="input-field">
-                                        <input required="" autocomplete="off" type="text" name="sobrenome" id="sobrenome" />
+                                        <input required="" autocomplete="off" type="text" name="sobrenome"
+                                            id="sobrenome" />
                                         <label for="sobrenome">Sobrenome</label>
                                     </div>
 
@@ -62,15 +80,23 @@
                                         <input required="" autocomplete="off" type="password" name="senha" id="senha" />
                                         <label for="senha">Senha</label>
                                     </div>
+                                    <!-- Critérios da senha -->
+                                    <ul id="criterios-senha">
+                                        <li id="tamanho-senha" class="invalid">Mínimo de 8 caracteres</li>
+                                        <li id="caixalta-senha" class="invalid">Pelo menos uma letra maiúscula</li>
+                                        <li id="numero-senha" class="invalid">Pelo menos um número</li>
+                                        <li id="especial-senha" class="invalid">Pelo menos um caractere especial (!@#$%^&*)</li>
+                                    </ul>
 
                                     <div class="btn-container">
-                                        <button id="btn-com-loading" class="btn" type="submit" onclick="handClick()">Cadastrar</button>
+                                        <button id="btn-com-loading" class="btn" type="submit"
+                                            onclick="handClick()">Cadastrar</button>
                                     </div>
                                 </form>
                             </div><!--form-container-->
 
                         </div><!--container-->
-                    
+
                     </div><!--flex-->
                 </div><!--interface-->
             </section>
@@ -130,6 +156,49 @@
                         preview.style.display = 'none'; // Oculta o preview se nenhum arquivo válido for selecionado
                     }
                 });
+            });
+        </script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const passwordInput = document.getElementById("senha");
+                const submitButton = document.getElementById("btn-com-loading");
+
+                const criterio = {
+                    length: document.getElementById("tamanho-senha"),
+                    uppercase: document.getElementById("caixalta-senha"),
+                    number: document.getElementById("numero-senha"),
+                    special: document.getElementById("especial-senha")
+                };
+
+                const validatePassword = () => {
+                    const password = passwordInput.value;
+
+                    const validations = {
+                        length: password.length >= 8,
+                        uppercase: /[A-Z]/.test(password),
+                        number: /\d/.test(password),
+                        special: /[!@#$%^&*]/.test(password)
+                    };
+
+                    // Atualiza visualmente cada critério
+                    Object.keys(validations).forEach(key => {
+                        if (validations[key]) {
+                            criterio[key].classList.add("valid");
+                            criterio[key].classList.remove("invalid");
+                        } else {
+                            criterio[key].classList.add("invalid");
+                            criterio[key].classList.remove("valid");
+                        }
+                    });
+
+                    const tudovalido = Object.values(validations).every(Boolean);
+                    submitButton.disabled = !tudovalido;
+                };
+
+                passwordInput.addEventListener("input", validatePassword);
+
+                submitButton.disabled = true;
             });
         </script>
 
