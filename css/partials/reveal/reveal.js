@@ -40,20 +40,48 @@ revelar.reveal('.efeito-card-plano-3',{
 //FIM SECTION PLANOS
 
 //SECTION SOBRE
-revelar.reveal('.efeito-faixa-sobre',{
+revelar.reveal('.efeito-heading-sobre',{
+    duration: 1500,
+    distance: '90px',
+    origin: 'top'
+})
+
+revelar.reveal('.efeito-img-sobre',{
     duration: 1500,
     distance: '90px',
     delay: 100,
     origin: 'left'
 })
 
-revelar.reveal('.efeito-content-sobre',{
+revelar.reveal('.efeito-txt-sobre',{
     duration: 1500,
     distance: '90px',
-    delay: 300,
+    delay: 200,
     origin: 'right'
 })
 //FIM SECTION SOBRE
+
+//SECTION SERVICOS
+revelar.reveal('.efeito-heading-sobre',{
+    duration: 1500,
+    distance: '90px',
+    origin: 'top'
+})
+
+revelar.reveal('.efeito-ul-sobre',{
+    duration: 1500,
+    distance: '90px',
+    delay: 200,
+    origin: 'left'
+})
+
+revelar.reveal('.efeito-img-servicos',{
+    duration: 1500,
+    distance: '90px',
+    delay: 200,
+    origin: 'right'
+})
+//FIM SECTION SERVICOS
 
 //SECTION FEEDBACK
 revelar.reveal('.efeito-container-feed',{

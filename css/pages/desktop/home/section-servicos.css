@@ -1,0 +1,82 @@
+.sec-servicos{
+    min-height: 110vh;
+    background-image: url("/css/imgs/background/background-planos.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: 0%;
+}
+
+section.sec-servicos .flex{
+    height: 110vh;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.sec-servicos .txt-topo-site h1{
+    text-align: center;
+    color: #d0804e !important;
+    font-size: 5em;
+    font-family: Espiritu Cond;
+}
+
+.sec-servicos .container-servicos{
+    height: 50vh;
+    width: 100%;
+    padding: 20px 4%;
+    gap: 10px;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    
+    /*animation: aparecer-img-txt1 .5s ease-out alternate;*/
+}
+
+.container-servicos img.img-esquerda{
+    height: 100%;
+    width: auto;
+    border-radius: 20px;
+    
+    box-shadow: 0px 0px 50px rgba(0, 0, 0, 1.5);
+}
+
+.container-servicos ul.ul-servicos{
+    height: 100%;
+    width: 90%;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+}
+
+.container-servicos ul.ul-servicos li{
+    list-style: none;
+
+    height: 30px;
+    width: 40%;
+    margin: 8px 20px;
+    padding: 20px 3%;
+    background-color: #1d1b1a;
+    box-shadow: 0px 0px 50px rgba(0, 0, 0, .5);
+    border-radius: 15px;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.container-servicos ul.ul-servicos li a{
+    font-family: Espiritu;
+    color: #fff;
+}
+
+.container-servicos ul.ul-servicos li a span{
+    font-family: Espiritu;
+    color: #d0804e;
+}
+

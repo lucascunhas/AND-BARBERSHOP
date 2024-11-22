@@ -14,8 +14,8 @@ section.topo-do-site .flex{
 
 .efeito-txt-topo,
 .efeito-card-plano,
-.efeito-faixa-sobre,
-.efeito-content-sobre,
+.efeito-container-sobre,
+.efeito-container-servicos,
 .efeito-container-feed{
     visibility: hidden;
 }

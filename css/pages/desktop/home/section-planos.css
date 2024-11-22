@@ -1,5 +1,5 @@
 .sec-planos{
-    min-height: 120vh;
+    min-height: 100vh;
     background-image: url("/css/imgs/background/background-manager.png");
     background-position: center;
     background-repeat: no-repeat;
@@ -8,7 +8,7 @@
 }
 
 section.sec-planos .flex{
-    height: 120vh;
+    height: 100vh;
     width: 100%;
     flex-direction: column;
     align-items: center;
@@ -42,7 +42,7 @@ section.sec-planos .flex{
     z-index: 1;
 }
 
-.container ul{
+.container ul.ul-planos{
     gap: 20px;
     margin: 0;
     
@@ -53,7 +53,7 @@ section.sec-planos .flex{
     justify-content: space-evenly;
 }
 
-.container ul li{ /* plano */
+.container ul.ul-planos li{ /* plano */
     list-style: none;
     position: relative;
     width: 280px;
@@ -76,11 +76,11 @@ section.sec-planos .flex{
     border-left: solid 1px rgba(199, 199, 199, 0.5);*/
 }
 
-.container ul li:hover{
+.container ul.ul-planos li:hover{
     box-shadow: 0px 0px 50px rgba(0, 0, 0, 1.5);
 }
 
-.container ul li .content{
+.container ul.ul-planos li .content{
     width: 100%;
     padding: 10px 2%;
     text-align: center;
@@ -93,11 +93,11 @@ section.sec-planos .flex{
     align-items: center;
 }
 
-.container ul li .content:hover{
+.container ul.ul-planos li .content:hover{
     opacity: 100%;
 }
 
-.container ul li .content h2{
+.container ul.ul-planos li .content h2{
     z-index: 1;
     color: rgba(208, 128, 78, 75%);
     font-family: Espiritu;
@@ -111,7 +111,7 @@ section.sec-planos .flex{
     pointer-events: none;
 }
 
-.container ul li .content h3{
+.container ul.ul-planos li .content h3{
     z-index: 2;
     color: #f7d2a9;
     font-family: Espiritu Cond;
@@ -123,7 +123,7 @@ section.sec-planos .flex{
     padding: 20px 0px;
 }
 
-.container ul li .content p{
+.container ul.ul-planos li .content p{
     font-size: 12px;
     color: #fff;
 
@@ -134,7 +134,7 @@ section.sec-planos .flex{
     border-radius: 15px;
 }
 
-.container ul li .content p.text{
+.container ul.ul-planos li .content p.text{
     font-family: Poppins-Bold;
     text-indent: 20px;
 
@@ -146,18 +146,18 @@ section.sec-planos .flex{
     backdrop-filter: blur(2px);
 }
 
-.container ul li .content p.text span{
+.container ul.ul-planos li .content p.text span{
     text-indent: 0px;
     font-family: Poppins-Regular;
 }
 
 
-.container ul li .content p.preco span{
+.container ul.ul-planos li .content p.preco span{
     font-family: Poppins-Regular;
     color: #4ed05f;
 }
 
-.container ul li .content p.preco{
+.container ul.ul-planos li .content p.preco{
     width: 80%;
     font-size: 18px;
     font-family: Poppins-Bold;
@@ -174,13 +174,13 @@ section.sec-planos .flex{
     justify-content: center;
 }
 
-.container ul li .content p i{
+.container ul.ul-planos li .content p i{
     margin-right: 2px;
     margin-top: 2px;
     color: #4ed05f;
 }
 
-.container ul li .content .btn-container{
+.container ul.ul-planos li .content .btn-container{
     margin-top: 5%;
     position: absolute;
     bottom: 40px;
