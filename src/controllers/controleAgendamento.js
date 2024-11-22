@@ -90,9 +90,11 @@ router.get('/verAgendamentosbarb', popularClienteLogado, async (req, res) => {
   if (!barbeiroId) {
     throw new Error("Cliente não está logado ou não possui um ID válido.");
   }
-  
+
+  const dataFiltro = req.query.data || null; // Captura a data enviada pelo formulário ou usa null como padrão.
+
   try {
-    const query = `
+    let query = `
     SELECT 
       a.id AS agendamento_id,
       s.nome AS servico_nome,
@@ -111,15 +113,28 @@ router.get('/verAgendamentosbarb', popularClienteLogado, async (req, res) => {
       cliente c ON a.cliente_id = c.id_cliente 
     WHERE 
       a.barbeiro_id = ?
-    ORDER BY 
-      a.data ASC, 
-      a.hora ASC;
     `;
 
-    const result = await db.query(query, { replacements: [barbeiroId], type: db.QueryTypes.SELECT });
+    const replacements = [barbeiroId];
+
+    // Adiciona a cláusula de filtro de data se a dataFiltro estiver definida.
+    if (dataFiltro) {
+      query += ` AND a.data = ?`;
+      replacements.push(dataFiltro); // Adiciona a data ao array de substituições.
+    }
+
+    query += ` ORDER BY a.data ASC, a.hora ASC;`;
+
+    const result = await db.query(query, { replacements, type: db.QueryTypes.SELECT });
+
     Barbeiro.findAll().then((barbeiros) => {
-    res.render('agendar/verAgendamentosbarb', { agendamentos: result, barbeiro: req.session.barbeiro, barbeiros});
-  })
+      res.render('agendar/verAgendamentosbarb', { 
+        agendamentos: result, 
+        barbeiro: req.session.barbeiro, 
+        barbeiros, 
+        dataFiltro // Envia a data atual para o EJS, caso precise exibi-la no formulário.
+      });
+    });
   } catch (err) {
     console.error(err);
     res.status(500).send('Internal server error');
