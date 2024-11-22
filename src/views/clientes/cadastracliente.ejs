@@ -13,29 +13,13 @@
     <link rel="stylesheet" href="/css/animations/animations-img.css">
     <link rel="stylesheet" href="/css/buttons/btns-form.css">
     <link rel="stylesheet" href="/css/buttons/btn-google.css">
+    <link rel="stylesheet" href="/css/partials/campo-senha/criterios.css">
     <link rel="stylesheet" href="/css/pages/desktop/cadastro-usuario.css">
     <link rel="stylesheet" href="/css/pages/responsivo/resp-cadastro-usuario.css">
 
     <script src="/css/partials/header/menu-mobile.js" defer></script>
     <script src="/css/buttons/btn-loading.js" defer></script>
     <title>Cadastro de Cliente - And Barbershop</title>
-
-    <style>
-        #criterios-senha {
-            list-style: none;
-            padding: 0;
-            font-size: 0.9em;
-            margin-top: 5px;
-        }
-
-        #criterios-senha li {
-            color: red;
-        }
-
-        #criterios-senha li.valid {
-            color: green;
-        }
-    </style>
 </head>
 
 <body>
@@ -80,13 +64,17 @@
                                         <input required="" autocomplete="off" type="password" name="senha" id="senha" />
                                         <label for="senha">Senha</label>
                                     </div>
-                                    <!-- Critérios da senha -->
-                                    <ul id="criterios-senha">
-                                        <li id="tamanho-senha" class="invalid">Mínimo de 8 caracteres</li>
-                                        <li id="caixalta-senha" class="invalid">Pelo menos uma letra maiúscula</li>
-                                        <li id="numero-senha" class="invalid">Pelo menos um número</li>
-                                        <li id="especial-senha" class="invalid">Pelo menos um caractere especial (!@#$%^&*)</li>
-                                    </ul>
+
+                                    <div class="criterios-senha" id="password-criteria" style="width: 100%; margin: 0px;">
+                                        <a id="tamanho-senha" class="invalid"><i class="bi bi-x-circle"></i>Mínimo de 8
+                                            caracteres</a>
+                                        <a id="caixalta-senha" class="invalid"><i class="bi bi-x-circle"></i>Pelo menos
+                                            uma letra maiúscula</a>
+                                        <a id="numero-senha" class="invalid"><i class="bi bi-x-circle"></i>Pelo menos um
+                                            número</a>
+                                        <a id="especial-senha" class="invalid"><i class="bi bi-x-circle"></i>Pelo menos
+                                            um caractere especial (!@#$%^&*)</a>
+                                    </div>
 
                                     <div class="btn-container">
                                         <button id="btn-com-loading" class="btn" type="submit"
@@ -181,14 +169,17 @@
                         special: /[!@#$%^&*]/.test(password)
                     };
 
-                    // Atualiza visualmente cada critério
+                    
                     Object.keys(validations).forEach(key => {
+                        const icon = criterio[key].querySelector("i");
                         if (validations[key]) {
                             criterio[key].classList.add("valid");
                             criterio[key].classList.remove("invalid");
+                            icon.className = "bi bi-check-circle"; // Ícone de sucesso
                         } else {
                             criterio[key].classList.add("invalid");
                             criterio[key].classList.remove("valid");
+                            icon.className = "bi bi-x-circle"; // Ícone de erro
                         }
                     });
 
@@ -205,4 +196,5 @@
         <script src="/css/partials/header/header.js"></script>
 
 </body>
+
 </html>

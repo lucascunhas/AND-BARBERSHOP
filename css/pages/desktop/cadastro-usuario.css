@@ -15,7 +15,7 @@ section.fundo-section .flex{
 }
 
 .fundo-section .container {
-    height: 510px;
+    height: auto;
     width: 1000px;
     
     background-color: rgba(9, 28, 29, 50%);
