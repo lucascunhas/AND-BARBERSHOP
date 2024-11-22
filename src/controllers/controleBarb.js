@@ -123,17 +123,9 @@ router.get('/listarFeed', barbAut, async (req, res) => {
 
 router.get('/verbarb', barbAut, async (req, res) => {
   try {
-    const barbeiros = await db.query("SELECT * FROM barbeiro");
+    const barbeiros = await Barbeiro.findAll();
 
-    const barbeiro = await Barbeiro.findAll({
-      where: {
-        id_barber: {
-          [Op.ne]: 1
-        }
-      }
-    });
-
-    res.render("admin/verBarbeiros", { barbeiros: barbeiro, barbeirosDB: barbeiros.rows });
+    res.render("admin/verBarbeiros", { barbeiros: barbeiros });
   } catch (err) {
     console.error(err);
     res.status(500).send('Internal server error');
