@@ -1,5 +1,6 @@
 .sec-feedback{
     min-height: 80vh;
+    width: 100%;
     background-image: url("/css/imgs/background/background-feedback.png");
     background-position: center;
     background-repeat: no-repeat;
@@ -9,7 +10,6 @@
 
 section.sec-feedback .flex{
     height: 80vh;
-    width: 100%;
     flex-direction: column;
     justify-content: center;
     align-items: center;

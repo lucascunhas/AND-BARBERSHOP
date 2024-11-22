@@ -1,5 +1,5 @@
 .sec-planos{
-    min-height: 100vh;
+    min-height: 110vh;
     background-image: url("/css/imgs/background/background-manager.png");
     background-position: center;
     background-repeat: no-repeat;
@@ -8,8 +8,8 @@
 }
 
 section.sec-planos .flex{
-    height: 100vh;
-    width: 100%;
+    height: 110vh;
+    max-width: 100%;
     flex-direction: column;
     align-items: center;
     justify-content: center;

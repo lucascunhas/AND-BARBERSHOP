@@ -12,8 +12,8 @@ section.sec-servicos .flex{
     width: 100%;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 20px;
+    justify-content: flex-start;
+    gap: 40px;
 }
 
 .sec-servicos .txt-topo-site h1{
@@ -25,12 +25,12 @@ section.sec-servicos .flex{
 
 .sec-servicos .container-servicos{
     height: 50vh;
-    width: 100%;
+    width: 90%;
     padding: 20px 4%;
     gap: 10px;
 
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     
     /*animation: aparecer-img-txt1 .5s ease-out alternate;*/
@@ -51,7 +51,7 @@ section.sec-servicos .flex{
     display: flex;
     flex-wrap: wrap;
     align-content: center;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .container-servicos ul.ul-servicos li{
