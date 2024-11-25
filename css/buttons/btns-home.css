@@ -21,6 +21,10 @@
     transition: .2s;
 }
 
+.btn-agendar-agora i{
+    margin-right: 5px;
+}
+
 .btn {
     color: #fff;
     font-size: 15px;

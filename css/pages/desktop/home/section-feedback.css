@@ -1,6 +1,5 @@
 .sec-feedback{
     min-height: 80vh;
-    width: 100%;
     background-image: url("/css/imgs/background/background-feedback2.png");
     background-position: center;
     background-repeat: no-repeat;
@@ -15,8 +14,7 @@ section.sec-feedback .flex{
     align-items: center;
 }
 
-.sec-feedback .container{
-    top: 10%;
+.sec-feedback .container-envio-feed{
     height: 350px;
     width: 50%;
     padding: 10px 4%;
@@ -30,10 +28,10 @@ section.sec-feedback .flex{
     backdrop-filter: blur(2px);
     
     border-radius: 30px;
-    box-shadow: 2px 8px 15px #131111, -2px 8px 15px #131111;
+    box-shadow: 0px 10px 7px #131111;
 }
 
-.container form {
+.container-envio-feed form {
     height: 90%;
     width: 100%;
     padding: 20px 4%;
@@ -49,7 +47,7 @@ section.sec-feedback .flex{
     display: none;
 }
 
-.container .heading{
+.container-envio-feed .heading{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -57,7 +55,7 @@ section.sec-feedback .flex{
     width: 80%;
 }
 
-.container .heading h1{
+.container-envio-feed .heading h1{
     color: #fff;
     font-size: 25px;
     font-weight: 10;
@@ -98,7 +96,7 @@ section.sec-feedback .flex{
     filter: drop-shadow(0px 0px 4px gold);
 }
 
-.container .form{
+.container-envio-feed .form{
     max-width: 500px;
     margin: 0 auto;
     display: flex;
@@ -107,7 +105,7 @@ section.sec-feedback .flex{
     gap: 30px;
 }
 
-.container .form-text{
+.container-envio-feed .form-text{
     width: 500px;
     height: auto;
     max-height: 150px;
