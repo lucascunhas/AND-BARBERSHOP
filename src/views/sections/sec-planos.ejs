@@ -11,30 +11,64 @@
   <h1>Planos <span>AND BARBERSHOP</span></h1>
 </div><!--txt-topo-site-->
 
-<div class="container efeito-cont-plano">
+<div class="container-planos efeito-container-form">
   <ul class="ul-planos">
-      <li class="card efeito-card-plano">
+      <li class="card efeito-card-plano-1">
         <div class="content">
           
           <h2>01</h2>
-          <h3>sim</h3>
+          <h3>PLANO MENSAL</h3>
 
-          <p class="text">Descrição:&nbsp;<span>verdade.</span></p>
-          <p class="preco"><i class="bi bi-cash-stack"></i>&nbsp;<span>R$</span>30.00</p>
+          <p class="text" id="desc-curta">Descrição:&nbsp;<span>aqui descrição curta</span></p>
+          <p class="preco"><i class="bi bi-cash-stack"></i>&nbsp;<span>R$</span>99,90</p>
 
-          <div class="btn-container">
-            <button id="abre-modal"
-              data-id="1"
-              data-nome="sim" 
-              data-descricao="verdade." 
-              data-preco="30.00"
-              class="btn-infos">
+          <<div class="btn-container">
+            <button id="abre-modal-plano1" class="btn-infos">
               <i class="bi bi-info-circle"></i>Mais informações
             </button>
           </div>
+
         </div><!--content-->
       </li><!--card-->
-        <%- include ("../partials/modal/modal-planos.ejs") %>
+
+      <li class="card efeito-card-plano-2">
+        <div class="content">
+          
+          <h2>02</h2>
+          <h3>PLANO TRIMESTRAL</h3>
+
+          <p class="text" id="desc-curta">Descrição:&nbsp;<span>aqui descrição curta</span></p>
+          <p class="preco"><i class="bi bi-cash-stack"></i>&nbsp;<span>R$</span>159,90</p>
+
+          <div class="btn-container">
+            <button id="abre-modal-plano2" class="btn-infos">
+              <i class="bi bi-info-circle"></i>Mais informações
+            </button>
+          </div>
+
+        </div><!--content-->
+      </li><!--card-->
+
+      <li class="card efeito-card-plano-3">
+        <div class="content">
+          
+          <h2>03</h2>
+          <h3>PLANO SEMESTRAL</h3>
+
+          <p class="text" id="desc-curta">Descrição:&nbsp;<span>aqui descrição curta</span></p>
+          <p class="preco"><i class="bi bi-cash-stack"></i>&nbsp;<span>R$</span>289,90</p>
+
+          <div class="btn-container">
+            <button id="abre-modal-plano3" class="btn-infos">
+              <i class="bi bi-info-circle"></i>Mais informações
+            </button>
+          </div>
+
+        </div><!--content-->
+      </li><!--card-->
+        <%- include ("../partials/modal/modal_plano_1.ejs") %>
+        <%- include ("../partials/modal/modal_plano_2.ejs") %>
+        <%- include ("../partials/modal/modal_plano_3.ejs") %>
 </div><!--container-->
 </ul>
 

@@ -1,30 +1,35 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const modal = document.querySelector("#modal-planos");
-    const tituloModal = document.querySelector("#titulo-modal");
-    const numeroModal = document.querySelector("#numero-modal");
-    const descricaoModal = document.querySelector("#descricao-modal");
-    const precoModal = document.querySelector("#preco-modal");
-    const btnFechar = document.querySelector("#btn-fecha-modal");
+const btn_modal_1 = document.getElementById("abre-modal-plano1")
+const btn_modal_2 = document.getElementById("abre-modal-plano2")
+const btn_modal_3 = document.getElementById("abre-modal-plano3")
 
-    document.querySelectorAll(".btn-infos").forEach((button) => {
-        button.addEventListener("click", (e) => {
-            // Pegando os dados do botão clicado
-            const id = button.getAttribute("data-id");
-            const nome = button.getAttribute("data-nome");
-            const descricao = button.getAttribute("data-descricao");
-            const preco = button.getAttribute("data-preco");
+const modal_plano_1 = document.getElementById("modal_plano_1")
+const modal_plano_2 = document.getElementById("modal_plano_2")
+const modal_plano_3 = document.getElementById("modal_plano_3")
 
-            // Inserindo os dados na modal
-            numeroModal.textContent = `${id}`;
-            tituloModal.textContent = `${nome}`;
-            descricaoModal.textContent = `${descricao}`;
-            precoModal.textContent = `${preco}`;
+const btn_fechar_1 = document.getElementById("btn-fecha-1")
+const btn_fechar_2 = document.getElementById("btn-fecha-2")
+const btn_fechar_3 = document.getElementById("btn-fecha-3")
 
-            modal.showModal();
-        });
-    });
+btn_modal_1.onclick = function (){
+    modal_plano_1.showModal()
+}
 
-    btnFechar.addEventListener("click", () => {
-        modal.close();
-    });
-});
+btn_fechar_1.onclick = function () {
+    modal_plano_1.close()
+}
+
+btn_modal_2.onclick = function (){
+    modal_plano_2.showModal()
+}
+
+btn_fechar_2.onclick = function () {
+    modal_plano_2.close()
+}
+
+btn_modal_3.onclick = function (){
+    modal_plano_3.showModal()
+}
+
+btn_fechar_3.onclick = function () {
+    modal_plano_3.close()
+}

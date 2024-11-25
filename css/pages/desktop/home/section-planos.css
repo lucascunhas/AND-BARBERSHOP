@@ -7,6 +7,11 @@
     background-position-x: 0%;
 }
 
+.efeito-container-form,
+.efeito-card-plano{
+    visibility: hidden;
+}
+
 section.sec-planos .flex{
     height: 110vh;
     max-width: 100%;
@@ -27,11 +32,12 @@ section.sec-planos .flex{
     color: #fff;
 }
 
-.container{
+.container-planos{
     margin-bottom: 15%;
     position: relative;
     height: auto;
-    max-width: 1280px;
+    min-width: 280px;
+    max-width: 100%;
 
     /*animation: opacidade-moviment 0.5s ease-out alternate;*/
 
@@ -42,7 +48,7 @@ section.sec-planos .flex{
     z-index: 1;
 }
 
-.container ul.ul-planos{
+.container-planos ul.ul-planos{
     gap: 20px;
     margin: 0;
     
@@ -53,7 +59,7 @@ section.sec-planos .flex{
     justify-content: space-evenly;
 }
 
-.container ul.ul-planos li{ /* plano */
+.container-planos ul.ul-planos li{ /* plano */
     list-style: none;
     position: relative;
     width: 280px;
@@ -63,6 +69,7 @@ section.sec-planos .flex{
     box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
     border-radius: 15px;
 
+    /*estilo específico para cada card*/
     background-color: rgba(29, 27, 26, 50%);
     backdrop-filter: blur(2px);
     
@@ -76,11 +83,11 @@ section.sec-planos .flex{
     border-left: solid 1px rgba(199, 199, 199, 0.5);*/
 }
 
-.container ul.ul-planos li:hover{
+.container-planos ul.ul-planos li:hover{
     box-shadow: 0px 0px 50px rgba(0, 0, 0, 1.5);
 }
 
-.container ul.ul-planos li .content{
+.container-planos ul.ul-planos li .content{
     width: 100%;
     padding: 10px 2%;
     text-align: center;
@@ -93,11 +100,11 @@ section.sec-planos .flex{
     align-items: center;
 }
 
-.container ul.ul-planos li .content:hover{
+.container-planos ul.ul-planos li .content:hover{
     opacity: 100%;
 }
 
-.container ul.ul-planos li .content h2{
+.container-planos ul.ul-planos li .content h2{
     z-index: 1;
     color: rgba(208, 128, 78, 75%);
     font-family: Espiritu;
@@ -111,7 +118,7 @@ section.sec-planos .flex{
     pointer-events: none;
 }
 
-.container ul.ul-planos li .content h3{
+.container-planos ul.ul-planos li .content h3{
     z-index: 2;
     color: #f7d2a9;
     font-family: Espiritu Cond;
@@ -123,7 +130,7 @@ section.sec-planos .flex{
     padding: 20px 0px;
 }
 
-.container ul.ul-planos li .content p{
+.container-planos ul.ul-planos li .content p{
     font-size: 12px;
     color: #fff;
 
@@ -134,7 +141,7 @@ section.sec-planos .flex{
     border-radius: 15px;
 }
 
-.container ul.ul-planos li .content p.text{
+.container-planos ul.ul-planos li .content p.text{
     font-family: Poppins-Bold;
     text-indent: 20px;
 
@@ -146,18 +153,18 @@ section.sec-planos .flex{
     backdrop-filter: blur(2px);
 }
 
-.container ul.ul-planos li .content p.text span{
+.container-planos ul.ul-planos li .content p.text span{
     text-indent: 0px;
     font-family: Poppins-Regular;
 }
 
 
-.container ul.ul-planos li .content p.preco span{
+.container-planos ul.ul-planos li .content p.preco span{
     font-family: Poppins-Regular;
     color: #4ed05f;
 }
 
-.container ul.ul-planos li .content p.preco{
+.container-planos ul.ul-planos li .content p.preco{
     width: 80%;
     font-size: 18px;
     font-family: Poppins-Bold;
@@ -174,13 +181,13 @@ section.sec-planos .flex{
     justify-content: center;
 }
 
-.container ul.ul-planos li .content p i{
+.container-planos ul.ul-planos li .content p i{
     margin-right: 2px;
     margin-top: 2px;
     color: #4ed05f;
 }
 
-.container ul.ul-planos li .content .btn-container{
+.container-planos ul.ul-planos li .content .btn-container{
     margin-top: 5%;
     position: absolute;
     bottom: 40px;
