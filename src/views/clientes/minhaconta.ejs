@@ -19,6 +19,9 @@
 
     <script src="/css/partials/header/menu-mobile.js" defer></script>
     <script src="/css/partials/modal/modal.js" defer></script>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="/css/partials/reveal/reveal.js" defer></script>
     <title>Minha Conta - And Barbershop</title>
 </head>
 
@@ -30,61 +33,63 @@
                 <div class="interface">
                     <div class="flex">
 
-                        <div class="txt-topo-site"><!--ARRUMAR RESPONSIVO-->
+                        <div class="txt-topo-site efeito-frase-topo"><!--ARRUMAR RESPONSIVO-->
                             <h1>Olá, <span>
                                     <%= cliente.nome %>
                                 </span></h1>
                         </div><!--txt-topo-site-->
 
-                        <div class="container">
+                        <div class="container efeito-container-minha-conta">
 
-                            <div class="form-esquerda">
+                            <div class="form-esquerda efeito-txt-img">
 
                                 <form class="form" action="/update" method="POST" enctype="multipart/form-data">
                                     <div class="heading">Minha Foto</div>
 
-                                    <input class="input-image" autocomplete="off" type="file" id="imageInput"
-                                        accept="image/*" name="image" onchange="previewImage()">
                                     <% let currentImage=cliente.imagem ? '/uploads/' + cliente.imagem
                                         : '/css/imgs/elementos/nav-icon-user.png' ; %>
                                         <img id="preview" class="preview-img" src="<%= currentImage %>"
                                             alt="Foto do Cliente">
-                                        <label for="imageInput"><i class="bi bi-cloud-upload-fill"></i> Realizar
+                                        
+                                        <input class="input-image" autocomplete="off" type="file" id="imageInput"
+                                        accept="image/*" name="image" onchange="previewImage()">
+                                        <label class="upload-label" for="imageInput"><i
+                                                class="bi bi-cloud-upload-fill"></i> Realizar
                                             Upload</label>
 
                             </div><!--form-esquerda-->
 
-                            <div class="form-direita">
+                            <div class="form-direita efeito-txt-img">
                                 <hr>
 
                                 <div class="heading">Minhas Informações</div><br>
 
-                                <div class="input-field">
+                                <div class="input-field efeito-input1-form">
                                     <input autocomplete="off" type="text" name="nome" id="nome"
                                         value="<%= cliente.nome %>" />
                                     <label id="nomeLabel" for="nome">Nome</label>
                                 </div>
 
-                                <div class="input-field">
+                                <div class="input-field efeito-input1-form">
                                     <input autocomplete="off" type="text" name="sobrenome" id="sobrenome"
                                         value="<%= cliente.sobrenome %>" />
                                     <label id="sobrenomeLabel" for="sobrenome">Sobrenome</label>
                                 </div>
 
-                                <div class="input-field">
+                                <div class="input-field efeito-input2-form">
                                     <input required="" autocomplete="off" type="email" name="email" id="email"
                                         value="<%= cliente.email %>" />
                                     <label id="emailLabel" for="email">Email</label>
                                 </div>
 
-                                <div class="input-field">
+                                <div class="input-field efeito-input2-form">
                                     <input placeholder="Digite seu Número de Telefone" autocomplete="off" type="tel"
                                         maxlength="15" name="telefone" id="telefone" onkeyup="mascaraTel(event)"
                                         value="<%= cliente.telefone %>" />
                                     <label for="telefone">Telefone</label>
                                 </div>
 
-                                <div class="input-field">
+                                <div class="input-field efeito-input3-form">
                                     <input placeholder="Digite seu CPF" autocomplete="off" type="text" name="cpf"
                                         id="cpf" aria-describedby="cpf" value="<%= cliente.cpf %>"
                                         onblur="validarCPF()" />
@@ -92,7 +97,7 @@
                                     <div class="erro-msg" id="cpfErro"></div>
                                 </div>
 
-                                <div class="input-field">
+                                <div class="input-field efeito-input4-form">
                                     <input type="date" name="dataNasc" id="dataNasc"
                                         value="<%= cliente.dataNasc ? cliente.dataNasc.split('T')[0] : '' %>"
                                         onkeydown="return false;" />
@@ -101,13 +106,14 @@
                                 </div>
 
 
-                                <div class="input-field">
+                                <div class="input-field efeito-input4-form">
                                     <input placeholder="Digite a nova Senha (deixe vazio para não alterar)"
                                         autocomplete="off" name="senha" id="senha" type="password" value="" />
                                     <label for="senha">Senha</label>
                                 </div>
 
                                 <div class="btn-container">
+
                                     <button class="btn" style="width: 120px; height: 40px;"
                                         onclick="return validarFormulario()">Atualizar</button>
                                     </form><!--class="form"-->
@@ -159,16 +165,10 @@
                             document.getElementById("sobrenome").disabled = true;
                             document.getElementById("email").disabled = true;
                             document.getElementById("imageInput").disabled = true;
-
-                            // Adiciona a classe 'google-login' ao campo de imagem
-                            document.getElementById("imageInput").classList.add("google-login");
-
-                            // Opcional: alterar o estilo do preview de imagem
-                            document.getElementById("preview").classList.add("google-login-preview");
                         }
                     });
             });
-            /* 
+            /*
 .input-image {
     border: 2px solid #ccc;
     padding: 5px;
@@ -192,6 +192,17 @@
     border: 2px solid #4CAF50;
     opacity: 0.6;
 }*/
+        </script>
+
+        <script>
+            const input = document.getElementById('imageInput');
+            const label = document.querySelector('label[for="imageInput"]');
+
+            if (input.disabled) {
+                label.classList.add('disabled-label');
+            } else {
+                label.classList.remove('disabled-label');
+            }
         </script>
 
         <script>

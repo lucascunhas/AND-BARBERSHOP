@@ -1,4 +1,4 @@
-.ver-feedbacks{
+.ver-feedbacks {
     min-height: 100vh;
     background-image: url("../../imgs/background/background-manager.png");
     background-position: center;
@@ -7,14 +7,19 @@
     background-position-x: 0%;
 }
 
-section.ver-feedbacks .flex .txt-topo-site{
+section.ver-feedbacks .flex .txt-topo-site {
     height: 20vh;
     width: 1000px;
-    align-items: center; /*eixo vertical*/
+    align-items: center;
+    /*eixo vertical*/
     gap: 20px;
 }
 
-section.ver-feedbacks .txt-topo-site{
+.efeito-container-list {
+    visibility: hidden;
+}
+
+section.ver-feedbacks .txt-topo-site {
     margin-top: 15%;
     line-height: 5em;
     width: 100%;
@@ -22,17 +27,17 @@ section.ver-feedbacks .txt-topo-site{
     /*animation: opacidade-moviment 1s ease-out alternate;*/
 }
 
-.txt-topo-site h1{
+.txt-topo-site h1 {
     color: #f7d2a9;
     font-size: 5em;
     font-family: Espiritu Cond;
 }
 
-.txt-topo-site h1 span{
+.txt-topo-site h1 span {
     color: #fff;
 }
 
-.container{
+.container {
     margin-top: 5%;
     margin-bottom: 15%;
     display: flex;
@@ -40,10 +45,10 @@ section.ver-feedbacks .txt-topo-site{
     /*animation: opacidade-moviment 0.5s ease-out alternate;*/
 }
 
-.container ul{
+.container ul {
     gap: 50px;
     margin: 0;
-    
+
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -51,7 +56,8 @@ section.ver-feedbacks .txt-topo-site{
     justify-content: space-evenly;
 }
 
-.container ul li{ /* servico */
+.container ul li {
+    /* feedback */
     list-style: none;
 
     background-color: rgba(29, 27, 26, 75%);
@@ -60,7 +66,7 @@ section.ver-feedbacks .txt-topo-site{
 
     padding: 20px 1%;
     height: auto;
-    width: 300px;
+    width: 350px;
     gap: 20px;
 
     display: flex;
@@ -69,101 +75,89 @@ section.ver-feedbacks .txt-topo-site{
     align-items: center;
 }
 
-.container ul li a{
-    color: rgb(202, 202, 202);
-    /*animation: opacidade-moviment 1.5s ease-out alternate;*/
+.nome-com-estrelas i{
+    margin-right: 5px;
 }
 
-.container ul li a span{
-    color: #fff;
-}
-
-.container ul li a.title{
+.container ul li .title-feedback {
     width: 100%;
-    padding: 5px 3%;
+    padding: 5px 4%;
     border-radius: 8px;
+    background-color: #d0804e;
 
-    font-size: 15px;
-    font-family: Espiritu;
-    
-    color: #000;
-    background-color: #ec8e54;   
-}
-
-.container ul li a.desc{
-    width: 100%;
-    padding: 4px 0;
-    font-size: 12px;
-    text-align: justify;
-    text-indent: 20px;
-    font-family: Poppins-Medium;
-    filter: drop-shadow(0px 2px 1px black);
-}
-
-.container ul li a.status{
-    width: 100%;
-    font-size: 15px;
-    text-align: center;
-    font-family: Poppins-Medium;
-    filter: drop-shadow(0px 2px 1px black);
-}
-
-.container ul li a.info{
-    font-size: 16px;
-    text-align: justify;
-    font-family: Poppins-Medium;
-    filter: drop-shadow(0px 2px 1px black);
-}
-
-.container ul li .info-datas{
-    width: 100%;
-    
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
-.container ul li a.data {
+.title-feedback a.nome-feed {
+    font-size: 15px;
+    font-family: Espiritu;
+    color: #42291a;
+}
+
+.title-feedback a.nome-feed i {
+    font-size: 18px;
+    color: #42291a;
+}
+
+.title-feedback .estrelas-feed i {
+    color: lightgray;
+    -webkit-text-stroke: 0.6px #1d1b1a;
+}
+
+.title-feedback .estrelas-feed i.gold {
+    -webkit-text-stroke: 0.6px #1d1b1a;
+    color: gold;
+}
+
+.container ul li a.comentario-feed {
+    min-height: 30px;
+    height: auto;
     width: 100%;
-    font-size: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     text-align: justify;
-    color: #d0804e;
+    font-family: Poppins-SemiBold;
+    font-size: 14px;
+    color: #fff;
+}
+
+.container ul li a.data-feed {
+    padding: 5px 3%;
     font-family: Poppins-Medium;
-    filter: drop-shadow(0px 2px 1px black);
-}
-
-.container ul li a.data.dia{
-    color: #fff;
-    font-size: 16px;
-    text-align: justify;
-}
-
-.container ul li:hover{
-    transition: .2s;
-    box-shadow: 0px 10px 20px #091c1d;
+    font-weight: 10;
     color: #fff;
 }
 
-.container .li-aviso{ /* tarefas */
+.container ul li a.data-feed i {
+    margin-right: 5px;
+    color: #d0804e;
+}
+
+.container .li-aviso {
+    /* feedbacks */
     width: 100%;
     background-color: transparent;
     box-shadow: none;
     backdrop-filter: none;
 }
 
-.container .li-aviso:hover{
+.container .li-aviso:hover {
     box-shadow: none;
     transform: none;
 }
 
-.aviso{
+.aviso {
     box-shadow: none;
     border-radius: 15px;
     padding: 5px 2%;
 }
 
-.aviso h1{
+.aviso h1 {
     color: #fff;
     font-family: Espiritu;
     font-weight: 10;
@@ -172,7 +166,7 @@ section.ver-feedbacks .txt-topo-site{
     line-height: 2em;
 }
 
-.element .btns-container{
+.element .btns-container {
     display: flex;
     justify-content: center;
 }

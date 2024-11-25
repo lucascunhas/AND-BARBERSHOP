@@ -1,4 +1,4 @@
-.ver-agendamentos{
+.ver-agendamentos {
     min-height: 100vh;
     background-image: url("../../imgs/background/background-home.png");
     background-position: center;
@@ -7,41 +7,100 @@
     background-position-x: 0%;
 }
 
-section.ver-agendamentos .flex .txt-topo-site{
-    margin-top: 15%;
-    margin-bottom: 4%;
+section.ver-agendamentos .flex {
+    min-height: 120vh;
+    flex-direction: column;
+    align-items: center;
+    background-position-x: 0%;
+}
 
-    height: 100px;
+section.ver-agendamentos .txt-topo-site {
+    margin-top: 15%;
+
+    height: auto;
     width: 100%;
+
+    padding: 0 5%;
     
     display: flex;
-    justify-content: flex-start;
-    align-items: center; /*eixo vertical*/
+    justify-content: space-between;
+    align-items: center;
+    /*eixo vertical*/
     gap: 20px;
 }
 
-.txt-topo-site h1{
-    margin-left: 6%;
+.txt-topo-site h1 {
     margin-bottom: 4%;
     color: #f7d2a9;
     font-size: 5em;
     font-family: Espiritu Cond;
 }
 
-.txt-topo-site h1 span{
+.txt-topo-site h1 span {
     color: #fff;
 }
 
-.container{
+.container {
     margin-top: 2%;
     margin-bottom: 15%;
+    width: 100%;
+    backdrop-filter: blur(0px);
     /*animation: opacidade-moviment 0.5s ease-out alternate;*/
 }
 
-.container ul{
+.filter-form {
+    width: 350px;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+}
+
+.filter-form h2 {
+    font-family: Espiritu;
+    font-size: 16px;
+    font-weight: 10;
+    color: #fff;
+}
+
+.filter-form .topo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.topo input {
+    background-color: #d0804e;
+    border: solid 1px #ad6b41;
+    border-bottom: 1px solid #ad6b41;
+    border-radius: 6px;
+    padding: 5px 6%;
+
+    font-family: Poppins-Medium;
+    font-size: 12px;
+}
+
+.filter-form .btn-confirma.filtro {
+    width: 150px;
+    height: 50px;
+    padding: 5px;
+
+    color: #fff;
+/*
+    border: solid 1px #2b3070;
+    border-bottom: solid 3px #2b3070;
+    background: linear-gradient(180deg, #4e62d0, #353b8d);
+
+    transition: all 0.2s ease;
+    box-shadow: 0px 0px 10px #2b3070;*/
+}
+
+.container ul {
     gap: 40px;
     margin: 0;
-    
+
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -49,7 +108,8 @@ section.ver-agendamentos .flex .txt-topo-site{
     justify-content: space-evenly;
 }
 
-.container ul li{ /* agendamentos */
+.container ul li {
+    /* agendamentos */
     list-style: none;
 
     background-color: rgba(29, 27, 26, 75%);
@@ -65,12 +125,12 @@ section.ver-agendamentos .flex .txt-topo-site{
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
-    
+
     box-shadow: 0px 0px 20px #1d1b1a;
 }
 
 .container .coluna,
-.container .btns-container{
+.container .btns-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -78,7 +138,7 @@ section.ver-agendamentos .flex .txt-topo-site{
     text-align: center;
 }
 
-.coluna{
+.coluna {
     line-height: 1em;
     border-radius: 15px;
     padding: 5px 1%;
@@ -86,7 +146,7 @@ section.ver-agendamentos .flex .txt-topo-site{
     width: 12%;
 }
 
-.coluna a{
+.coluna a {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -94,7 +154,7 @@ section.ver-agendamentos .flex .txt-topo-site{
     width: 100%;
 }
 
-.coluna a.title-service{
+.coluna a.title-service {
     line-height: 1em;
     color: #1d1b1a;
     margin: 2px;
@@ -107,7 +167,7 @@ section.ver-agendamentos .flex .txt-topo-site{
     width: 120%;
 }
 
-.coluna a.title{
+.coluna a.title {
     line-height: 1em;
     color: #1d1b1a;
     margin: 2px;
@@ -119,7 +179,7 @@ section.ver-agendamentos .flex .txt-topo-site{
     font-size: 13px;
 }
 
-.coluna a.txt{
+.coluna a.txt {
     color: #fff;
     padding: 3px 3%;
     font-family: Poppins-Medium;
@@ -128,7 +188,7 @@ section.ver-agendamentos .flex .txt-topo-site{
     width: 120%;
 }
 
-.coluna a.action{
+.coluna a.action {
     line-height: 1em;
     color: #ffffff;
     padding: 3% 3%;
@@ -140,36 +200,37 @@ section.ver-agendamentos .flex .txt-topo-site{
     width: 100%;
 }
 
-.txt i{
+.txt i {
     margin-right: 5px;
 }
+
 .txt .cancelado {
     font-weight: bold;
-  }
-  
+}
+
 .txt .finalizado {
     color: green;
     font-weight: bold;
 }
-  
+
 .txt .agendado {
     color: #d0804e;
     font-weight: bold;
 }
 
-.btns-container{
+.btns-container {
     width: 150px;
     padding: 5px 0;
     justify-content: space-between;
 }
 
-.btns-container a{
+.btns-container a {
     transition: .2s;
     cursor: not-allowed;
 
     display: flex;
     justify-content: space-evenly;
-    
+
     height: 100%;
     width: 100%;
     padding: 5px 4%;
@@ -183,24 +244,25 @@ section.ver-agendamentos .flex .txt-topo-site{
     background: linear-gradient(135deg, #d04e4e, #8d3535);
 }
 
-.btns-container i{
+.btns-container i {
     color: #fff;
     margin-right: 1px;
     font-weight: 900;
 }
 
-.container .li-aviso{ /* agendamentos */
+.container .li-aviso {
+    /* agendamentos */
     background-color: transparent;
     box-shadow: none;
 }
 
-.aviso{
+.aviso {
     box-shadow: none;
     border-radius: 15px;
     padding: 5px 2%;
 }
 
-.aviso h1{
+.aviso h1 {
     color: #fff;
     font-family: Espiritu;
     font-weight: 10;

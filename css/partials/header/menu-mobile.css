@@ -58,6 +58,7 @@
         color: #22383a;
         font-family: Espiritu;
         text-decoration: none;
+        text-transform: capitalize;
         font-size: 14px;
         transition: .3s;
     }

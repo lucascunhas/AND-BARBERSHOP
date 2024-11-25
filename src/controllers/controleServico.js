@@ -19,6 +19,10 @@ router.use((req, res, next) => {
   next(); 
 });
 
+router.get('/planos', (req, res) =>{
+  res.render("planos/listaPlanos");
+})
+
 router.get('/verservicos',adminAut, barbAut, async (req, res) => {
   try {
     const servicos = await db.query('SELECT * FROM servicos');

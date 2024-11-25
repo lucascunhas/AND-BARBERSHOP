@@ -13,29 +13,27 @@
 
 <div class="container efeito-cont-plano">
   <ul class="ul-planos">
-    <% planos.forEach((plano)=> { %>
-      <li class="card efeito-card-plano-<%= plano.id_plano %>">
+      <li class="card efeito-card-plano">
         <div class="content">
+          
+          <h2>01</h2>
+          <h3>sim</h3>
 
-          <h2>0<%= plano.id_plano %></h2>
-          <h3><%= plano.nome_plano %></h3>
-
-          <p class="text">Descrição:&nbsp;<span><%= plano.descricao %>.</span></p>
-          <p class="preco"><i class="bi bi-cash-stack"></i>&nbsp;<span>R$</span><%= plano.preco %></p>
+          <p class="text">Descrição:&nbsp;<span>verdade.</span></p>
+          <p class="preco"><i class="bi bi-cash-stack"></i>&nbsp;<span>R$</span>30.00</p>
 
           <div class="btn-container">
             <button id="abre-modal"
-              data-id="0<%= plano.id_plano %>" 
-              data-nome="<%= plano.nome_plano %>" 
-              data-descricao="<%= plano.descricao %>" 
-              data-preco="<%= plano.preco %>"
+              data-id="1"
+              data-nome="sim" 
+              data-descricao="verdade." 
+              data-preco="30.00"
               class="btn-infos">
               <i class="bi bi-info-circle"></i>Mais informações
             </button>
           </div>
         </div><!--content-->
       </li><!--card-->
-      <% }); %>
         <%- include ("../partials/modal/modal-planos.ejs") %>
 </div><!--container-->
 </ul>

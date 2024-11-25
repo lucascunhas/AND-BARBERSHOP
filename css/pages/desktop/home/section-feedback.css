@@ -1,7 +1,7 @@
 .sec-feedback{
     min-height: 80vh;
     width: 100%;
-    background-image: url("/css/imgs/background/background-feedback.png");
+    background-image: url("/css/imgs/background/background-feedback2.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -16,8 +16,8 @@ section.sec-feedback .flex{
 }
 
 .sec-feedback .container{
-    top: 15%;
-    height: 400px;
+    top: 10%;
+    height: 350px;
     width: 50%;
     padding: 10px 4%;
 
@@ -83,15 +83,19 @@ section.sec-feedback .flex{
     transition: 0.3s;
     cursor: pointer;
     color: lightgray;
+    filter: drop-shadow(0px 0px 4px #000);
 }
 
 .star:hover{
     color: gold;
-    filter: drop-shadow(0px 0px 4px gold);
+    filter: drop-shadow(0px 0px 2px gold);
+    
+    transform: scale(1.08);
 }
 
 .star.checked {
     color: gold;
+    filter: drop-shadow(0px 0px 4px gold);
 }
 
 .container .form{

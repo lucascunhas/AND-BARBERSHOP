@@ -19,6 +19,9 @@
 
     <script src="/css/partials/header/menu-mobile.js" defer></script>
     <script src="/css/buttons/btn-loading.js" defer></script>
+    
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="/css/partials/reveal/reveal.js" defer></script>
     <title>Cadastro de Cliente - And Barbershop</title>
 </head>
 
@@ -30,42 +33,41 @@
                 <div class="interface">
                     <div class="flex">
 
-                        <div class="container">
+                        <div class="container efeito-container-form">
 
-
-                            <div class="text-img">
+                            <div class="text-img efeito-txt-img">
                                 <a class="title">CADASTRO DE</a><br>
                                 <a class="subtitle">USUÁRIO</a>
                                 <img class="img-icon" src="/css/imgs/elementos/tubo_barber2.png" alt="icon1">
                             </div>
 
                             <div class="form-container">
-                                <div class="heading">Realizar Cadastro</div><br>
+                                <div class="heading efeito-heading-form">Realizar Cadastro</div><br>
 
                                 <form class="form" action="/cliente/cadastro" method="POST">
 
-                                    <div class="input-field">
+                                    <div class="input-field efeito-input1-form">
                                         <input required="" autocomplete="off" type="text" name="nome" id="nome" />
                                         <label for="nome">Nome</label>
                                     </div>
 
-                                    <div class="input-field">
+                                    <div class="input-field efeito-input2-form">
                                         <input required="" autocomplete="off" type="text" name="sobrenome"
                                             id="sobrenome" />
                                         <label for="sobrenome">Sobrenome</label>
                                     </div>
 
-                                    <div class="input-field">
+                                    <div class="input-field efeito-input3-form">
                                         <input required="" autocomplete="off" type="email" name="email" id="email" />
                                         <label for="email">Email</label>
                                     </div>
 
-                                    <div class="input-field">
+                                    <div class="input-field efeito-input4-form">
                                         <input required="" autocomplete="off" type="password" name="senha" id="senha" />
                                         <label for="senha">Senha</label>
                                     </div>
 
-                                    <div class="criterios-senha" id="password-criteria" style="width: 100%; margin: 0px;">
+                                    <div class="criterios-senha efeito-criterio-form" id="password-criteria" style="width: 100%; margin: 0px;">
                                         <a id="tamanho-senha" class="invalid"><i class="bi bi-x-circle"></i>Mínimo de 8
                                             caracteres</a>
                                         <a id="caixalta-senha" class="invalid"><i class="bi bi-x-circle"></i>Pelo menos
@@ -76,9 +78,8 @@
                                             um caractere especial (!@#$%^&*)</a>
                                     </div>
 
-                                    <div class="btn-container">
-                                        <button id="btn-com-loading" class="btn" type="submit"
-                                            onclick="handClick()">Cadastrar</button>
+                                    <div class="btn-container efeito-btn-form">
+                                        <button id="btn-com-loading" class="btn" type="submit" onclick="handClick()">Cadastrar</button>
                                     </div>
                                 </form>
                             </div><!--form-container-->

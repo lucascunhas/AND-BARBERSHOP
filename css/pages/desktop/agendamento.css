@@ -6,6 +6,10 @@
     background-size: cover;
 }
 
+.efeito-container-form{
+    visibility: hidden;
+}
+
 section.fundo-section .flex {
     min-height: 110vh;
     align-items: center;

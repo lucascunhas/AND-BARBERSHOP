@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="./css/pages/responsivo/resp-home-adm.css">
 
     <script src="./css/partials/header/menu-mobile.js" defer></script>
+    
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="/css/partials/reveal/reveal.js" defer></script>
     <title>Painel Barbeiro - And Barbershop</title>
 </head>
 
@@ -27,16 +30,16 @@
       <div class="interface">
           <div class="flex">
               
-              <div class="txt-topo-site">
+              <div class="txt-topo-site efeito-txt-topo">
 
-                    <h1>Seja Bem-Vindo <span><%= barbeiro.nome %></span>!</h1>
+                    <h1 class="efeito-frase-topo">Seja Bem-Vindo <span><%= barbeiro.nome %></span>!</h1>
 
                     <div class="btn-agendar">
                       <a href="/verAgendamentosbarb">
-                          <button class="btn-agendar-agora" style="width: 170px;">VER AGENDAMENTOS</button>
+                          <button class="btn-agendar-agora efeito-btn-topo" style="width: 170px;">VER AGENDAMENTOS</button>
                       </a>
                       <a href="/barbeiro/editar/<%= barbeiro.id_barber %>">
-                        <button class="btn-agendar-agora">EDITAR CONTA</button>
+                        <button class="btn-agendar-agora efeito-btn2-topo">EDITAR CONTA</button>
                       </a>
                     </div><!--btn-agendar-->
 

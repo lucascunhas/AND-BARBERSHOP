@@ -7,6 +7,11 @@
     background-position-x: 0%;
 }
 
+.efeito-frase-agendamentos,
+.efeito-container-agendamentos{
+    visibility: hidden;
+}
+
 section.ver-agendamentos .flex .txt-topo-site {
     margin-top: 15%;
     margin-bottom: 4%;

@@ -68,7 +68,6 @@ header img {
 .menu-conta.abrir-menu {
     /*tamanho quando o menu abre*/
     width: 25%;
-    height: 100vh;
 }
 
 .menu-conta.abrir-menu~.overlay-menu {

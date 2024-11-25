@@ -6,7 +6,6 @@ const slugify = require('slugify');
 const Agendamentos = require('../models/Agendamentos');
 const Servico = require('../models/Servicos');
 const Cliente = require('../models/Cliente');
-const Planos = require('../models/Planos');
 const db = require('../config/db');
 const adminAut = require('../middlewares/adminAutoriz');
 const popularClienteLogado = require('../middlewares/popularClienteLogado');

@@ -18,6 +18,9 @@
 
     <script src="/css/partials/header/menu-mobile.js" defer></script>
     <script src="/css/buttons/btn-loading.js" defer></script>
+    
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="/css/partials/reveal/reveal.js" defer></script>
     <title>Login - And Barbershop</title>
 </head>
 
@@ -29,43 +32,43 @@
                 <div class="interface">
                     <div class="flex">
                     
-                        <div class="container">
+                        <div class="container efeito-container-form">
 
-                        <div class="text-img">
+                        <div class="text-img efeito-txt-img">
                             <a class="title">LOGIN DE</a><br>
                             <a class="subtitle">USUÁRIO</a>
                             <img class="img-form" src="/css/imgs/elementos/icon_user2.png" alt="icon2">
                         </div>
                         <div class="form-container">
-                            <div class="heading">
+                            <div class="heading efeito-heading-form">
                                 <h1>Realize seu Login</h1>
                                 <h6>Novo por aqui?&nbsp;<a href="/novocliente">Cadastrar</a></h6><br>
                             </div><br>
 
                             <form class="form" action="/cliente/login" method="POST">
 
-                                <div class="input-field">
+                                <div class="input-field efeito-input1-form">
                                     <input autofocus required="" autocomplete="off" type="email" name="email" id="email" />
                                     <label for="email">Email</label>
                                 </div>
 
-                                <div class="input-field">
+                                <div class="input-field efeito-input2-form">
                                     <input required="" autocomplete="off" type="password" name="senha" id="senha" />
                                     <label for="senha">Senha</label>
                                     <i class="bi bi-eye-fill" id="btn-senha" onclick="mostrarSenha()"></i>
                                 </div>
 
-                                    <h6 class="txt-esquecer">Esqueceu sua senha?&nbsp;<a href="/recuperar-senha">Recuperar agora</a></h6>
+                                    <h6 class="txt-esquecer efeito-esquecer-login">Esqueceu sua senha?&nbsp;<a href="/recuperar-senha">Recuperar agora</a></h6>
 
-                                <div class="btn-container">
+                                <div class="btn-container efeito-btn1-form">
                                     <button id="btn-com-loading" class="btn" type="submit" onclick="handClick()" style="padding: 5px 10%; text-transform: capitalize;">Realizar Login</button>
                                 </div>
 
-                                <div class="divisao">
+                                <div class="divisao efeito-divisao-form">
                                     <hr><h1>ou</h1><hr>
                                 </div>
 
-                                <div class="btn-container">
+                                <div class="btn-container efeito-btn1-form">
                                     <a href='/auth/google'>
                                         <button id="btn-google" class="btn-google" type="button" onclick="handleClick()"><img src="/css/imgs/icones/logo-google.png" alt="logo-google">Continuar com o Google</button>
                                     </a>

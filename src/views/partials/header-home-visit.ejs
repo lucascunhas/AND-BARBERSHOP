@@ -49,12 +49,12 @@
 
             <nav>
                 <ul>
-                    <li><a href="#topo-do-site"><i class="bi bi-house-door-fill"></i>HOME</a></li>
-                    <li><a href="#sec-sobre"><i class="bi bi-info-circle"></i>SOBRE</a></li>
-                    <li><a href="#sec-planos"><i class="bi bi-credit-card-2-back"></i>PLANOS E ASSINATURAS</a></li>
-                    <li><a href="/agendamentos"><i class="bi bi-calendar-plus"></i>AGENDE AQUI</a></li>
-                    <li><a href="/logincliente"><i class="bi bi-person-fill-check"></i>REALIZAR LOGIN</a></li>
-                    <li><a href="/novocliente"><i class="bi bi-person-fill-add"></i>CADASTRAR-SE</a></li>
+                    <li><a href="#topo-do-site"><i class="bi bi-house-door-fill"></i>Home</a></li>
+                    <li><a href="#sec-sobre"><i class="bi bi-info-circle"></i>Sobre</a></li>
+                    <li><a href="#sec-planos"><i class="bi bi-credit-card-2-back"></i>Planos e Assinaturas</a></li>
+                    <li><a href="/agendamentos"><i class="bi bi-calendar-plus"></i>Agende Aqui</a></li>
+                    <li><a href="/logincliente"><i class="bi bi-person-fill-check"></i>Realizar Login</a></li>
+                    <li><a href="/novocliente"><i class="bi bi-person-fill-add"></i>Cadastrar-se</a></li>
                 </ul>
             </nav>
 
@@ -66,36 +66,34 @@
 
     <script>
         const imageInput = document.getElementById('imageInput');
-const preview = document.getElementById('preview');
-const imagemCadastradaSrc = document.getElementById('imagem-cadastrada-src');
-const form = document.getElementById('form');
+        const preview = document.getElementById('preview');
+        const imagemCadastradaSrc = document.getElementById('imagem-cadastrada-src');
+        const form = document.getElementById('form');
 
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
 
-  // Enviar o formulário para o servidor
-  const formData = new FormData(form);
-  fetch('/upload', {
-    method: 'POST',
-    body: formData,
-  })
-  .then((response) => response.json())
-  .then((data) => {
-    // Atualizar a imagem na div após o envio do formulário
-    imagemCadastradaSrc.src = data.imagem;
-  })
-  .catch((error) => console.error(error));
-});
+            const formData = new FormData(form);
+            fetch('/upload', {
+                method: 'POST',
+                body: formData,
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    imagemCadastradaSrc.src = data.imagem;
+                })
+                .catch((error) => console.error(error));
+        });
 
-imageInput.addEventListener('change', (e) => {
-  const file = imageInput.files[0];
-  const reader = new FileReader();
+        imageInput.addEventListener('change', (e) => {
+            const file = imageInput.files[0];
+            const reader = new FileReader();
 
-  reader.onload = (e) => {
-    preview.src = e.target.result;
-  };
+            reader.onload = (e) => {
+                preview.src = e.target.result;
+            };
 
-  reader.readAsDataURL(file);
-});
+            reader.readAsDataURL(file);
+        });
     </script>
 </header>

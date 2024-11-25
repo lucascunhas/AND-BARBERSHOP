@@ -13,11 +13,11 @@
   <link rel="stylesheet" href="/css/buttons/btns-home.css">
   <link rel="stylesheet" href="/css/buttons/btn-list.css">
   <link rel="stylesheet" href="/css/buttons/btns-form.css">
-  <link rel="stylesheet" href="/css/pages/desktop/agendamento.css">
   <link rel="stylesheet" href="/css/pages/desktop/ver-agendamentos.css">
   <link rel="stylesheet" href="/css/pages/responsivo/resp-ver-agendamentos.css">
 
   <script src="/css/partials/header/menu-mobile.js" defer></script>
+  <script src="/css/buttons/btn-loading.js" defer></script>
   <title>Agenda de Barbeiro - And Barbershop</title>
 </head>
 
@@ -26,101 +26,112 @@
     <main>
 
       <section class="ver-agendamentos" style="background-image: url(/css/imgs/background/background-manager.png);">
-        <div class="flex">
-          <div class="interface">
+
+        <div class="interface">
+          <div class="flex">
 
             <div class="txt-topo-site">
               <h1>Olá, <span><%= barbeiro.nome %></span>!</h1>
+
+                <!-- Filtro por data -->
+              <form class="filter-form" method="get" action="/verAgendamentosbarb">
+                <div class="topo">
+                  <h2>Filtrar por data:</h2>
+                  <input type="date" id="dataFiltro" name="data" value="<%= dataFiltro || '' %>">
+                </div>
+                  <button class="btn-confirma filtro" type="submit" id="btnAgendar">Filtrar</button>
+              </form>
             </div><!--txt-topo-site-->
 
             <div class="container">
 
-              <!-- Filtro por data -->
-              <form method="get" action="/verAgendamentosbarb" class="filter-form">
-                <div class="opcao" style="gap: 10px;">
-                <label for="dataFiltro">Filtrar por data:</label>
-                <input type="date" id="dataFiltro" name="data" value="<%= dataFiltro || '' %>">
-                <button type="submit" id="btnAgendar" class="btn-confirma">Filtrar</button>
-                </div>
-              </form> <br>
-
               <ul>
-                <% if (agendamentos.length === 0) { %>
+                <% if (agendamentos.length===0) { %>
                   <li class="li-aviso">
                     <div class="aviso">
                       <h1>Não há agendamentos para a data selecionada.</h1>
                     </div>
                   </li>
-                <% } else { %>
-                  <% agendamentos.forEach(agendamento => { 
-                    const statusTexto = agendamento.agendamento_status === 3 
-                      ? 'Cancelado' 
-                      : agendamento.agendamento_status === 2 
-                        ? 'Finalizado' 
-                        : 'Agendado';
-                  %>
-                    <li>
-                      <div class="coluna">
-                        <a class="title">Cliente</a>
-                        <a class="txt"><%= agendamento.cliente_nome %></a>
-                      </div>
-
-                      <div class="coluna">
-                        <a class="title">Serviço</a>
-                        <a class="txt"><%= agendamento.servico_nome %></a>
-                      </div>
-
-                      <div class="coluna">
-                        <a class="title">Preço</a>
-                        <a class="txt">R$&nbsp;<%= agendamento.servico_preco %></a>
-                      </div>
-
-                      <div class="coluna">
-                        <a class="title">Data</a>
-                        <a class="txt"><%= agendamento.agenda_data %></a>
-                      </div>
-
-                      <div class="coluna">
-                        <a class="title">Hora de Início</a>
-                        <a class="txt"><%= agendamento.agenda_hora %></a>
-                      </div>
-
-                      <div class="coluna">
-                        <a class="title">Hora de Término</a>
-                        <a class="txt"><%= agendamento.agenda_hora_fim %></a>
-                      </div>
-
-                      <div class="coluna">
-                        <a class="title">Status</a>
-                        <a class="txt <%= statusTexto.toLowerCase() %>">
-                          <% if (statusTexto === 'Cancelado') { %>
-                            <i class="bi bi-x-circle-fill" style="color: red;"></i>
-                          <% } else if (statusTexto === 'Finalizado') { %>
-                            <i class="bi bi-check-circle" style="color: #4ed05f;"></i>
-                          <% } else { %>
-                            <i class="bi bi-journal-check" style="color: #d0804e"></i>
-                          <% } %>
-                          <%= statusTexto %>
-                        </a>
-                      </div>
-
-                      <div class="coluna">
-                        <a class="action">Ações</a>
-                        <div class="btns-container">
-                          <% if (statusTexto !== 'Cancelado' && statusTexto !== 'Finalizado') { %>
-                            <form action="/agendamentos/<%= agendamento.agendamento_id %>/finalizar" method="POST">
-                              <button type="submit" class="btn-finalizar">
-                                <i class="bi bi-check-circle"></i>Finalizar
-                              </button>
-                            </form>
-                          <% } else { %>
-                            <a><i class="bi bi-ban"></i>Sem ações disponíveis</a>
-                          <% } %>
+                  <% } else { %>
+                    <% agendamentos.forEach(agendamento=> {
+                      const statusTexto = agendamento.agendamento_status === 3
+                      ? 'Cancelado'
+                      : agendamento.agendamento_status === 2
+                      ? 'Finalizado'
+                      : 'Agendado';
+                      %>
+                      <li>
+                        <div class="coluna">
+                          <a class="title">Cliente</a>
+                          <a class="txt">
+                            <%= agendamento.cliente_nome %>
+                          </a>
                         </div>
-                      </div>
-                    </li>
-                  <% }) %>
-                <% } %>
+
+                        <div class="coluna">
+                          <a class="title">Serviço</a>
+                          <a class="txt">
+                            <%= agendamento.servico_nome %>
+                          </a>
+                        </div>
+
+                        <div class="coluna">
+                          <a class="title">Preço</a>
+                          <a class="txt">R$&nbsp;<%= agendamento.servico_preco %></a>
+                        </div>
+
+                        <div class="coluna">
+                          <a class="title">Data</a>
+                          <a class="txt">
+                            <%= agendamento.agenda_data %>
+                          </a>
+                        </div>
+
+                        <div class="coluna">
+                          <a class="title">Hora de Início</a>
+                          <a class="txt">
+                            <%= agendamento.agenda_hora %>
+                          </a>
+                        </div>
+
+                        <div class="coluna">
+                          <a class="title">Hora de Término</a>
+                          <a class="txt">
+                            <%= agendamento.agenda_hora_fim %>
+                          </a>
+                        </div>
+
+                        <div class="coluna">
+                          <a class="title">Status</a>
+                          <a class="txt <%= statusTexto.toLowerCase() %>">
+                            <% if (statusTexto==='Cancelado' ) { %>
+                              <i class="bi bi-x-circle-fill" style="color: red;"></i>
+                              <% } else if (statusTexto==='Finalizado' ) { %>
+                                <i class="bi bi-check-circle" style="color: #4ed05f;"></i>
+                                <% } else { %>
+                                  <i class="bi bi-journal-check" style="color: #d0804e"></i>
+                                  <% } %>
+                                    <%= statusTexto %>
+                          </a>
+                        </div>
+
+                        <div class="coluna">
+                          <a class="action">Ações</a>
+                          <div class="btns-container">
+                            <% if (statusTexto !=='Cancelado' && statusTexto !=='Finalizado' ) { %>
+                              <form action="/agendamentos/<%= agendamento.agendamento_id %>/finalizar" method="POST">
+                                <button type="submit" class="btn-finalizar">
+                                  <i class="bi bi-check-circle"></i>Finalizar
+                                </button>
+                              </form>
+                              <% } else { %>
+                                <a><i class="bi bi-ban"></i>Sem ações disponíveis</a>
+                                <% } %>
+                          </div>
+                        </div>
+                      </li>
+                      <% }) %>
+                        <% } %>
               </ul>
 
             </div><!--container-->

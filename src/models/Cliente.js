@@ -1,6 +1,5 @@
 const Sequelize = require("sequelize");
 const conexao = require("../config/db");
-const Plano = require('../models/Planos');
 const Cliente = conexao.define('cliente', {
     id_cliente: {
       type: Sequelize.INTEGER,
@@ -40,14 +39,6 @@ const Cliente = conexao.define('cliente', {
       type: Sequelize.STRING,
       allowNull: true
     },
-    plano_id: {
-      type: Sequelize.INTEGER,
-      defaultvalue: 0,
-      references: {
-        model: Plano, // Nome da tabela referenciada
-        key: 'id_plano'
-      }
-    }
 });
 Cliente.sync();
 module.exports = Cliente
