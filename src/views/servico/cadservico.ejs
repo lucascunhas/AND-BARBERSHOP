@@ -16,6 +16,10 @@
   <link rel="stylesheet" href="/css/pages/responsivo/resp-cadastro-servico.css">
 
   <script src="/css/partials/header/menu-mobile.js" defer></script>
+  <script src="/css/buttons/btn-loading.js" defer></script>
+  
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="/css/partials/reveal/reveal.js" defer></script>
   <title>Cadastro de Serviço - And Barbershop</title>
 </head>
 
@@ -27,39 +31,39 @@
         <div class="interface">
           <div class="flex">
             
-            <div class="container">
-              <div class="text-img">
+            <div class="container efeito-container-form">
+              <div class="text-img efeito-txt-img">
                 <a class="title">CADASTRO DE</a><br>
                 <a class="subtitle">SERVIÇO</a> <!--ARRUMAR RESPONSIVO-->
                 <img class="img-icon" src="../css/imgs/elementos/bigode-servico.png" alt="icon1">
             </div>
 
             <div class="form-container">
-                <div class="heading">Informações sobre o Serviço</div><br><br>
+                <div class="heading efeito-heading-form">Informações sobre o Serviço</div><br><br>
                 <form class="form" action="/cadservico" method="POST">
 
-                  <div class="input-field">
+                  <div class="input-field efeito-input1-form">
                     <input autofocus autocomplete="off" type="text" name="nome" id="nome" required="" />
                     <label for="nome">Nome do Serviço</label>
                   </div>
 
-                  <div class="input-field">
+                  <div class="input-field efeito-input2-form">
                     <input autocomplete="off" type="text" name="descricao" id="descricao" required="" />
                     <label for="descricao">Descrição</label>
                   </div>
 
-                  <div class="input-field">
+                  <div class="input-field efeito-input3-form">
                     <input autocomplete="off" type="text" name="preco" id="preco" required="" />
                     <label for="preco">Preço</label>
                   </div>
 
-                  <div class="input-field">
+                  <div class="input-field efeito-input4-form">
                     <input autocomplete="off" type="number" name="tempo" id="tempo" required="" />
                     <label for="tempo">Duração (minutos)</label>
                   </div>
 
-                    <div class="btn-container">
-                        <button class="btn">Cadastrar</button>
+                    <div class="btn-container efeito-btn-form">
+                       <button id="btn-com-loading" class="btn" type="submit" onclick="handClick()">Cadastrar</button>
                     </div>
                 </form>
             </div><!--form-container-->

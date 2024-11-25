@@ -17,6 +17,9 @@
   <link rel="stylesheet" href="/css/pages/responsivo/resp-ver-tarefa.css">
 
   <script src="/css/partials/header/menu-mobile.js" defer></script>
+  
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="/css/partials/reveal/reveal.js" defer></script>
   <title>Lista de Tarefas - And Barbershop</title>
 </head>
 
@@ -25,12 +28,12 @@
     <main>
 
       <section class="ver-tarefa">
-        <div class="flex">
         <div class="interface">
+        <div class="flex">
 
-            <div class="txt-topo-site"><!--ARRUMAR RESPONSIVO-->
+            <div class="txt-topo-site efeito-frase-topo"><!--ARRUMAR RESPONSIVO-->
               <h1>Tarefas <span>And Barbershop</span></h1>
-              <div class="btn-agendar">
+              <div class="btn-agendar efeito-btn-topo">
                 <a href="/tarefas/criar">
                   <button class="btn-agendar-agora" style="font-size: 12px; width: 170px;">
                     Cadastrar Nova Tarefa</button>
@@ -38,11 +41,11 @@
               </div><!--btn-agendar-->
             </div><!--txt-topo-site-->
 
-            <div class="container">
+            <div class="container efeito-container-agendamentos">
               <ul>
                 <% if (tarefas && tarefas.length> 0) { %>
                   <% tarefas.forEach(tarefa=> { %>
-                    <li>
+                    <li class="efeito-card-servico-<%= tarefa.id %>">
                       <a class="title">Título: <%= tarefa.nome %></a>
                       <a class="desc"><strong>Descrição:</strong> <%= tarefa.descricao %></a>
 
@@ -64,7 +67,7 @@
                       
                       <a class="status"><strong>Status:</strong> <%= tarefa.status %></a>
       
-                      <div class="bt-container">
+                      <div class="btn-container">
                                 <% if (tarefa.status !=='Concluída' ) { %>
                                   <form action="/tarefas/status/<%= tarefa.id %>/concluir" method="POST"
                                     style="display:inline;">
@@ -87,7 +90,7 @@
                     </li>
                     <% }) %>
                       <% } else { %>
-                        <li class="li-aviso">
+                        <li class="li-aviso efeito-card-plano">
                           <div class="aviso">
                             <h1>Nenhuma Tarefa foi cadastrada.</h1>
                           </div>

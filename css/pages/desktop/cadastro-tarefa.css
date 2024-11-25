@@ -13,6 +13,10 @@ section.fundo-section .flex {
     background-position-x: 0%;
 }
 
+.efeito-container-form {
+    visibility: hidden;
+}
+
 .fundo-section .container {
     padding: 10px 5%;
     height: 500px;
@@ -80,7 +84,7 @@ section.fundo-section .flex {
     filter: drop-shadow(0px 1px 5px #000);
 }
 
-.text-img i{
+.text-img i {
     z-index: -1;
     font-size: 140px;
 
@@ -279,7 +283,7 @@ section.fundo-section .flex {
     color: #fff;
 }
 
-.escolha-barbeiros{
+.escolha-barbeiros {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -321,7 +325,7 @@ section.fundo-section .flex {
 
 .input-select select::-webkit-scrollbar {
     width: 12px;
-    
+
     background-color: #1d1b1a;
     border-radius: 10px;
     border: 5%;
@@ -333,7 +337,7 @@ section.fundo-section .flex {
     border-radius: 10px;
 }
 
-.input-select select:focus{
+.input-select select:focus {
     outline: none;
 }
 

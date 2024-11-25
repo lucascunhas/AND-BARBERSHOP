@@ -18,6 +18,9 @@
 
   <script src="/css/partials/header/menu-mobile.js" defer></script>
   <script src="/css/buttons/btn-loading.js" defer></script>
+
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="/css/partials/reveal/reveal.js" defer></script>
   <title>Agenda de Barbeiro - And Barbershop</title>
 </head>
 
@@ -30,7 +33,7 @@
         <div class="interface">
           <div class="flex">
 
-            <div class="txt-topo-site">
+            <div class="txt-topo-site efeito-frase-agendamentos">
               <h1>Olá, <span><%= barbeiro.nome %></span>!</h1>
 
                 <!-- Filtro por data -->
@@ -47,7 +50,7 @@
 
               <ul>
                 <% if (agendamentos.length===0) { %>
-                  <li class="li-aviso">
+                  <li class="li-aviso efeito-card-plano-1">
                     <div class="aviso">
                       <h1>Não há agendamentos para a data selecionada.</h1>
                     </div>
@@ -60,7 +63,7 @@
                       ? 'Finalizado'
                       : 'Agendado';
                       %>
-                      <li>
+                      <li class="efeito-card-agendamento-<%= agendamento.agendamento_id %>">
                         <div class="coluna">
                           <a class="title">Cliente</a>
                           <a class="txt">

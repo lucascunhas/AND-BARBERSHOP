@@ -4,20 +4,24 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-  }
-  
-  section.fundo-section .flex{
+}
+
+.efeito-container-form{
+    visibility: hidden;
+}
+
+section.fundo-section .flex {
     min-height: 110vh;
     align-items: center;
     justify-content: center;
     background-position-x: 0%;
-  }
-  
+}
+
 .fundo-section .container {
     padding: 10px 5%;
     height: 650px;
     width: 1000px;
-    
+
     border-radius: 25px;
     background-color: rgba(9, 28, 29, 50%);
     backdrop-filter: blur(2px);
@@ -27,49 +31,57 @@
     align-items: center;
 }
 
-.form-esquerda{
+.form-esquerda {
     width: 400px;
     flex-direction: column;
 }
 
-.form-direita{
+.form-direita {
     width: 400px;
     height: 100%;
-    
+
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
 }
 
-table{
+.btn:disabled {
+    background: #5151515d;
+    box-shadow: 0px 0px 1px #6e6e6e;
+    color: #adadad;
+    border: solid 1px #5a5a5a;
+    cursor: not-allowed;
+}
+
+table {
     text-align: center;
     width: 100%;
     padding: 10px 2%;
 }
 
-table th{
+table th {
     color: #fff;
     font-family: Poppins-Regular;
     font-size: 12px;
     background-color: #b4936d;
-    
+
     border-radius: 10px;
     padding: 5px 10px;
 }
 
-table tr td input{
+table tr td input {
     margin: 10px 0;
 }
 
-table td.dias{
+table td.dias {
     color: #f7d2a9;
     font-family: Espiritu;
     letter-spacing: 3px;
     padding: 8px 0;
 }
 
-table td input{
+table td input {
     color: #0d2829;
     width: 90%;
     text-align: center;
@@ -77,6 +89,60 @@ table td input{
     background-color: #f7d2a9;
     border-radius: 5px;
     border: none;
+}
+
+/* Oculta o checkbox padrão */
+input[type="checkbox"] {
+    display: none;
+}
+
+/* Cria um estilo personalizado */
+label {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* Caixa personalizada */
+label span {
+    width: 30px;
+    height: 15px;
+    border: 2px solid #b4936d;
+    border-radius: 4px;
+    padding: 2px 4%;
+    /* Torna os cantos arredondados */
+    display: inline-block;
+    position: relative;
+    background-color: #d4b9a8;
+    transition: all 0.3s ease;
+}
+
+/* Marca de seleção (escondida inicialmente) */
+label span::after {
+    content: '✔';
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 20px;
+    border-radius: 6px;
+    background-color: #4ed05f;
+    border: 2px solid #3b9747;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: all 0.3s ease;
+}
+
+/* Texto ao lado do checkbox */
+
+/* Exibe a marca quando o checkbox é marcado */
+input[type="checkbox"]:checked+span::after {
+    transform: translate(-50%, -50%) scale(0.7);
 }
 
 .text-img {
@@ -142,10 +208,10 @@ table td input{
     position: relative;
 }
 
-.btn-container{
+.btn-container {
     display: flex;
     justify-content: center;
-    
+
     width: 200%;
     gap: 20px;
     padding: 20px 0;
@@ -203,16 +269,17 @@ table td input{
     margin-bottom: 2%;
 }
 
-.input-select select{
+.input-select select {
     padding: 5px 8%;
     min-width: 170px;
-    
+    outline: none;
+
     background-color: #f7d2a9;
-    
+
     border: 0;
     border: solid 2px #d4ad80;
     border-radius: 10px;
-    
+
     font-family: Poppins-Medium;
 }
 

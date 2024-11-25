@@ -7,11 +7,6 @@
     background-position-x: 0%;
 }
 
-.efeito-container-form,
-.efeito-card-plano{
-    visibility: hidden;
-}
-
 section.sec-planos .flex{
     height: 110vh;
     max-width: 100%;
@@ -36,8 +31,7 @@ section.sec-planos .flex{
     margin-bottom: 15%;
     position: relative;
     height: auto;
-    min-width: 280px;
-    max-width: 100%;
+    max-width: 1280px;
 
     /*animation: opacidade-moviment 0.5s ease-out alternate;*/
 
@@ -69,7 +63,6 @@ section.sec-planos .flex{
     box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
     border-radius: 15px;
 
-    /*estilo específico para cada card*/
     background-color: rgba(29, 27, 26, 50%);
     backdrop-filter: blur(2px);
     

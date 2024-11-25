@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="/css/pages/responsivo/resp-agendamento.css">
 
   <script src="/css/partials/header/menu-mobile.js" defer></script>
-  
+
   <script src="https://unpkg.com/scrollreveal"></script>
   <script src="/css/partials/reveal/reveal.js" defer></script>
   <title>Agendamento - And Barbershop</title>
@@ -26,12 +26,13 @@
 
     <main>
       <section class="fundo-section">
-        <div class="flex">
-          <div class="interface">
-            
+        <div class="interface">
+            <div class="flex">
+
             <div class="container efeito-container-form">
               <div class="form-container">
-                <div class="heading efeito-heading-form"><a class="heading">Agendamento <span>AND BARBERSHOP</span></a></div>
+                <div class="heading efeito-heading-form"><a class="heading">Agendamento <span>AND BARBERSHOP</span></a>
+                </div>
 
                 <div class="opcao-servico efeito-opcao-servico">
                   <a class="title">
@@ -42,49 +43,50 @@
                   </a>
                 </div>
 
-                
+
                 <form class="form" action="/salvaagendamento/<%= servico.id %>" method="post">
 
-                <div class="content">
+                  <div class="content">
 
-                 <div class="esquerda">
-                  <div class="opcao efeito-opcao-barbeiro">
-                    <a for="barbeiroId">Selecione um Barbeiro:</a>
-                    <div class="custom-select" id="barbeiroSelect">
-                      <% barbeiros.forEach(barbeiro=> { %>
-                        <div class="barbeiro-option" data-value="<%= barbeiro.id_barber %>">
-                          <% if (barbeiro.imagem) { %>
-                            <img class="img-barbeiro ok" src="/uploads/<%= barbeiro.imagem %>" alt="Foto do barbeiro">
-                            <% } else { %>
-                              <img class="img-barbeiro" src="/css/imgs/elementos/nav-icon-user.png"
-                                alt="Foto do Usuário">
-                              <% } %>
-                                <a>
-                                  <%= barbeiro.nome %>&nbsp;<%= barbeiro.sobrenome %> 
-                                </a>
+                    <div class="esquerda">
+                      <div class="opcao efeito-opcao-barbeiro">
+                        <a for="barbeiroId">Selecione um Barbeiro:</a>
+                        <div class="custom-select" id="barbeiroSelect">
+                          <% barbeiros.forEach(barbeiro=> { %>
+                            <div class="barbeiro-option" data-value="<%= barbeiro.id_barber %>">
+                              <% if (barbeiro.imagem) { %>
+                                <img class="img-barbeiro ok" src="/uploads/<%= barbeiro.imagem %>"
+                                  alt="Foto do barbeiro">
+                                <% } else { %>
+                                  <img class="img-barbeiro" src="/css/imgs/elementos/nav-icon-user.png"
+                                    alt="Foto do Usuário">
+                                  <% } %>
+                                    <a>
+                                      <%= barbeiro.nome %>&nbsp;<%= barbeiro.sobrenome %>
+                                    </a>
+                            </div>
+                            <% }) %>
                         </div>
-                        <% }) %>
-                    </div>
-                    <input type="hidden" id="barbeiroId" name="barbeiroId" required>
-                  </div>
-                </div><!--esquerda-->
+                        <input type="hidden" id="barbeiroId" name="barbeiroId" required>
+                      </div>
+                    </div><!--esquerda-->
 
-                <div class="direita">
-                  <div class="opcao efeito-opcao-data" style="gap: 10px;">
-                    <a for="data">Selecione uma data:</a>
-                    <input type="date" id="data" name="data" required>
-                    <div id="erroData">A data selecionada já passou. Por favor, escolha uma data válida!</div>
-                  </div>
+                    <div class="direita">
+                      <div class="opcao efeito-opcao-data" style="gap: 10px;">
+                        <a for="data">Selecione uma data:</a>
+                        <input type="date" id="data" name="data" required>
+                        <div id="erroData">A data selecionada já passou. Por favor, escolha uma data válida!</div>
+                      </div>
 
-                  <div class="opcao efeito-opcao-horario" style="gap: 10px;">
-                    <a for="hora">Selecione um horário:</a>
-                    <select id="hora" name="hora" required>
-                      <option value="">Selecione uma data primeiro</option>
-                    </select>
-                  </div>
-                </div><!--direita-->
+                      <div class="opcao efeito-opcao-horario" style="gap: 10px;">
+                        <a for="hora">Selecione um horário:</a>
+                        <select id="hora" name="hora" required>
+                          <option value="">Selecione uma data primeiro</option>
+                        </select>
+                      </div>
+                    </div><!--direita-->
 
-              </div><!--content-->
+                  </div><!--content-->
 
                   <div class="finalizar-container efeito-btn-form">
                     <button class="btn-confirma" id="btnAgendar" disabled>Agendar agora</button>
@@ -181,8 +183,8 @@
 
         const defaultOption = selectContainer.querySelector('.barbeiro-option');
         if (defaultOption) {
-          defaultOption.classList.add('selected'); 
-          hiddenInput.value = defaultOption.dataset.value; 
+          defaultOption.classList.add('selected');
+          hiddenInput.value = defaultOption.dataset.value;
 
           atualizaHorarios();
         }

@@ -294,4 +294,40 @@ revelar.reveal('.efeito-container-agendamentos',{
     distance: '60px',
     delay: 200
 })
+
+//DELAY DIFERENTE PARA CADA CARD DE AGENDAMENTO
+const agendamentos = document.querySelectorAll('[class^="efeito-card-agendamento-"]');
+
+agendamentos.forEach((element, index) => {
+  const id = element.className.match(/efeito-card-agendamento-(\d+)/)[1]; 
+  const delay = id * 25;
+
+  revelar.reveal(element, {
+    duration: 1000,
+    distance: '50px',
+    delay: delay
+    
+  });
+});
 //FIM MEUS AGENDAMENTOS
+
+//VER SERVICOS
+revelar.reveal('.efeito-container-servicos',{
+    duration: 1500,
+    distance: '60px'
+})
+//DELAY DIFERENTE PARA CADA CARD DE SERVIÇO
+const servicos = document.querySelectorAll('[class^="efeito-card-servico-"]');
+
+servicos.forEach((element, index) => {
+  const id = element.className.match(/efeito-card-servico-(\d+)/)[1]; 
+  const delay = id * 100;
+
+  revelar.reveal(element, {
+    duration: 1000,
+    distance: '50px',
+    delay: delay
+    
+  });
+});
+//FIM VER SERVICOS

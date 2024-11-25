@@ -19,6 +19,9 @@
 
   <script src="/css/partials/header/menu-mobile.js" defer></script>
   <script src="/css/partials/modal/modal.js" defer></script>
+  
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="/css/partials/reveal/reveal.js" defer></script>
   <title>Minha Conta - And Barbershop</title>
 </head>
 
@@ -30,10 +33,10 @@
       <div class="interface">
         <div class="flex">
 
-          <div class="container">
+          <div class="container efeito-container-form">
 
             <div class="form-esquerda">
-              <div class="text-img">
+              <div class="text-img efeito-txt-img">
                 <a class="title" style="left: 26%; z-index: 22;">EDIÇÃO DE</a><br>
                 <a class="subtitle">BARBEIRO</a>
                 <img class="img-icon" src="/css/imgs/elementos/hand_tesoura2.png" alt="icon1">
@@ -43,7 +46,7 @@
 
                 <div class="campos-cadastro">
                   
-                  <div style="margin-top: 10%;" class="input-select">
+                  <div style="margin-top: 10%;" class="input-select efeito-input1-form">
                     <label for="tipo">Selecione o Tipo de Barbeiro:</label>
                       <select name="tipo" id="tipo" required style="min-width: 250px;">
                         <option value="1" <%= barbeiro.tipo===1 ? 'selected' : '' %>>Admin</option>
@@ -76,9 +79,9 @@
 
             <div class="form-direita">
 
-              <div class="heading" style="margin-bottom: -3%;">Horários de Disponibilidade</div>
+              <div class="heading efeito-heading-form" style="margin-bottom: -3%;">Horários de Disponibilidade</div>
               
-              <table>
+              <table class="efeito-btn1-form">
                 <thead>
                   <tr>
                     <th>Dia da Semana</th>
@@ -91,7 +94,7 @@
                   <% for (let i=0; i <=6; i++) { const horario=horarios.find(h=> h.dia_semana === i);%>
                     <tr>
                       <td class="dias"><%= ['Segunda', 'Terça' , 'Quarta' , 'Quinta' , 'Sexta' , 'Sábado' , 'Domingo' ][i] %></td>
-                      <td><input type="checkbox" name="dia_trabalho_<%= i %>" class="check-dia" <%= horario ? 'checked' : '' %>></td>
+                      <td><label><input class="check-dia" type="checkbox" name="dia_trabalho_<%= i %>" <%= horario ? 'checked' : '' %>><span></span></label></td>
                       <td><input type="time" name="hora_inicio_<%= i %>" value="<%= horario ? horario.hora_inicio : '' %>"></td>
                       <td><input type="time" name="hora_fim_<%= i %>" value="<%= horario ? horario.hora_fim : '' %>">
                       </td>
@@ -100,7 +103,7 @@
                 </tbody>
               </table>
 
-              <div class="btn-container" style="margin-top: -5%;">
+              <div class="btn-container efeito-btn-form" style="margin-top: -5%;">
                 <button class="btn" type="submit">Salvar Alterações</button>
               </div>
             </div><!--form-direita-->

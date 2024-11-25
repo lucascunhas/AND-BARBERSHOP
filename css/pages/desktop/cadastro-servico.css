@@ -12,6 +12,11 @@
     justify-content: center;
     background-position-x: 0%;
   }
+
+  
+.efeito-container-form {
+    visibility: hidden;
+}
   
 .fundo-section .container {
     height: 480px;

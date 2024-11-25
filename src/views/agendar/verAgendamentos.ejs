@@ -29,21 +29,20 @@
     <main>
 
       <section class="ver-agendamentos">
-        <div class="flex">
-          <div class="interface">
+        <div class="interface">
+          <div class="flex">
 
             <div class="txt-topo-site efeito-frase-agendamentos"><!--ARRUMAR RESPONSIVO-->
               <h1>Meus Agendamentos</h1>
             </div><!--txt-topo-site-->
 
             <div class="container efeito-container-agendamentos">
-
               <ul>
                 <% if(agendamentos.length==0){ %>
-                  <li class="li-aviso">
+                  <li class="li-aviso efeito-card-plano1">
                     <div class="aviso">
                       <h1>Você ainda não possui agendamento(s).</h1>
-                      <div class="btn-agendar" style="display: flex; flex-direction: column; align-items: center;">
+                      <div class="btn-agendar efeito-btn-form" style="display: flex; flex-direction: column; align-items: center;">
                         <a href="/agendamentos">
                           <button class="btn-agendar-agora">AGENDAR AGORA</button>
                         </a>
@@ -58,7 +57,7 @@
                       Date(agendamento.agenda_data + ' ' + agendamento.agenda_hora); const dataFim=new
                       Date(agendamento.agenda_data + ' ' + agendamento.agenda_hora_fim); %>
 
-                      <li>
+                      <li class="efeito-card-agendamento-<%= agendamento.agendamento_id %>">
                         <div class="coluna info">
                           <a class="title-agendamento">Serviço: &nbsp;<span>
                               <%= agendamento.servico_nome %>

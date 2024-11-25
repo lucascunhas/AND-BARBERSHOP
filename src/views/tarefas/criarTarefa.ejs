@@ -16,6 +16,10 @@
   <link rel="stylesheet" href="/css/pages/responsivo/resp-cadastro-tarefa.css">
 
   <script src="/css/partials/header/menu-mobile.js" defer></script>
+  <script src="/css/buttons/btn-loading.js" defer></script>
+  
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="/css/partials/reveal/reveal.js" defer></script>
   <title>Cadastro de Tarefa - And Barbershop</title>
 </head>
 
@@ -27,9 +31,9 @@
         <div class="interface">
           <div class="flex">
 
-            <div class="container">
+            <div class="container efeito-container-form">
 
-              <div class="form-esquerda">
+              <div class="form-esquerda efeito-txt-img">
                 <div class="text-img">
                   <a class="title">CADASTRO DE</a>
                   <a class="subtitle">TAREFA</a> <!--ARRUMAR RESPONSIVO-->
@@ -39,12 +43,12 @@
                 <form class="form" action="/tarefas/criar" method="POST">
                   <div class="campos-cadastro">
 
-                    <div class="input-field">
+                    <div class="input-field efeito-input1-form">
                       <input autofocus autocomplete="off" type="text" name="nome" required="" />
                       <label>Titulo da Tarefa</label>
                     </div>
 
-                    <div class="input-field">
+                    <div class="input-field efeito-input2-form">
                       <textarea name="descricao" required="" placeholder="Descrição da Tarefa"></textarea>
                     </div>
 
@@ -54,17 +58,17 @@
 
               <div class="form-direita">
 
-                <div class="input-date">
+                <div class="input-date efeito-input3-form">
                   <input type="datetime-local" name="dataInicio" required="" />
                   <label for="dataInicio">Data de Início</label>
                 </div>
 
-                <div class="input-date">
+                <div class="input-date efeito-input4-form">
                   <input type="datetime-local" name="dataTermino" required="" />
                   <label for="dataTermino">Data de Término</label>
                 </div>
 
-                <div class="escolha-barbeiros" style="width: 100%;">
+                <div class="escolha-barbeiros efeito-btn-form" style="width: 100%;">
 
                   <div class="input-select" id="barbeirosEspecificos">
                     <label>Barbeiros Responsáveis:</label>
@@ -85,8 +89,8 @@
 
                 </div><!--escolha-barbeiros-->
 
-                <div class="btn-container">
-                  <button class="btn" type="submit">Cadastrar Tarefa</button>
+                <div class="btn-container efeito-btn2-form">
+                  <button id="btn-com-loading" class="btn" type="submit" onclick="handClick()">Cadastrar Tarefa</button>
                 </div>
 
               </div><!--form-direita-->

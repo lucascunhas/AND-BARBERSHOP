@@ -19,6 +19,9 @@
 
   <script src="/css/partials/header/menu-mobile.js" defer></script>
   <script src="/css/partials/modal/modal.js" defer></script>
+  
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="/css/partials/reveal/reveal.js" defer></script>
   <title>Minha Conta - And Barbershop</title>
 </head>
 
@@ -30,50 +33,51 @@
         <div class="interface">
           <div class="flex">
 
-            <div class="txt-topo-site"><!--ARRUMAR RESPONSIVO-->
+            <div class="txt-topo-site efeito-frase-topo"><!--ARRUMAR RESPONSIVO-->
               <h1>Olá, <span>
                   <%= barbeiro.nome %>
                 </span></h1>
             </div><!--txt-topo-site-->
 
-            <div class="container">
+            <div class="container efeito-container-minha-conta">
 
-              <div class="form-esquerda">
+              <div class="form-esquerda efeito-txt-img">
 
                 <form class="form" action="/barbeiro/editar/<%= barbeiro.id_barber %>" method="POST"
                   enctype="multipart/form-data">
                   <div class="heading">Minha Foto</div>
 
-                  <input class="input-image" autocomplete="off" type="file" id="imageInput" accept="image/*"
-                    name="image" onchange="previewImage()">
                   <% let currentImage=barbeiro.imagem ? '/uploads/' + barbeiro.imagem
                     : '/css/imgs/elementos/nav-icon-user.png' ; %>
                     <img id="preview" class="preview-img" src="<%= currentImage %>" alt="Foto do Barbeiro">
-                    <label for="imageInput"><i class="bi bi-cloud-upload-fill"></i> Realizar Upload</label>
+
+                    <input class="input-image" autocomplete="off" type="file" id="imageInput" accept="image/*"
+                    name="image" onchange="previewImage()">
+                    <label class="upload-label" for="imageInput"><i class="bi bi-cloud-upload-fill"></i> Realizar Upload</label>
 
               </div><!--form-esquerda-->
 
-              <div class="form-direita">
+              <div class="form-direita efeito-txt-img">
                 <hr>
 
                 <div class="heading">Minhas Informações</div><br>
 
-                <div class="input-field">
+                <div class="input-field efeito-input1-form">
                   <input required="" type="text" name="nome" id="nome" value="<%= barbeiro.nome %>" />
                   <label for="nome">Nome</label>
                 </div>
             
-                <div class="input-field">
+                <div class="input-field efeito-input2-form">
                   <input required="" type="text" name="sobrenome" id="sobrenome" value="<%= barbeiro.sobrenome %>" />
                   <label for="sobrenome">Sobrenome</label>
                 </div>
             
-                <div class="input-field">
+                <div class="input-field efeito-input3-form">
                   <input required="" type="email" name="email" id="email" value="<%= barbeiro.email %>" />
                   <label for="email">Email</label>
                 </div>
             
-                <div class="input-field">
+                <div class="input-field efeito-input4-form">
                   <input placeholder="Digite a nova Senha (deixe vazio para não alterar)"
                           type="password" name="senha" id="senha" />
                   <label for="senha">Senha</label>
@@ -113,7 +117,7 @@
                   </table>
                 </div>
 
-                <div class="btn-container">
+                <div class="btn-container efeito-btn1-form">
                   <button class="btn" style="width: 120px; height: 40px;"
                     onclick="return validarFormulario()">Atualizar</button>
                   </form><!--class="form"-->

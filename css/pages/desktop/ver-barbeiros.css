@@ -7,11 +7,16 @@
     background-position-x: 0%;
 }
 
-section.ver-barbeiros .flex .txt-topo-site{
-    height: 20vh;
-    width: 1000px;
-    align-items: center; /*eixo vertical*/
-    gap: 20px;
+.efeito-frase-topo,
+.efeito-container-list {
+    visibility: hidden;
+}
+
+section.ver-barbeiros .flex {
+    min-height: 120vh;
+    flex-direction: column;
+    align-items: center;
+    background-position-x: 0%;
 }
 
 section.ver-barbeiros .txt-topo-site{
@@ -25,7 +30,7 @@ section.ver-barbeiros .txt-topo-site{
 .txt-topo-site h1{
     color: #f7d2a9;
     font-size: 5em;
-    font-weight: 500;
+    font-weight: 600;
     font-family: Espiritu Cond;
 }
 

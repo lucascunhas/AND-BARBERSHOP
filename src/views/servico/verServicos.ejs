@@ -18,6 +18,9 @@
 
   <script src="/css/partials/header/menu-mobile.js" defer></script>
   <script src="/css/partials/modal/modal.js" defer></script>
+  
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="/css/partials/reveal/reveal.js" defer></script>
   <title>Visualizar Serviços - And Barbershop</title>
 </head>
 
@@ -26,25 +29,25 @@
     <main>
 
       <section class="ver-servicos">
-          <div class="flex">
         <div class="interface">
+          <div class="flex">
           
 
-              <div class="txt-topo-site"><!--ARRUMAR RESPONSIVO-->
+              <div class="txt-topo-site efeito-frase-topo"><!--ARRUMAR RESPONSIVO-->
                 <h1>Serviços <span>And Barbershop</span></h1>
 
                 <div class="btn-agendar">
                   <a href="/cadservicos">
-                    <button class="btn-agendar-agora" style="font-size: 10px; width: 130px;">Cadastar Novo
+                    <button class="btn-agendar-agora efeito-btn-topo" style="font-size: 10px; width: 130px;">Cadastar Novo
                       Serviço</button>
                   </a>
                 </div><!--btn-agendar-->
               </div><!--txt-topo-site-->
 
-              <div class="container-page">
+              <div class="container efeito-container-servicos">
                 <ul>
                   <% servicos.forEach((servico)=> { %>
-                    <li>
+                    <li class="efeito-card-servico-<%= servico.id %>">
                       <a class="title" value="<%= servico.id %>"><%= servico.nome %></a><br>
                       <a class="desc"><%= servico.descricao %></a><br>
                       <a class="info">Preço:&nbsp;R$<%= servico.preco %></a>

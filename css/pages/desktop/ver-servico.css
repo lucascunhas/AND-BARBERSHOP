@@ -7,11 +7,16 @@
     background-position-x: 0%;
 }
 
-section.ver-servicos .flex .txt-topo-site{
-    height: 20vh;
-    width: 1000px;
-    align-items: center; /*eixo vertical*/
-    gap: 20px;
+.efeito-frase-topo,
+.efeito-container-list {
+    visibility: hidden;
+}
+
+section.ver-servicos .flex {
+    min-height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    background-position-x: 0%;
 }
 
 section.ver-servicos .txt-topo-site{
@@ -32,13 +37,13 @@ section.ver-servicos .txt-topo-site{
     color: #fff;
 }
 
-.container-page{
-    margin-top: 5%;
+.container{
+    margin-top: 2%;
     margin-bottom: 15%;
     /*animation: opacidade-moviment 0.5s ease-out alternate;*/
 }
 
-.container-page ul{
+.container ul{
     gap: 50px;
     margin: 0;
     
@@ -49,7 +54,7 @@ section.ver-servicos .txt-topo-site{
     justify-content: space-evenly;
 }
 
-.container-page ul li{ /* servico */
+.container ul li{ /* servico */
     list-style: none;
 
     background-color: rgba(29, 27, 26, 75%);
@@ -66,16 +71,16 @@ section.ver-servicos .txt-topo-site{
     align-items: center;
 }
 
-.container-page ul li a{
+.container ul li a{
     color: rgb(202, 202, 202);
     /*animation: opacidade-moviment 1.5s ease-out alternate;*/
 }
 
-.container-page ul li a span{
+.container ul li a span{
     color: #fff;
 }
 
-.container-page ul li a.title{
+.container ul li a.title{
     width: 100%;
     padding: 5px 3%;
     border-radius: 8px;
@@ -87,7 +92,7 @@ section.ver-servicos .txt-topo-site{
     background-color: #ec8e54;   
 }
 
-.container-page ul li a.desc{
+.container ul li a.desc{
     font-size: 12px;
     text-align: justify;
     text-indent: 20px;
@@ -95,14 +100,14 @@ section.ver-servicos .txt-topo-site{
     filter: drop-shadow(0px 2px 1px black);
 }
 
-.container-page ul li a.info{
+.container ul li a.info{
     font-size: 16px;
     text-align: justify;
     font-family: Poppins-Medium;
     filter: drop-shadow(0px 2px 1px black);
 }
 
-.container-page ul li:hover{
+.container ul li:hover{
     transition: .2s;
     transform: scale(1.02);
     box-shadow: 0px 10px 20px #091c1d;

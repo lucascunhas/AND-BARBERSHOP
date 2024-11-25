@@ -7,6 +7,11 @@
     background-position-x: 0%;
 }
 
+.efeito-frase-agendamentos,
+.efeito-container-agendamentos{
+    visibility: hidden;
+}
+
 section.ver-agendamentos .flex {
     min-height: 120vh;
     flex-direction: column;
@@ -32,12 +37,14 @@ section.ver-agendamentos .txt-topo-site {
 .txt-topo-site h1 {
     margin-bottom: 4%;
     color: #f7d2a9;
+    font-weight: 500;
     font-size: 5em;
     font-family: Espiritu Cond;
 }
 
 .txt-topo-site h1 span {
     color: #fff;
+    font-weight: bold;
 }
 
 .container {
@@ -80,6 +87,8 @@ section.ver-agendamentos .txt-topo-site {
 
     font-family: Poppins-Medium;
     font-size: 12px;
+    
+    outline: none;
 }
 
 .filter-form .btn-confirma.filtro {

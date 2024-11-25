@@ -16,6 +16,10 @@
   <link rel="stylesheet" href="/css/pages/responsivo/resp-cadastro-barbeiro.css">
 
   <script src="/css/partials/header/menu-mobile.js" defer></script>
+  <script src="/css/buttons/btn-loading.js" defer></script>
+
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="/css/partials/reveal/reveal.js" defer></script>
   <title>Cadastro de Barbeiro - And Barbershop</title>
 </head>
 
@@ -27,10 +31,10 @@
           <div class="interface">
             <div class="flex">
 
-              <div class="container"><br>
+              <div class="container efeito-container-form">
 
               <div class="form-esquerda">
-                <div class="text-img">
+                <div class="text-img efeito-txt-img">
                   <a class="title">CADASTRO DE</a><br>
                   <a class="subtitle">BARBEIRO</a>
                   <img class="img-icon" src="../css/imgs/elementos/hand_tesoura2.png" alt="icon1">
@@ -40,22 +44,22 @@
 
                   <div class="campos-cadastro">
 
-                    <div class="input-field">
+                    <div class="input-field efeito-input1-form">
                       <input required="" autocomplete="off" type="text" name="nome" id="nome" />
                       <label for="nome">Nome</label>
                     </div>
 
-                    <div class="input-field">
+                    <div class="input-field efeito-input2-form">
                       <input required="" autocomplete="off" type="text" name="sobrenome" id="sobrenome" />
                       <label for="sobrenome">Sobrenome</label>
                     </div>
 
-                    <div class="input-field">
+                    <div class="input-field efeito-input3-form">
                       <input required="" autocomplete="off" type="email" name="email" id="email" />
                       <label for="email">Email</label>
                     </div>
 
-                    <div class="input-field">
+                    <div class="input-field efeito-input4-form">
                       <input required="" autocomplete="off" type="password" name="senha" id="senha" />
                       <label for="senha">Senha</label>
                     </div>
@@ -64,9 +68,9 @@
               </div><!--form-esquerda-->
 
               <div class="form-direita">
-                <div class="heading">Horários de Disponibilidade</div>
+                <div class="heading efeito-heading-form">Horários de Disponibilidade</div>
 
-                <table>
+                <table class="efeito-btn1-form">
                   <thead>
                     <tr>
                       <th>Dia da Semana</th>
@@ -79,7 +83,7 @@
                     <% for (let i = 0; i <= 6; i++) { %>
                       <tr>
                         <td class="dias"><%= ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'][i] %></td>
-                        <td><input type="checkbox" name="dia_trabalho_<%= i %>" class="check-dia" onchange="toggleHorario(this, <%= i %>)"></td>
+                        <td><label><input class="check-dia" type="checkbox" name="dia_trabalho_<%= i %>" onchange="toggleHorario(this, <%= i %>)"><span></span></label></td>
                         <td><input type="time" name="hora_inicio_<%= i %>" id="hora_inicio_<%= i %>" disabled required oninput="verificarHorarios()"></td>
                         <td><input type="time" name="hora_fim_<%= i %>" id="hora_fim_<%= i %>" disabled required oninput="verificarHorarios()"></td>
                       </tr>
@@ -87,7 +91,7 @@
                   </tbody>
                 </table>
 
-                <div class="input-select">
+                <div class="input-select efeito-btn2-form">
                   <label for="tipo">Tipo do Barbeiro</label>
                   <select name="tipo" id="tipo" required>
                     <option value="" disabled selected>Selecione o tipo</option>
@@ -96,8 +100,8 @@
                   </select>
                 </div>
 
-                <div class="btn-container">
-                  <button class="btn" id="btnCadastrar" disabled>Cadastrar Barbeiro</button>
+                <div class="btn-container efeito-btn-form">
+                  <buttton id="btn-com-loading" class="btn" type="submit" onclick="handClick()">Cadastrar Barbeiro</button>
                 </div>
               </div><!--form-direita-->
 
@@ -131,7 +135,7 @@
       }
 
       function verificarHorarios() {
-        const botaoCadastrar = document.getElementById('btnCadastrar');
+        const botaoCadastrar = document.getElementById('btn-com-loading');
         const horariosInativos = document.querySelectorAll('input[type="time"]:disabled');
 
         let algumVazio = Array.from(horariosInativos).some((campo) => {
