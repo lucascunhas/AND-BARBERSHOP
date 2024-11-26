@@ -51,9 +51,9 @@ section.sec-feed .flex{
     width: 350px;
     height: 50px;
     background-color: #091c1d;
+    box-shadow: 0 0 20px #000;
     border-radius: 15px;
     padding: 20px 10%;
-    box-shadow: none;
 }
 
 .container-feed .card1{
