@@ -133,10 +133,10 @@ header img {
 }
 
 .content-menu nav ul li a {
+    font-size: 16px;
     color: #22383a;
     font-family: Espiritu;
     text-decoration: none;
-    font-size: 16px;
     transition: .3s;
 }
 

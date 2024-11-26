@@ -149,6 +149,50 @@ revelar.reveal('.efeito-btn-feed',{
 })
 //FIM SECTION ENVIAR FEEDBACK
 
+//EFEITO FOOTER
+revelar.reveal('.efeito-coluna1-footer',{
+    duration: 800,
+    distance: '50px',
+    delay: 50
+})
+
+revelar.reveal('.efeito-coluna2-footer',{
+    duration: 800,
+    distance: '50px',
+    delay: 150
+})
+
+revelar.reveal('.efeito-coluna3-footer',{
+    duration: 800,
+    distance: '50px',
+    delay: 200
+})
+
+revelar.reveal('.efeito-coluna4-footer',{
+    duration: 800,
+    distance: '50px',
+    delay: 250
+})
+
+revelar.reveal('.efeito-copy-footer',{
+    duration: 800,
+    distance: '50px',
+    delay: 200
+})
+
+revelar.reveal('.efeito-heading-redes-footer',{
+    duration: 800,
+    distance: '50px',
+    delay: 200
+})
+
+revelar.reveal('.efeito-icones-footer',{
+    duration: 800,
+    distance: '50px',
+    delay: 200
+})
+//FIM EFEITO FOOTER
+
 //PADRÃO PARA FORMS
 revelar.reveal('.efeito-container-form',{
     duration: 1500,

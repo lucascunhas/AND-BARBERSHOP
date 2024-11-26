@@ -1,8 +1,12 @@
 @media screen and (max-width: 960px) {
 
+  .fundo-section{
+    min-height: 120vh;
+  }
+
   /* CLASSES GERAIS */
   section.fundo-section .flex{
-    min-height: 110vh;
+    height: 120vh;
     flex-direction: column;
     background-position-x: 53%;
     gap: 20px;
@@ -18,7 +22,7 @@
     gap: 40px;
 
     position: relative;
-    top: 80px;
+    top: 40px;
   }
 
   /* IMG + TXT */
