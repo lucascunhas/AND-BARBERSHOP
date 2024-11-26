@@ -16,7 +16,15 @@
         <nav class="menu-desktop">
             <ul>
                 <li><a href="#topo-do-site">HOME</a></li>
-                <li><a href="#sec-sobre">SOBRE</a></li>
+                <li class="dropdown">
+                    <a id="sobre-link" href="#sec-sobre">SOBRE<i class="bi bi-caret-down-fill"></i></a>
+
+                    <div class="dropdown-menu">
+                        <a href="#sec-sobre">ATENDIMENTO</a>
+                        <a href="#sec-servicos">SERVIÇOS</a>
+                        <a href="#sec-feed">FEEDBACKS</a>
+                    </div>
+                </li>
                 <li><a href="#sec-planos">PLANOS E ASSINATURAS</a></li>
                 <li><a href="/agendamentos">AGENDE AQUI</a></li>
             </ul>
@@ -69,4 +77,37 @@
         <div class="overlay-menu" id="overlay-menu"></div>
 
     </div><!--interface-->
+
+    <script>
+        const link = document.getElementById("sobre-link");
+        const dropdownMenu = document.querySelector(".dropdown-menu");
+        const icon = link.querySelector("i");
+    
+        // Função para verificar o estado do dropdown e ajustar o ícone
+        function toggleIcon() {
+            if (dropdownMenu.classList.contains("show")) {
+                icon.classList.remove("bi-caret-down-fill");
+                icon.classList.add("bi-caret-up-fill");
+            } else {
+                icon.classList.remove("bi-caret-up-fill");
+                icon.classList.add("bi-caret-down-fill");
+            }
+        }
+    
+        // Supondo que você controle o menu com um clique ou outro evento
+        link.addEventListener("click", (e) => {
+            e.preventDefault();
+            dropdownMenu.classList.toggle("show");
+            toggleIcon();
+        });
+    
+        // Opcional: Fechar o menu ao clicar fora dele
+        document.addEventListener("click", (e) => {
+            if (!dropdownMenu.contains(e.target) && !link.contains(e.target)) {
+                dropdownMenu.classList.remove("show");
+                toggleIcon();
+            }
+        });
+    </script>
+
 </header>
