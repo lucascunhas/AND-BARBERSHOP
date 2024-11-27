@@ -125,7 +125,20 @@ router.get('/verbarb', barbAut, async (req, res) => {
   try {
     const barbeiros = await Barbeiro.findAll();
 
-    res.render("admin/verBarbeiros", { barbeiros: barbeiros });
+    const horarios = await BarbeiroHorario.findAll();
+
+    const barbeirosComHorarios = barbeiros.map(barbeiro => {
+      const diasTrabalhados = horarios
+        .filter(horario => horario.barbeiro_id === barbeiro.id_barber)
+        .map(horario => horario.dia_semana); 
+
+      return {
+        ...barbeiro.dataValues,
+        diasTrabalhados: diasTrabalhados.length, // Total de dias únicos trabalhados
+      };
+    });
+
+    res.render("admin/verBarbeiros", { barbeiros: barbeirosComHorarios });
   } catch (err) {
     console.error(err);
     res.status(500).send('Internal server error');
