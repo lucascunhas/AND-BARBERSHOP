@@ -97,6 +97,13 @@
         font-size: 12px;
     }
 
+    .input-field .erro-msg{
+        max-width: 150px;
+        font-size: 10px;
+        position: relative;
+        left: 5%;
+    }
+
     .input-field input {
         font-size: 12px;
         padding: 4px 15px;

@@ -243,18 +243,10 @@ section.fundo-section .txt-topo-site{
 
 .input-field input:disabled{
         /*animation: aparecer-form 1s ease-out alternate;*/
-    
-        font-size: 14px;
-        letter-spacing: 1px;
-        font-family: Poppins-Regular;
         color: #272727;
 
         background-color: #8a7660;
         border: solid 3px #a3835f;
-        border-radius: 13px;
-    
-        padding: 10px 15px;
-        width: 500px;
 }
 
 .input-field input:disabled:hover{
