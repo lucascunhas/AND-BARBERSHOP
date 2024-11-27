@@ -344,7 +344,7 @@ const agendamentos = document.querySelectorAll('[class^="efeito-card-agendamento
 
 agendamentos.forEach((element, index) => {
   const id = element.className.match(/efeito-card-agendamento-(\d+)/)[1]; 
-  const delay = id * 25;
+  const delay = id * 5;
 
   revelar.reveal(element, {
     duration: 1000,
@@ -365,7 +365,7 @@ const servicos = document.querySelectorAll('[class^="efeito-card-servico-"]');
 
 servicos.forEach((element, index) => {
   const id = element.className.match(/efeito-card-servico-(\d+)/)[1]; 
-  const delay = id * 100;
+  const delay = id * 35;
 
   revelar.reveal(element, {
     duration: 1000,

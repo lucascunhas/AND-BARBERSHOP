@@ -112,7 +112,7 @@
                               <% } else if (statusTexto==='Finalizado' ) { %>
                                 <i class="bi bi-check-circle" style="color: #4ed05f;"></i>
                                 <% } else { %>
-                                  <i class="bi bi-journal-check" style="color: #d0804e"></i>
+                                  <i class="bi bi-calendar2-check-fill" style="color: #d0804e"></i>
                                   <% } %>
                                     <%= statusTexto %>
                           </a>
@@ -145,16 +145,6 @@
 
       <%- include ("../partials/footer-manager.ejs") %>
     </main>
-
-    <script>
-      function confirmaDeleta(event, form) {
-        event.preventDefault();
-        let decisao = confirm("Deseja finalizar esse agendamento?");
-        if (decisao) {
-          form.submit();
-        }
-      }
-    </script>
 
     <script src="/css/partials/header/header.js"></script>
 </body>
