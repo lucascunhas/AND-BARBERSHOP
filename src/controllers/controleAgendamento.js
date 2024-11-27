@@ -260,14 +260,17 @@ router.post('/salvaagendamento/:servicoId', async (req, res) => {
   const clienteId = req.session.cliente.id_cliente;
   const clienteEmail = req.session.cliente.email;
 
+
   const formatarData = (data) => {
     const [ano, mes, dia] = data.split('-');
     return `${dia}/${mes}/${ano}`;
   };
 
+
   try {
     const conn = await dbPool.getConnection();
     await conn.beginTransaction();
+
 
     try {
       const [servico] = await conn.execute(
@@ -276,18 +279,24 @@ router.post('/salvaagendamento/:servicoId', async (req, res) => {
       );
       const duracaoServico = servico[0].tempo;
       const nomeServico = servico[0].nome;
+      const [barbeiro] = await conn.execute( 'SELECT nome FROM barbeiro WHERE id_barber = ?', [barbeiroId] );
+      const nomeBarbeiro = barbeiro[0]?.nome || 'Barbeiro não encontrado';
+
 
       const horaInicio = new Date(`1970-01-01T${hora}Z`);
       const horaFim = new Date(horaInicio);
       horaFim.setMinutes(horaFim.getMinutes() + duracaoServico);
       const horaFimFormatada = horaFim.toISOString().substring(11, 16);
 
+
       await conn.execute(
         'INSERT INTO agendamentos (cliente_id, servico_id, barbeiro_id, data, hora, hora_fim, status) VALUES (?, ?, ?, ?, ?, ?, 1)',
         [clienteId, servicoId, barbeiroId, data, hora, horaFimFormatada]
       );
 
+
       const dataFormatada = formatarData(data);
+
 
       const mailOptions = {
         from: 'luccacunhaski@gmail.com',
@@ -296,50 +305,117 @@ router.post('/salvaagendamento/:servicoId', async (req, res) => {
         html: `
           <html>
           <head>
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+
             <style>
               body {
-                font-family: Arial, sans-serif;
                 background-color: #f4f4f9;
                 margin: 0;
                 padding: 0;
               }
+
+
               .container {
                 width: 100%;
                 max-width: 600px;
                 margin: 0 auto;
-                background-color: #ffffff;
+
+
+                font-family: Poppins;
+                font-weight: bold;
+                font-style: normal;
+
+
+                background-color: #1d1b1a;
                 border-radius: 8px;
                 padding: 20px;
                 box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
               }
               .header {
                 text-align: center;
-                background-color: #007bff;
-                color: white;
+                background-color: #d0804e;
+                color: #1d1b1a;
                 padding: 10px 0;
                 border-radius: 8px 8px 0 0;
               }
               .content {
                 padding: 20px;
-                font-size: 16px;
-                color: #333333;
               }
+
+
+              .content p{
+                font-family: Poppins;
+                font-weight: bold;
+                font-style: normal;
+                font-size: 16px;
+                color: #fff;
+              }
+
+
+              .content p strong{
+                color: #d0804e;
+              }
+
+
               .footer {
                 text-align: center;
                 font-size: 14px;
-                color: #888888;
-                margin-top: 20px;
-              }
-              .button {
-                display: inline-block;
-                background-color: #28a745;
-                color: white;
-                padding: 10px 20px;
-                text-decoration: none;
-                border-radius: 4px;
+                font-family: Poppins;
                 font-weight: bold;
+                font-style: normal;
+
+
+                color: #d0804e;
                 margin-top: 20px;
               }
+             
+              .href-button{
+                text-decoration: none;
+              }
+
+
+              button.btn {
+                  font-size: 15px;
+                  color: #fff;
+                 
+                  font-family: Poppins;
+                  font-weight: bold;
+                  font-style: normal;
+
+
+                  text-transform: uppercase;
+                  text-decoration: none;
+                  text-align: center;
+                  letter-spacing: 1px;
+                 
+                  display: inline-block;
+
+
+                  padding: 10px 20px;
+                  width: auto;
+
+
+                  border-radius: 10px;
+                  border: solid 1px #a3643c;
+                  border-bottom: solid 3px #774a2e;
+                  background: linear-gradient(180deg, #d0804e, #8d5735);
+
+
+                  box-shadow: 0px 2px 3px #000d3848, inset 0px 4px 5px #aa683f,
+                  inset 0px -4px 5px #8d5735;
+              }
+
+
+              a.href:hover{
+                transition: .3s;
+                cursor: pointer;
+              }
+
+
+             
             </style>
           </head>
           <body>
@@ -352,9 +428,11 @@ router.post('/salvaagendamento/:servicoId', async (req, res) => {
                 <p>Seu agendamento para o serviço <strong>${nomeServico}</strong> foi confirmado com sucesso.</p>
                 <p><strong>Data:</strong> ${dataFormatada}</p>
                 <p><strong>Hora:</strong> ${hora}</p>
-                <p><strong>Barbeiro:</strong> ${barbeiroId}</p>
+                <p><strong>Barbeiro:</strong> ${nomeBarbeiro}</p>
                 <p>Se tiver algum problema, entre em contato conosco.</p>
-                <a href="http://localhost:3000/verAgendamentos" class="button">Ver meus agendamentos</a>
+                <a href="http://localhost:3000/verAgendamentos" class="href-button">
+                  <button class="btn" type="button">Ver meus agendamentos</button>
+                  </a>
               </div>
               <div class="footer">
                 <p>Obrigado por escolher a And Barbershop!</p>
@@ -365,10 +443,12 @@ router.post('/salvaagendamento/:servicoId', async (req, res) => {
         `
       };
 
+
       transporter.sendMail(mailOptions);
       await conn.commit();
       conn.release();
       res.redirect('/verAgendamentos?confirmado=true');
+
 
     } catch (err) {
       await conn.rollback();
