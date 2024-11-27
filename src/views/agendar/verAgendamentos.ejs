@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/css/pages/desktop/historico-agendamentos.css">
   <link rel="stylesheet" href="/css/pages/responsivo/resp-historico-agendamentos.css">
   <link rel="stylesheet" href="/css/partials/modal/modal-excluir.css">
+  <link rel="stylesheet" href="/css/partials/modal/modal-confirmacao.css">
 
   <script src="/css/partials/header/menu-mobile.js" defer></script>
   <script src="/css/partials/modal/modal.js" defer></script>
@@ -91,7 +92,7 @@
                                 <% } else if (statusTexto==='Finalizado' ) { %>
                                   <i class="bi bi-check-circle" style="color: #4ed05f;"></i>
                                   <% } else { %>
-                                    <i class="bi bi-journal-check" style="color: #d0804e"></i>
+                                    <i class="bi bi-calendar2-check-fill" style="color: #d0804e"></i>
                                     <% } %>
                                       <%= statusTexto %>
                             </a>
@@ -115,11 +116,10 @@
                           <dialog id="modal-<%= agendamento.agendamento_id %>">
                             <div class="content">
                               <form action="/agendamentos/<%= agendamento.agendamento_id %>/cancelar" method="POST">
-                                <h1>Essa ação tem um resultado irreversível. Tem certeza que deseja <span style="text-decoration: underline;">CANCELAR</span> seu
-                                <span style="text-decoration: underline;">AGENDAMENTO?</span></h1>
+                                <h1>Essa ação tem um resultado irreversível. Tem certeza que deseja CANCELAR seu AGENDAMENTO?</h1>
                                 
                                 <div class="btn-container">
-                                <button type="submit" class="btn-deletar" style="width: 200px;">Sim, Cancelar!</button>
+                                <button type="submit" class="btn-deletar" style="padding: 5px 8%; width: auto;">Sim, Cancelar!</button>
                               </form>
                               <button type="button" class="btn" id="btn-fecha-modal"
                                 onclick="document.getElementById('modal-<%= agendamento.agendamento_id %>').close();"
@@ -143,49 +143,72 @@
           </div><!--interface-->
         </div><!--flex-->
 
-        <dialog id="confirmationModal">
+        <dialog id="confirmationModal" class="modal-confirmacao">
           <div class="content">
-            <h1>Agendamento confirmado com sucesso!</h1>
+            <h1 id="modalText" class="efeito-frase-agendamentos">Processando seu agendamento...</h1>
+
+            <div class="spinner-container">
+              <span class="spinner"></span>
+            </div>
+            <div id="checkIcon" style="display: none; font-size: 25px; color: #4ed05f;">
+              <i class="bi bi-check-circle"></i> <!-- Ícone de check -->
+            </div>
           </div>
         </dialog>
-
-        <style>
-          dialog {
-            border: none;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            padding: 20px;
-            text-align: center;
-            font-family: 'Poppins-Bold', sans-serif;
-          }
-
-          dialog::backdrop {
-            background: rgba(0, 0, 0, 0.5);
-          }
-
-          .content h1 {
-            font-size: 18px;
-            color: white
-          }
-        </style>
-
+        
         <script>
           window.onload = () => {
             const params = new URLSearchParams(window.location.search);
             if (params.get('confirmado') === 'true') {
               const modal = document.getElementById('confirmationModal');
+              const modalText = document.getElementById('modalText');
+              const spinnerContainer = modal.querySelector('.spinner-container');
+              const checkIcon = document.getElementById('checkIcon'); // Referência para o ícone de check
+              
+              // Abrir o modal
               modal.showModal();
-
+        
+              // Iniciar o carregamento
+              setTimeout(() => {
+                // Fade out do texto atual
+                modalText.style.opacity = '0';
+        
+                // Esperar o fade out terminar para mudar o texto
+                setTimeout(() => {
+                  modalText.textContent = "Estamos quase lá..."; // Alterar o texto
+                  modalText.style.opacity = '1'; // Fade in do novo texto
+                }, 500); // O tempo de espera deve ser o mesmo que a duração da transição de opacidade
+              }, 1500);
+        
+              setTimeout(() => {
+                // Fade out do texto atual
+                modalText.style.opacity = '0';
+        
+                // Esperar o fade out terminar para mudar o texto
+                setTimeout(() => {
+                  modalText.textContent = "Agendamento confirmado com sucesso!"; // Alterar o texto
+                  modalText.style.opacity = '1'; // Fade in do novo texto
+                  spinnerContainer.style.display = 'none'; // Esconder o spinner
+        
+                  // Adicionar a borda verde
+                  modal.classList.add('borda-verde');
+        
+                  // Exibir o ícone de check
+                  checkIcon.style.display = 'block'; // Mostrar o ícone
+                }, 500); // O tempo de espera deve ser o mesmo que a duração da transição de opacidade
+              }, 5000);
+        
+              // Fechar o modal após 5 segundos
               setTimeout(() => {
                 modal.close();
-              }, 3000);
-
+              }, 8000);
+        
+              // Limpar a URL para remover o parâmetro 'confirmado=true'
               const cleanUrl = location.href.split('?')[0];
               window.history.replaceState(null, null, cleanUrl);
             }
           };
         </script>
-      </section>
 
       <%- include ("../partials/footer.ejs") %>
     </main>
