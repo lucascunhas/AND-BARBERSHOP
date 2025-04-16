@@ -2,12 +2,12 @@
 /* ANIMAÇÃO JS */
 header.rolagem{
     z-index: 3;
-    background-color: rgba(9, 28, 29);
+    background-color: #0c0c0c;
     padding: 10px 4%;
 }
 
 header.rolagem nav a{
-    color: #1d1b1a;
+    color: #0c0c0c;
 }
 /* FIM DA ANIMAÇÃO JS */
 
@@ -34,7 +34,7 @@ header > .interface{
 }
 
 header nav a{
-    color: #1d1b1a;
+    color: #0c0c0c;
     text-decoration: none;
     display: inline-block;
     transition: .2s;
