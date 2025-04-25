@@ -113,7 +113,6 @@
         const dropdownMenu = document.querySelector(".dropdown-menu");
         const icon = link.querySelector("i");
 
-        // Função para verificar o estado do dropdown e ajustar o ícone
         function toggleIcon() {
             if (dropdownMenu.classList.contains("show")) {
                 icon.classList.remove("bi-caret-down-fill");
@@ -124,14 +123,29 @@
             }
         }
 
-        // Supondo que você controle o menu com um clique ou outro evento
+        // Clique para abrir/fechar o dropdown
         link.addEventListener("click", (e) => {
             e.preventDefault();
             dropdownMenu.classList.toggle("show");
             toggleIcon();
         });
 
-        // Opcional: Fechar o menu ao clicar fora dele
+        // Trocar o ícone quando o mouse passar em cima do link
+        link.addEventListener("mouseenter", () => {
+            icon.classList.remove("bi-caret-down-fill");
+            icon.classList.add("bi-caret-up-fill");
+        });
+
+        // Voltar o ícone quando o mouse sair do link
+        link.addEventListener("mouseleave", () => {
+            // Só volta para baixo se o dropdown NÃO estiver aberto
+            if (!dropdownMenu.classList.contains("show")) {
+                icon.classList.remove("bi-caret-up-fill");
+                icon.classList.add("bi-caret-down-fill");
+            }
+        });
+
+        // Opcional: Fechar o menu se clicar fora
         document.addEventListener("click", (e) => {
             if (!dropdownMenu.contains(e.target) && !link.contains(e.target)) {
                 dropdownMenu.classList.remove("show");
@@ -139,4 +153,5 @@
             }
         });
     </script>
+
 </header>
